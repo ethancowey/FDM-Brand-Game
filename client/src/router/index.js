@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '../components/Login'
 import Register from '../components/Register'
 import matchGame from '../components/matchGame'
+import Streams from '../components/Streams'
 
 Vue.use(Router)
 
@@ -12,5 +13,6 @@ export default new Router({
   routes: [
     { path: '/', component: Login },
     { path: '/register', component: Register },
-    { path: '/match', component: matchGame }
+    { path: '/match', component: matchGame },
+    { path: '/streams', component: Streams }
   ]})
