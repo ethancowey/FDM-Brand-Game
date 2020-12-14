@@ -60,7 +60,6 @@ body {
 }
 #registration .container #registration-row #registration-column #registration-box #registration-form {
   padding: 20px;
-
 }
 #registration .container #registration-row #registration-column #registration-box {
   margin-top: 110px;
