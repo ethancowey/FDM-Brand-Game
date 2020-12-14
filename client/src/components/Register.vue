@@ -13,13 +13,13 @@
               <label for="lastName" class="labels">Last Name:</label><br>
               <input type="text" id="lastName" class="form-control">
 
-              <label for="e-mail"class="labels">E-mail address:</label><br>
+              <label for="e-mail" class="labels">E-mail address:</label><br>
               <input type="email" id="e-mail" class="form-control">
 
-              <label for="username"class="labels">Username:</label><br>
+              <label for="username" class="labels">Username:</label><br>
               <input type="text" id="username" class="form-control">
 
-              <label for="password"class="labels">Password:</label><br>
+              <label for="password" class="labels">Password:</label><br>
               <input type="text" id="password" class="form-control">
               <div>
                 <input type="submit" name="submit" class="btn btn-dark btn-md" id="submit-button" value="Register!">
@@ -39,8 +39,8 @@
 
 export default {
   name: 'Register',
-  data: {
-    userData: {
+  data () {
+    return {
       firstName: '',
       lastName: '',
       email: '',
@@ -85,4 +85,3 @@ body {
 }
 
 </style>
-
