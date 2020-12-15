@@ -26,7 +26,46 @@ app.post('/api/auth',(req, res) => {
     })
 })
 
-
+app.post('/api/exists',(req, res) => {
+    console.log('posted');//adds all user details so they can be compared with front end
+    console.log(req.body)
+    mongoose.connect(uriMongo, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }).then(() => {
+        UserAccount.findOne({username: req.body.username})//find a match in the database
+            .then(doc => res.send(doc))
+            .catch(err => console.log(err));
+    }).catch(err => {
+        console.log(`db error ${err.message}`);
+        process.exit(-1)
+    })
+})
+app.post('/api/register',(req, res) => {
+    console.log('posted');//adds all user details so they can be compared with front end
+    console.log(req.body)
+    const UserAccounts = new UserAccount({
+        _id: new mongoose.Types.ObjectId(),
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        username: req.body.username,
+        password: req.body.password,
+        email: req.body.email
+    });
+    mongoose.connect(uriMongo, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }).then(() => {
+        UserAccounts.save().then(result => {
+            console.log(result)
+            res.send(result)
+        }).catch(err => console.log(err));
+    })
+})
 
 const port = process.env.PORT || 3000;
 
