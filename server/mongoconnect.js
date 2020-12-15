@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const MongoClient = require('mongodb').MongoClient;
 const uriQuestions = "mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority";
 const UserAccount = require('./user')
 const Question = require('./questions')
