@@ -4,6 +4,8 @@ const cors = require('cors');
 const mongoose = require('mongoose')
 const uriMongo = "mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority";
 const UserAccount = require('./user')
+const Questions = require('./questions')
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -66,6 +68,26 @@ app.post('/api/register',(req, res) => {
         }).catch(err => console.log(err));
     })
 })
+
+let questions;
+app.get('/api/questions', function(req, res) {
+    mongoose.connect(uriMongo, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }).then(() => {
+        let streams = req.query.streams;
+        Questions.find({stream: streams})
+            .then(doc => res.send(doc))
+            .catch(err => console.log(err));
+    }).catch(err => {
+        console.log(`db error ${err.message}`);
+        process.exit(-1)
+    })
+
+});
+
 
 const port = process.env.PORT || 3000;
 

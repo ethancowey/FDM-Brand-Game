@@ -40,16 +40,40 @@
         <div class="col-5">Timer Placeholder</div>
       </div>
       <div id="game">
-        <p id="placeholder">Game Here</p>
+      <div
+        v-for="test in Questions"
+        :key="test.id">
+        <p>{{test.term}} : {{test.meaning}}</p>
+
+      </div>
+
       </div>
     </div>
+    <input id="StreamType"  type="hidden" value="Business Intelligence">
+
   </div>
 
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'matchGame'
+  name: 'matchGame',
+  data () {
+    return {
+      Questions: []
+    }
+  },
+  mounted () {
+    axios.get('http://localhost:3000/api/questions', {
+      params: {
+        streams: String(document.getElementById('StreamType').value)
+      }
+    })
+      .then((response) => {
+        this.Questions = response.data
+      })
+  }
 }
 </script>
 
