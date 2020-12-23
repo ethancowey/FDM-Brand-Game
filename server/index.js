@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const uriMongo = "mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority";
 const UserAccount = require('./user')
 const Questions = require('./questions')
-
+const Hash = require('./src/hash.js')
 const app = express();
 
 app.use(bodyParser.json());
@@ -13,13 +13,15 @@ app.use(cors());
 
 app.post('/api/auth',(req, res) => {
     console.log('posted');//adds all user details so they can be compared with front end
+    console.log(Hash.hashing(req.body.username, req.body.password))
+    const hash = Hash.hashing(req.body.username, req.body.password)
     mongoose.connect(uriMongo, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
         useFindAndModify: false
     }).then(() => {
-        UserAccount.findOne({username: req.body.username, password: req.body.password}).find()//find a match in the database
+        UserAccount.findOne({username: req.body.username, password: hash}).find()//find a match in the database
             .then(doc => res.send(doc))
             .catch(err => console.log(err));
     }).catch(err => {
@@ -48,12 +50,13 @@ app.post('/api/exists',(req, res) => {
 app.post('/api/register',(req, res) => {
     console.log('posted');//adds all user details so they can be compared with front end
     console.log(req.body)
+    const hash = Hash.hashing(req.body.username, req.body.password)
     const UserAccounts = new UserAccount({
         _id: new mongoose.Types.ObjectId(),
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         username: req.body.username,
-        password: req.body.password,
+        password: hash,
         email: req.body.email
     });
     mongoose.connect(uriMongo, {
@@ -69,7 +72,6 @@ app.post('/api/register',(req, res) => {
     })
 })
 
-let questions;
 app.get('/api/questions', function(req, res) {
     mongoose.connect(uriMongo, {
         useNewUrlParser: true,
