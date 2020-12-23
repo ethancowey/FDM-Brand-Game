@@ -37,7 +37,13 @@
         <div class="col-7">
           <h2>Match the Words</h2>
         </div>
-        <div class="col-5">Timer Placeholder</div>
+
+        <div class="col-5">
+            <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
+            <div class="timer">
+            </div>
+        </div>
+
       </div>
       <div id="game">
       <div
@@ -56,7 +62,26 @@
 </template>
 
 <script>
+/* eslint-disable */
+
 import axios from 'axios'
+
+let second = 0
+let minute = 0
+var interval
+const timer = document.querySelector('.timer')
+
+function startTimer () {
+  interval = setInterval(function () {
+    timer.innerHTML = minute + 'mins ' + second + 'secs'
+    second++
+    if (second === 60) {
+      minute++
+      second = 0
+    }
+  }, 1000)
+}
+
 export default {
   name: 'matchGame',
   data () {
@@ -82,6 +107,19 @@ export default {
   margin-top: 30%;
   text-align: center;
 
+}
+.timer {
+  margin-left: 35%;
+  display: inline-block;
+  top: 40%;
+}
+.timer p {
+  margin-top: 4%;
+  width: 5%;
+}
+#reset {
+  top: 50%;
+  float: left;
 }
 #game {
   width: 50%;
