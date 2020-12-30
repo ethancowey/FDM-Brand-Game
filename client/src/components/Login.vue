@@ -25,6 +25,14 @@
         </div>
       </div>
     </div>
+    <div id="guest-link">
+      <br>
+      <a href="/streams" class="text-dark">Continue as Guest</a>
+    </div>
+    <div id="admin-link">
+      <br>
+      <a href="/admin" class="text-dark">Go to Admin Login</a>
+    </div>
   </div>
 </template>
 
@@ -45,9 +53,11 @@ export default {
       axios.post('http://localhost:3000/api/auth', {
         username: String(document.getElementById('login-username').value),
         password: String(document.getElementById('login-password').value)
-      }).then((response) => { this.validUser(response) }).catch(function (error) {
-        console.log(error)
       })
+        .then((response) => { this.validUser(response) })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
     validUser (response) {
       console.log(response.data)

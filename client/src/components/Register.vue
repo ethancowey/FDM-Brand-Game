@@ -32,6 +32,14 @@
         </div>
       </div>
     </div>
+    <div id="guest-link">
+      <br>
+      <a href="/streams" class="text-dark">Continue as Guest</a>
+    </div>
+    <div id="admin-link">
+      <br>
+      <a href="/admin" class="text-dark">Go to Admin Login</a>
+    </div>
   </div>
 </template>
 
@@ -74,7 +82,7 @@ export default {
           console.log(error)
         })
       } else {
-        alert('That username exists')
+        alert('That username exists please try another username')
       }
     },
     regRoute (response) {
