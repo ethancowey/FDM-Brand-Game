@@ -8,11 +8,13 @@
               <h3 class="text-center text-dark">Login</h3>
               <div class="form-group">
                 <label class="text-dark">Username:</label><br>
-                <input required type="username" id="login-username" class="form-control">
+                <input required type="username" id="login-username" class="form-control"
+                       pattern=".{1,10}" title="Must be less than 10 characters">
               </div>
               <div class="form-group">
                 <label class="text-dark">Password:</label><br>
-                <input required type="password" v-model="password" id="login-password"  class="form-control">
+                <input required type="password" v-model="password" id="login-password"  class="form-control"
+                       pattern=".{6,12}" title="Must be 6 to 12 characters">
               </div>
               <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="loginPost()" value="submit">

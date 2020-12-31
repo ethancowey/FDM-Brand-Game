@@ -17,12 +17,15 @@
               <input type="email" id="e-mail" class="form-control">
 
               <label for="username" class="labels">Username:</label><br>
-              <input type="text" id="username" class="form-control">
+              <input type="text" id="username" class="form-control" required
+                     pattern=".{1,10}" title="Must be less than 10 characters">
 
               <label for="password" class="labels">Password:</label><br>
-              <input type="text" id="password" class="form-control">
+              <input type="text" id="password" class="form-control" required
+                     pattern=".{6,12}" title="Must be 6 to 12 characters">
               <div>
-                <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="registerPost()" id="submit-button" value="Register!">
+                <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="registerPost()"
+                       id="submit-button" value="Register!">
               </div>
               <div id="login-link" class="text-right">
                 <a href="/" class="text-dark">Click here to log in</a>
