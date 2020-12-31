@@ -50,6 +50,7 @@ app.post('/api/exists', (req, res) => {
       process.exit(-1)
     })
 })
+
 app.post('/api/register', (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   console.log(req.body)
