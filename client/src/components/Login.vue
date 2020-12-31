@@ -63,11 +63,11 @@ export default {
     },
     validUser (response) {
       console.log(response.data)
-      if (response.data.length === 1) {
-        sessionStorage.setItem('username', response.data[0].username)
-        sessionStorage.setItem('firstname', response.data[0].firstname)
-        sessionStorage.setItem('lastname', response.data[0].lastname)
-        sessionStorage.setItem('email', response.data[0].email)
+      if (response.data.username === String(document.getElementById('login-username').value)) {
+        sessionStorage.setItem('username', response.data.username)
+        sessionStorage.setItem('firstname', response.data.firstname)
+        sessionStorage.setItem('lastname', response.data.lastname)
+        sessionStorage.setItem('email', response.data.email)
         router.push('/streams')
       } else {
         console.log('Invalid')

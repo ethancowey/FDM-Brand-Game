@@ -3,10 +3,13 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const UserAccount = require('./src/user') // Constructor for User Account collection in the database
-const Questions = require('./src/questions') // Constructor for Questions collection in the database
 const hashMethod = require('./src/hash.js')
-const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
+const loginAuthentication = require('./src/loginAuthentication')
+const usernameExist = require('./src/usernameExist')
+const register = require('./src/register')
+const retrieveQuestions = require('./src/retrieveQuestion')
 const app = express()
+// const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -14,48 +17,20 @@ app.use(cors())
 app.post('/api/auth', (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
-  mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  })
-    .then(() => {
-      UserAccount.findOne({ username: req.body.username, password: hash }).find()// find a match in the database
-        .then(doc => res.send(doc))
-        .catch(err => console.log(err))
-    })
-    .catch(err => {
-      console.log(`db error ${err.message}`)
-      process.exit(-1)
-    })
+  loginAuthentication.validLogin(hash, req.body.username, req, res)
 })
 
 app.post('/api/exists', (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   console.log(req.body)
-  mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  })
-    .then(() => {
-      UserAccount.findOne({ username: req.body.username })// find a match in the database
-        .then(doc => res.send(doc))
-        .catch(err => console.log(err))
-    })
-    .catch(err => {
-      console.log(`db error ${err.message}`)
-      process.exit(-1)
-    })
+  usernameExist.isUsernameUnique(req.body.username, req, res)
 })
 
 app.post('/api/register', (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   console.log(req.body)
   const hash = hashMethod.hashing(req.body.username, req.body.password)
-  const UserAccounts = new UserAccount({
+  const NewUser = new UserAccount({
     _id: new mongoose.Types.ObjectId(),
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -63,39 +38,12 @@ app.post('/api/register', (req, res) => {
     password: hash,
     email: req.body.email
   })
-  mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  })
-    .then(() => {
-      UserAccounts.save()
-        .then(result => {
-          console.log(result)
-          res.send(result)
-        })
-        .catch(err => console.log(err))
-    })
+  register.addUser(NewUser, req, res)
 })
 
 app.get('/api/questions', function (req, res) {
-  mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  })
-    .then(() => {
-      const streams = req.query.streams
-      Questions.find({ stream: streams })
-        .then(doc => res.send(doc))
-        .catch(err => console.log(err))
-    })
-    .catch(err => {
-      console.log(`db error ${err.message}`)
-      process.exit(-1)
-    })
+  const streams = req.query.streams
+  retrieveQuestions.getQuestion(streams, req, res)
 })
 
 const port = process.env.PORT || 3000
