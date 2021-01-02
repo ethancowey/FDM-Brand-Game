@@ -11,22 +11,19 @@ const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 const Questions = require('./questions') // Constructor for Questions collection in the database
 
-function getQuestion (stream, req, res) {
+async function getQuestion (stream) {
   mongoose.connect(uriMongo, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
   })
-    .then(() => {
-      Questions.find({ stream: stream })
-        .then(doc => res.send(doc))
-        .catch(err => console.log(err))
+    .then()
+  const questionRetrieved = await Questions.find({ stream: stream })
+    .then(doc => {
+      return doc
     })
-    .catch(err => {
-      console.log(`db error ${err.message}`)
-      process.exit(-1)
-    })
+  return questionRetrieved
 }
 
 module.exports.getQuestion = getQuestion

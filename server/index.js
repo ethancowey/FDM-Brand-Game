@@ -14,19 +14,20 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
-app.post('/api/auth', (req, res) => {
+app.post('/api/auth', async (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
-  loginAuthentication.validLogin(hash, req.body.username, req, res)
+  const userAuthorised = await loginAuthentication.validLogin(hash, req.body.username)
+  res.send(userAuthorised)
 })
 
-app.post('/api/exists', (req, res) => {
+app.post('/api/exists', async (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
-  console.log(req.body)
-  usernameExist.isUsernameUnique(req.body.username, req, res)
+  const exists = await usernameExist.isUsernameUnique(req.body.username, req, res)
+  res.send(exists)
 })
 
-app.post('/api/register', (req, res) => {
+app.post('/api/register', async (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   console.log(req.body)
   const hash = hashMethod.hashing(req.body.username, req.body.password)
@@ -38,12 +39,14 @@ app.post('/api/register', (req, res) => {
     password: hash,
     email: req.body.email
   })
-  register.addUser(NewUser, req, res)
+  const addUser = await register.addUser(NewUser)
+  res.send(addUser)
 })
 
-app.get('/api/questions', function (req, res) {
+app.get('/api/questions', async (req, res) => {
   const streams = req.query.streams
-  retrieveQuestions.getQuestion(streams, req, res)
+  const question = await retrieveQuestions.getQuestion(streams, req, res)
+  res.send(question)
 })
 
 const port = process.env.PORT || 3000

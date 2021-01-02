@@ -12,21 +12,19 @@
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
-function addUser (NewUser, req, res) {
+async function addUser (NewUser, req, res) {
   mongoose.connect(uriMongo, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
   })
-    .then(() => {
-      NewUser.save()
-        .then(result => {
-          console.log(result)
-          res.send(result)
-        })
-        .catch(err => console.log(err))
+    .then()
+  const addUser = await NewUser.save()
+    .then(result => {
+      return result
     })
+  return addUser
 }
 
 module.exports.addUser = addUser

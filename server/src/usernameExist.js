@@ -12,22 +12,19 @@ const mongoose = require('mongoose')
 const UserAccount = require('./user') // Constructor for User Account collection in the database
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
-function isUsernameUnique (username, req, res) {
+async function isUsernameUnique (username) {
   mongoose.connect(uriMongo, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
-  })
-    .then(() => {
-      UserAccount.findOne({ username: username })// find a match in the database
-        .then(doc => res.send(doc))
-        .catch(err => console.log(err))
+  }).then()
+  const exists = await UserAccount.findOne({ username: username })
+    .then(result => {
+      return result
     })
-    .catch(err => {
-      console.log(`db error ${err.message}`)
-      process.exit(-1)
-    })
+  console.log(exists)
+  return exists
 }
 
 module.exports.isUsernameUnique = isUsernameUnique

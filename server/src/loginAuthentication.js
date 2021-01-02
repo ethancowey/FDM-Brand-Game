@@ -12,22 +12,18 @@ const mongoose = require('mongoose')
 const UserAccount = require('./user') // Constructor for User Account collection in the database
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
-function validLogin (hash, username, req, res) {
+async function validLogin (hash, username) {
   mongoose.connect(uriMongo, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
   })
-    .then(() => {
-      UserAccount.findOne({ username: username, password: hash })// find a match in the database
-        .then(doc => res.send(doc))
-        .catch(err => console.log(err))
-    })
-    .catch(err => {
-      console.log(`db error ${err.message}`)
-      process.exit(-1)
-    })
+    .then()
+  const loggedIn = await UserAccount.findOne({ username: username, password: hash }).then(result => {
+    return result
+  })
+  return loggedIn
 }
 
 module.exports.validLogin = validLogin
