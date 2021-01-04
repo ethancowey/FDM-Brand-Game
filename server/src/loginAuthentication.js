@@ -1,12 +1,14 @@
 /**
  * Module loginAuthentication.js
  * Creation Date: 31/12/2020
- * Last Edit Date: 31/12/2020
+ * Last Edit Date: 01/01/2021
  * Authors: Ethan Cowey
- * Description: This is to replace the original authentication that was in index.js it takes as parameters the users
- * hashed password and username as well as the request and response parameters. Using the database
- * connection uri it will connect to the database and send a response to the front end if that combination is correct
- * using res.send(doc)
+ * Overview: This is to replace the original authentication method that was in index.js it takes as parameters
+ * the users hashed password and username. Using the database connection uri it will connect to the database and then
+ * query the database for that entry. If it finds a match it will return that document but it will exclude the hashed
+ * passwords from the results so they arent sent to front-end. Otherwise it returns null as theres no match.
+ * This method is invoked when the front-end sends a post request to authenticate a login to index.js which calls this
+ * method it will also return the result of this method (without the password) to the front-end using res.send()
  */
 const mongoose = require('mongoose')
 const UserAccount = require('./user') // Constructor for User Account collection in the database
@@ -20,9 +22,12 @@ async function validLogin (hash, username) {
     useFindAndModify: false
   })
     .then()
-  const loggedIn = await UserAccount.findOne({ username: username, password: hash }).then(result => {
-    return result
-  })
+  const loggedIn = await UserAccount.findOne({ username: username, password: hash })
+    .select('-password') // Excludes password from result so it is not sent to front-end
+    .then(result => {
+      return result
+    })
+  console.log(loggedIn)
   return loggedIn
 }
 

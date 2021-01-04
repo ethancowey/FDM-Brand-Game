@@ -1,3 +1,12 @@
+<!-- Module: TextBlocks.vue
+Creation Date: 18/12/2020
+Last Edit Date:05/01/2021
+Authors: Ethan Cowey
+Overview: The purpose of this component is to be a game in which users must drag blocks of text in order to match the
+correct definition. There will be a 2 minute time limit and the faster its completed the higher the score achieved.
+In the <template>
+In the <script>
+-->
 <template>
   <div id="app">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">

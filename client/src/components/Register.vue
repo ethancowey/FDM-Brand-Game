@@ -1,10 +1,26 @@
+<!-- Module: Register.vue
+Creation Date: 13/12/2020
+Last Edit Date: 17/12/2020
+Authors: Ethan Cowey, Maria Andrzejewska, Miles Prosser
+Overview: The purpose of this component is to generate a page for registering a new user into the system using a form
+as well as links to the login page, to play as guest and the admin login.
+In the <template> tags is the html code for this page it has the container for the registration form as well as the
+links to the other pages mentioned earlier.
+In the <script> tags are the methods invoked when the form is submitted. The first of which is usernameUniquePost().
+usernameUniquePost sends a post request to the back-end to check if the username is unique using axios. The response is
+sent to validReg() as a parameter.
+validReg() if the username is not unique it will send an alert to the user to tell them to try another username.
+If the username is unique it sends another post request to the back-end but this time to insert the new user details
+into the database it will then call regRoute() which will save details needed in session storage and route the user to
+the next pages URL.
+-->
 <template>
   <div id="registration">
     <div class ="container">
       <div id="registration-row" class="row justify-content-center align-items-center">
         <div id="registration-column" class="col-md-6">
           <div id="registration-box" class="col-md-12">
-            <form id="registration-form" @submit.prevent="registerPost">
+            <form id="registration-form" @submit.prevent="usernameUniquePost">
               <h3 class="text-center text-dark">Register</h3>
 
               <label for="firstName" class="labels">First Name:</label><br>
@@ -24,7 +40,7 @@
               <input type="text" id="password" class="form-control" required
                      pattern=".{6,12}" title="Must be 6 to 12 characters">
               <div>
-                <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="registerPost()"
+                <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="usernameUniquePost()"
                        id="submit-button" value="Register!">
               </div>
               <div id="login-link" class="text-right">
@@ -63,7 +79,7 @@ export default {
     }
   },
   methods: {
-    registerPost () {
+    usernameUniquePost () {
       console.log(String(document.getElementById('username').value))
       axios.post('http://localhost:3000/api/exists', {
         username: String(document.getElementById('username').value)

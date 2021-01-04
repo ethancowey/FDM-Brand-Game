@@ -1,3 +1,12 @@
+/**
+ * Module: index.js
+ * Creation Date: 08/12/2020
+ * Last Edit Date: 03/01/2021
+ * Authors: Ethan Cowey, Miles Prosser
+ * Overview: The purpose of this module is to be the server it will listen on a specific port for requests being made
+ * by the front-end. When a request is made to a specific url path which the module is listening on it will preform and
+ * call different methods.
+ */
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
