@@ -39,67 +39,125 @@
         </div>
 
         <div class="col-5">
-            <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
+            <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
             </div>
         </div>
 
       </div>
       <div id="game">
-      <div
-        v-for="test in Questions"
-        :key="test.id">
-        <p>{{test.term}} : {{test.meaning}}</p>
 
-      </div>
+        <ul class="deck" id="card-deck">
+          <li
+            v-for="question in questions"
+            :key="question.id"
+            class="card"
+            :class="{ selected: question.selected, matched: question.matched }"
+            v-on:click="cardClicked(question)">
+            <h6>{{ question.showValue }}</h6>
+          </li>
+        </ul>
 
       </div>
     </div>
-    <input id="StreamType"  type="hidden" value="Business Intelligence">
 
   </div>
 
 </template>
 
 <script>
-/* eslint-disable */
-
 import axios from 'axios'
-
-let second = 0
-let minute = 0
-var interval
-const timer = document.querySelector('.timer')
-
-function startTimer () {
-  interval = setInterval(function () {
-    timer.innerHTML = minute + 'mins ' + second + 'secs'
-    second++
-    if (second === 60) {
-      minute++
-      second = 0
-    }
-  }, 1000)
-}
 
 export default {
   name: 'matchGame',
   data () {
     return {
-      Questions: []
+      questions: [],
+      openedCards: [],
+      pairsMatched: 0,
+      gameFinished: false
     }
   },
   mounted () {
-    axios.get('http://localhost:3000/api/questions', {
-      params: {
-        streams: String(document.getElementById('StreamType').value)
+    this.generateQuestions()
+  },
+  methods: {
+    cardClicked: function (question) {
+      if (this.openedCards.length === 2) {
+        return
       }
-    })
-      .then((response) => {
-        this.Questions = response.data
+      question.selected = true
+      this.openedCards.push(question)
+      if (this.openedCards.length === 2) {
+        this.handleMatch()
+      }
+    },
+    handleMatch: function () {
+      if (this.openedCards[0]._id === this.openedCards[1]._id && this.openedCards[0].showValue !== this.openedCards[1].showValue) {
+        for (let i = 0; i <= 1; i++) {
+          this.openedCards[i].matched = true
+          this.openedCards[i].selected = false
+        }
+        this.openedCards = []
+        this.pairsMatched += 1
+      } else {
+        setTimeout(() => {
+          this.closeCards()
+        }, 400)
+      }
+    },
+    closeCards: function () {
+      for (let i = 0; i <= 1; i++) {
+        this.openedCards[i].selected = false
+      }
+      this.openedCards = []
+    },
+    resetGame: function () {
+      this.generateQuestions()
+      this.pairsMatched = 0
+      this.openedCards = []
+    },
+    shuffle: function (array) {
+      let currentIndex = array.length
+      let tempVal
+      let randomIndex
+      while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
+        tempVal = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = tempVal
+      }
+      return array
+    },
+    generateQuestions: async function () {
+      const {data} = await axios.get('http://localhost:3000/api/questions', {
+        params: {
+          streams: 'Business Intelligence'
+          // streams: this.streamType
+        }
       })
+      this.questions = this.shuffle(data.map((q) => ({
+        ...q,
+        selected: false,
+        matched: false
+      }))).slice(0, 8)
+
+      for (let i = 0; i < 8; i++) {
+        this.questions.push(Object.assign({}, this.questions[i]))
+      }
+      for (let i = 0; i < 16; i++) {
+        if (i < 8) {
+          this.questions[i].showValue = this.questions[i].term
+        } else {
+          this.questions[i].showValue = this.questions[i].meaning
+        }
+      }
+      this.shuffle(this.questions)
+    }
   }
 }
+
 </script>
 
 <style scoped>
@@ -107,6 +165,46 @@ export default {
   margin-top: 30%;
   text-align: center;
 
+}
+.card {
+  height: 8.1rem;
+  width: 8.1rem;
+  margin: 0.2rem 0.2rem;
+  /*background: #141214;;*/
+  font-size: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+.selected {
+  color: white;
+  background-color: #4A57BA;
+}
+
+.matched {
+  color: white;
+  background-color: #00A56A;
+}
+.card p {
+  color: black;
+}
+.card h6 {
+  font-size: 13px;
+}
+.deck {
+  width: 100%;
+  background: #716F71;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 0 3em;
 }
 .timer {
   margin-left: 35%;
@@ -120,11 +218,12 @@ export default {
 #reset {
   top: 50%;
   float: left;
+  cursor:pointer;
 }
 #game {
-  width: 50%;
-  height: 60%;
-  border: solid black;
+  width: 45%;
+  height: 70%;
+  /*border: solid black;*/
   position: absolute;
   left: 50%;
   top: 60%;
