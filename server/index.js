@@ -11,7 +11,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const UserAccount = require('./src/user') // Constructor for User Account collection in the database
+const UserAccount = require('./src/constructors/user') // Constructor for User Account collection in the database
 const hashMethod = require('./src/hash.js')
 const loginAuthentication = require('./src/loginAuthentication')
 const usernameExist = require('./src/usernameExist')
@@ -38,7 +38,6 @@ app.post('/api/exists', async (req, res) => {
 
 app.post('/api/register', async (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
-  console.log(req.body)
   const hash = hashMethod.hashing(req.body.username, req.body.password)
   const NewUser = new UserAccount({
     _id: new mongoose.Types.ObjectId(),

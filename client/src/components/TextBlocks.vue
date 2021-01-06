@@ -4,7 +4,7 @@ Last Edit Date:05/01/2021
 Authors: Ethan Cowey
 Overview: The purpose of this component is to be a game in which users must drag blocks of text in order to match the
 correct definition. There will be a 2 minute time limit and the faster its completed the higher the score achieved.
-In the <template>
+In the <template> There is the nav bar to navigate to other sections of the site.
 In the <script>
 -->
 <template>
@@ -56,9 +56,9 @@ In the <script>
       </div>
       <div id="game">
         <div>
-          <h2 v-text="hint"></h2>
+          <h2 v-text="hint"> {{minutesRemaining}}:{{secondsRemaining}}</h2>
           <draggable v-model="questions" @start="drag=true" @end="drag=false">
-            <div v-for="element in questions" :key="element.id" @dragend="checker"><button><h4>{{element}}</h4></button></div>
+            <div v-for="block in questions" :key="block.id" @dragend="checker"><button><h4>{{block}}</h4></button></div>
           </draggable>
         </div>
 
@@ -83,7 +83,19 @@ export default {
     return {
       questions: [],
       correct: [],
-      hint: []
+      hint: [],
+      dragsUsed: 0,
+      timeRemaining: 120,
+      minutesRemaining: 2,
+      secondsRemaining: 0
+    }
+  },
+  watch: {
+    timeRemaining: {
+      handler () {
+        setTimeout(this.timeMonitor, 1000) // Every second it will run timeMonitor which will decrease time by 1
+      },
+      immediate: true
     }
   },
   mounted () {
@@ -108,10 +120,24 @@ export default {
       })
   },
   methods: {
-    checker () {
+    checker () { // This is called each time an object is dragged
+      this.dragsUsed++ // Increase number of drags used
       if (this.questions.toString() === this.correct.toString()) {
         alert('Winner')
+        const score = this.timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
+        console.log(score + 'points')
+        // axios here
         router.push('/leaderboard')
+      }
+    },
+    timeMonitor () {
+      this.timeRemaining-- // Decreases the time by 1
+      console.log(this.timeRemaining)
+      this.minutesRemaining = Math.floor(this.timeRemaining / 60)
+      this.secondsRemaining = this.timeRemaining - Math.floor(this.timeRemaining / 60) * 60
+      console.log(this.minutesRemaining + ' ' + this.secondsRemaining)
+      if (this.timeRemaining === 0) { // If 0 no time is left so the game is over
+        alert('GAME OVER')
       }
     }
   }

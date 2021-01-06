@@ -72,12 +72,8 @@ export default {
         password: String(document.getElementById('login-password').value)
       })
         .then((response) => { this.validUser(response) })
-        .catch(function (error) {
-          console.log(error)
-        })
     },
     validUser (response) {
-      console.log(response.data)
       if (response.data.username === String(document.getElementById('login-username').value)) {
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('firstname', response.data.firstname)
