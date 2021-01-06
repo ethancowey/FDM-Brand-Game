@@ -56,7 +56,8 @@ In the <script>
       </div>
       <div id="game">
         <div>
-          <h2 v-text="hint"> {{minutesRemaining}}:{{secondsRemaining}}</h2>
+          <h2 v-text="hint"></h2>
+          <p>{{minutesRemaining}}:{{secondsRemaining}}</p>
           <draggable v-model="questions" @start="drag=true" @end="drag=false">
             <div v-for="block in questions" :key="block.id" @dragend="checker"><button><h4>{{block}}</h4></button></div>
           </draggable>
@@ -126,7 +127,14 @@ export default {
         alert('Winner')
         const score = this.timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
         console.log(score + 'points')
-        // axios here
+        // axios post the new score to database to update if its a new high score for the user
+        axios.post('http://localhost:3000/api/scores', {
+          username: sessionStorage.getItem('username'),
+          game: 'blocks',
+          stream: sessionStorage.getItem('stream'),
+          score: score
+        })
+          .then((response) => { console.log(response) })
         router.push('/leaderboard')
       }
     },

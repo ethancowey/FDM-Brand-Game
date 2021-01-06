@@ -11,12 +11,16 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const mongoose = require('mongoose')
+
 const UserAccount = require('./src/constructors/user') // Constructor for User Account collection in the database
+const Scores = require('./src/constructors/scores')
+
 const hashMethod = require('./src/hash.js')
 const loginAuthentication = require('./src/loginAuthentication')
 const usernameExist = require('./src/usernameExist')
 const register = require('./src/register')
 const retrieveQuestions = require('./src/retrieveQuestion')
+const updateScore = require('./src/updateScore')
 const app = express()
 // const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
@@ -55,6 +59,18 @@ app.get('/api/questions', async (req, res) => {
   const streams = req.query.streams
   const question = await retrieveQuestions.getQuestion(streams, req, res)
   res.send(question)
+})
+
+app.post('/api/scores', async (req, res) => {
+  console.log('hello' + req.body)
+  const newScore = new Scores({
+    username: req.body.username,
+    game: req.body.game,
+    stream: req.body.stream,
+    score: req.body.score
+  })
+  const addScore = updateScore.changeScore(newScore)
+  res.send(addScore)
 })
 
 const port = process.env.PORT || 3000
