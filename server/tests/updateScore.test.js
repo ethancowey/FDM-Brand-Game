@@ -11,13 +11,13 @@ const updateScore = require('../src/updateScore') // Method we are testing
 const Scores = require('../src/constructors/scores') // Constructor for Scores collection in the database
 
 const newScore = new Scores({
-  username: 'TestCase2',
+  username: 'TestCase6',
   game: 'blocks',
   stream: 'Software Testing',
-  score: 13
+  score: 80
 })
 
 test('Testing inserting a score', async () => {
   const scoreAdd = await updateScore.changeScore(newScore)
-  expect(scoreAdd.score).toBe(newScore.score)
+  expect(scoreAdd.score).toBe(80)
 })
