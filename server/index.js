@@ -39,7 +39,7 @@ app.post('/api/exists', async (req, res) => {
 app.post('/api/register', async (req, res) => {
   console.log('posted')// adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
-  const NewUser = new UserAccount({
+  const newUser = new UserAccount({
     _id: new mongoose.Types.ObjectId(),
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -47,7 +47,7 @@ app.post('/api/register', async (req, res) => {
     password: hash,
     email: req.body.email
   })
-  const addUser = await register.addUser(NewUser)
+  const addUser = await register.addUser(newUser)
   res.send(addUser)
 })
 
