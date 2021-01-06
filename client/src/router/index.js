@@ -13,6 +13,7 @@ import register from '../components/Register'
 import matchGame from '../components/matchGame'
 import streams from '../components/Streams'
 import textBlocks from '../components/TextBlocks'
+import adminLogin from '../components/AdminLogin'
 
 Vue.use(Router)
 
@@ -24,5 +25,6 @@ export default new Router({
     { path: '/register', component: register },
     { path: '/match', component: matchGame },
     { path: '/blocks', component: textBlocks },
-    { path: '/streams', component: streams }
+    { path: '/streams', component: streams },
+    { path: '/admin', component: adminLogin }
   ]})
