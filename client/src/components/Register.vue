@@ -79,15 +79,13 @@ export default {
     }
   },
   methods: {
-    usernameUniquePost () {
+    usernameUniquePost () { // Post request to check that the username is unique
       console.log(String(document.getElementById('username').value))
       axios.post('http://localhost:3000/api/exists', {
         username: String(document.getElementById('username').value)
-      }).then((response) => { this.validReg(response) }).catch(function (error) {
-        console.log(error)
-      })
+      }).then((response) => { this.validReg(response) }) // Send response to next method to check result and register
     },
-    validReg (response) {
+    validReg (response) { // Checks the response is a unique username if so post all data to add to database
       console.log(response)
       if (response.data.length === 0) {
         console.log('new user')
@@ -97,15 +95,13 @@ export default {
           email: String(document.getElementById('e-mail').value),
           firstname: String(document.getElementById('firstName').value),
           lastname: String(document.getElementById('lastName').value)
-        }).then((response) => { this.regRoute(response) }).catch(function (error) {
-          console.log(error)
         })
+          .then((response) => { this.regRoute(response) }) // Send response of post to next function to route the user
       } else {
         alert('That username exists please try another username')
       }
     },
-    regRoute (response) {
-      console.log(response.data)
+    regRoute (response) { // Adds data to session storage and routes user to the next page
       sessionStorage.setItem('username', response.data.username)
       sessionStorage.setItem('firstname', response.data.firstname)
       sessionStorage.setItem('lastname', response.data.lastname)

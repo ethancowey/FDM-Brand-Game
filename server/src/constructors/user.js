@@ -11,7 +11,7 @@
  */
 const mongoose = require('mongoose')
 
-const userSchema = mongoose.Schema({
+const userAccountSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   firstname: String,
   lastname: String,
@@ -20,4 +20,4 @@ const userSchema = mongoose.Schema({
   email: String
 })
 
-module.exports = mongoose.model('UserAccount', userSchema)
+module.exports = mongoose.model('UserAccount', userAccountSchema)

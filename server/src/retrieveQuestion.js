@@ -11,7 +11,7 @@
  */
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
-const Questions = require('./questions') // Constructor for Questions collection in the database
+const Questions = require('./constructors/questions') // Constructor for Questions collection in the database
 
 async function getQuestion (stream) {
   mongoose.connect(uriMongo, {
@@ -22,8 +22,8 @@ async function getQuestion (stream) {
   })
     .then()
   const questionRetrieved = await Questions.find({ stream: stream })
-    .then(doc => {
-      return doc
+    .then(question => {
+      return question
     })
   return questionRetrieved
 }

@@ -13,7 +13,7 @@
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
-async function addUser (NewUser) {
+async function addUser (newUser) {
   mongoose.connect(uriMongo, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -21,7 +21,7 @@ async function addUser (NewUser) {
     useFindAndModify: false
   })
     .then()
-  const userSaved = await NewUser.save()
+  const userSaved = await newUser.save()
     .then(result => {
       return result
     })

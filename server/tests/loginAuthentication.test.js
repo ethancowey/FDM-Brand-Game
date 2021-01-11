@@ -32,7 +32,7 @@ test('Testing a invalid username and valid hash for another account', async () =
 
 test('Testing an invalid username and hash', async () => {
   const failedLogin = await loginAuthentication.validLogin(
-    'f6179ed4db729720155d82b03b033f27bbb4b64e3e9651a1b1dce6a7675fb78b', 'FailedTest')
+    'b8179ed4db729720155d82b03b033f27bbb4b64e3e9651a1b1dce6a7675fb78b', 'FailedLogin')
   expect(failedLogin).toBe(null)
 })
 

@@ -11,7 +11,7 @@
  * method it will also return the result of this method (without the password) to the front-end using res.send()
  */
 const mongoose = require('mongoose')
-const UserAccount = require('./user') // Constructor for User Account collection in the database
+const UserAccount = require('./constructors/user') // Constructor for User Account collection in the database
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
 async function validLogin (hash, username) {
@@ -27,7 +27,6 @@ async function validLogin (hash, username) {
     .then(result => {
       return result
     })
-  console.log(loggedIn)
   return loggedIn
 }
 

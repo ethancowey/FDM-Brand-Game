@@ -41,11 +41,20 @@
         <div class="col-5">
             <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
+              <p>Time</p>
             </div>
         </div>
 
       </div>
       <div id="game">
+<<<<<<< HEAD
+=======
+        <p>{{Math.floor(timeRemaining / 60) }} : {{timeRemaining - Math.floor(timeRemaining / 60) * 60 }}</p>
+      <div
+        v-for="test in Questions"
+        :key="test.id">
+        <p>{{test.term}} : {{test.meaning}} : {{timeRemaining}} seconds</p>
+>>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
 
         <ul class="deck" id="card-deck">
           <li
@@ -66,16 +75,33 @@
 </template>
 
 <script>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
 import axios from 'axios'
 
 export default {
   name: 'matchGame',
   data () {
     return {
+<<<<<<< HEAD
       questions: [],
       openedCards: [],
       pairsMatched: 0,
       gameFinished: false
+=======
+      Questions: [],
+      timeRemaining: 120
+    }
+  },
+  watch: {
+    timeRemaining: {
+      handler () {
+        setTimeout(this.timeMonitor, 1000) // Every second it will run timeMonitor which will decrease time by 1
+      },
+      immediate: true
+>>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
     }
   },
   mounted () {
@@ -137,6 +163,7 @@ export default {
           // streams: this.streamType
         }
       })
+<<<<<<< HEAD
       this.questions = this.shuffle(data.map((q) => ({
         ...q,
         selected: false,
@@ -154,6 +181,16 @@ export default {
         }
       }
       this.shuffle(this.questions)
+=======
+  },
+  methods: {
+    timeMonitor () {
+      this.timeRemaining-- // Decreases the time by 1
+      console.log(this.timeRemaining)
+      if (this.timeRemaining === 0) { // If 0 no time is left so the game is over
+        alert('GAME OVER')
+      }
+>>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
     }
   }
 }

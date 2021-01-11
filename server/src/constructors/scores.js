@@ -14,6 +14,7 @@ const scoresSchema = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   game: String,
   username: String,
+  stream: String,
   score: Number
 })
 
