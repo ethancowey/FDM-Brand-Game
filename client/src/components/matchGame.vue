@@ -41,15 +41,17 @@
         <div class="col-5">
             <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
+              <p>Time</p>
             </div>
         </div>
 
       </div>
       <div id="game">
+        <p>{{Math.floor(timeRemaining / 60) }} : {{timeRemaining - Math.floor(timeRemaining / 60) * 60 }}</p>
       <div
         v-for="test in Questions"
         :key="test.id">
-        <p>{{test.term}} : {{test.meaning}}</p>
+        <p>{{test.term}} : {{test.meaning}} : {{timeRemaining}} seconds</p>
 
       </div>
 
@@ -62,31 +64,23 @@
 </template>
 
 <script>
-/* eslint-disable */
 
 import axios from 'axios'
-
-let second = 0
-let minute = 0
-var interval
-const timer = document.querySelector('.timer')
-
-function startTimer () {
-  interval = setInterval(function () {
-    timer.innerHTML = minute + 'mins ' + second + 'secs'
-    second++
-    if (second === 60) {
-      minute++
-      second = 0
-    }
-  }, 1000)
-}
 
 export default {
   name: 'matchGame',
   data () {
     return {
-      Questions: []
+      Questions: [],
+      timeRemaining: 120
+    }
+  },
+  watch: {
+    timeRemaining: {
+      handler () {
+        setTimeout(this.timeMonitor, 1000) // Every second it will run timeMonitor which will decrease time by 1
+      },
+      immediate: true
     }
   },
   mounted () {
@@ -98,6 +92,15 @@ export default {
       .then((response) => {
         this.Questions = response.data
       })
+  },
+  methods: {
+    timeMonitor () {
+      this.timeRemaining-- // Decreases the time by 1
+      console.log(this.timeRemaining)
+      if (this.timeRemaining === 0) { // If 0 no time is left so the game is over
+        alert('GAME OVER')
+      }
+    }
   }
 }
 </script>

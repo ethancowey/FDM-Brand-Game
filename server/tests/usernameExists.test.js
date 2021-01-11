@@ -22,7 +22,7 @@ test('Test the return if username does exist for another valid username', async 
 })
 
 test('Testing a new unique username passed to the function returns null', async () => {
-  const exists = await usernameExists.isUsernameUnique('UNIQUEUSERNAME')
+  const exists = await usernameExists.isUsernameUnique('UNIQUE')
   expect(exists).toBe(null)
 })
 
@@ -40,7 +40,7 @@ test('Testing an existing username passed to the function returns exists of the 
 
 test('Testing a new unique username passed to the function returns null of smallest username (1 chars)' +
     ' accepted by frontend', async () => {
-  const exists = await usernameExists.isUsernameUnique('*')
+  const exists = await usernameExists.isUsernameUnique('U')
   expect(exists).toBe(null)
 })
 

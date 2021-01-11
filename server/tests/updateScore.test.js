@@ -20,7 +20,7 @@ const newScore = new Scores({
   score: 80
 })
 
-test('Testing inserting a score', async () => {
+test('Testing inserting a new score', async () => {
   const scoreAdd = await updateScore.changeScore(newScore)
   expect(scoreAdd.score).toBe(80)
 })
@@ -31,7 +31,30 @@ const lowScore = new Scores({
   stream: 'Software Testing',
   score: 50
 })
-test('Testing inserting a lower score', async () => {
+test('Testing inserting a lower score than the one in the current document', async () => {
   const scoreAdd = await updateScore.changeScore(lowScore)
   expect(scoreAdd.score).toBe(80) // score will remain 80 in database not 50 as 50<80
+})
+
+const highScore = new Scores({
+  username: 'HighTest',
+  game: 'blocks',
+  stream: 'Software Testing',
+  score: 100
+})
+test('Testing inserting a higher score than the one in the current document', async () => {
+  const scoreAdd = await updateScore.changeScore(highScore)
+  expect(scoreAdd.score).toBe(100) // score will remain 80 in database not 50 as 50<80
+})
+
+const errorScore = new Scores({
+  username: 'TestCase',
+  game: 'blocks',
+  stream: 'Software Testing',
+  score: null
+})
+
+test('Testing error score of null does not overwrite other scores', async () => {
+  const scoreAdd = await updateScore.changeScore(errorScore)
+  expect(scoreAdd.score).toBe(80)
 })

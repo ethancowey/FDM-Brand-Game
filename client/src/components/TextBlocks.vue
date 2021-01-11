@@ -1,11 +1,18 @@
 <!-- Module: TextBlocks.vue
 Creation Date: 18/12/2020
-Last Edit Date:05/01/2021
+Last Edit Date:09/01/2021
 Authors: Ethan Cowey
 Overview: The purpose of this component is to be a game in which users must drag blocks of text in order to match the
 correct definition. There will be a 2 minute time limit and the faster its completed the higher the score achieved.
-In the <template> There is the nav bar to navigate to other sections of the site.
-In the <script>
+In the <template> There is the nav bar to navigate to other sections of the site. There is a container for the game
+itself above it will be the game title, restart button and timer.
+In the <script> There is the data function which returns all the variables needed in the html and javascript code. There
+is then the watch component which will watch the value of timeRemaining and every second call the method timeMonitor()
+to update all the time variables.
+The mounted function runs when the page loads it uses axios to retrieve a question from the backend then put it in the
+format to be used in the game by splitting it up.
+In the methods there is checker() which runs each time an element is dragged it will check if all the elements are in
+order if so the game ends.
 -->
 <template>
   <div id="app">
@@ -46,23 +53,24 @@ In the <script>
         <div class="col-7">
           <h2>Drag the Text Blocks into order</h2>
         </div>
-
         <div class="col-5">
           <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           <div class="timer">
+            <h2 class="timer">{{minutesRemaining}}:{{secondsRemaining}}</h2>
           </div>
         </div>
 
       </div>
       <div id="game">
         <div>
-          <h2 v-text="hint"></h2>
-          <p>{{minutesRemaining}}:{{secondsRemaining}}</p>
+          <h2>What is the meaning of {{hint}}</h2>
           <draggable v-model="questions" @start="drag=true" @end="drag=false">
-            <div v-for="block in questions" :key="block.id" @dragend="checker"><button><h4>{{block}}</h4></button></div>
+            <div v-for="(block, index) in questions" :key="block" @dragend="checker">
+              <button v-if="questions[index] === correct[index]" class="correct"><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
+              <button v-else><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
+            </div>
           </draggable>
         </div>
-
       </div>
     </div>
     <input id="StreamType"  type="hidden" value="Business Intelligence">
@@ -99,7 +107,7 @@ export default {
       immediate: true
     }
   },
-  mounted () {
+  mounted () { // Axios get method to get questions from the database of the stream being played
     axios.get('http://localhost:3000/api/questions', {
       params: {
         streams: String('Software Testing')
@@ -107,17 +115,18 @@ export default {
     })
       .then((response) => {
         const length = response.data.length
-        const randomNum = Math.floor(Math.random() * length)
+        const randomNum = Math.floor(Math.random() * length) // Select a random question using a random number
         const hint = response.data[randomNum].term
         const text = response.data[randomNum].meaning
         this.hint = hint
-        const num = text.split(' ').length / 3
+        const num = text.split(' ').length / 5
         const arrOne = text.split(' ').slice(0, num).join(' ')
         const arrTwo = text.split(' ').slice(num, num * 2).join(' ')
         const arrThree = text.split(' ').slice((num * 2), num * 3).join(' ')
-        this.correct = [arrOne, arrTwo, arrThree]
-        this.questions = [arrThree, arrTwo, arrOne]
-        console.log(text)
+        const arrFour = text.split(' ').slice((num * 3), num * 4).join(' ')
+        const arrFive = text.split(' ').slice((num * 4), num * 5).join(' ')
+        this.correct = [arrOne, arrTwo, arrThree, arrFour, arrFive] // The correct order of textblocks
+        this.questions = [arrThree, arrFive, arrTwo, arrOne, arrFour] // The order of blocks given to the user
       })
   },
   methods: {
@@ -238,6 +247,9 @@ export default {
 }
 .nav-item {
   font-weight: bold;
+}
+.correct{
+  color: #1e7e34;
 }
 #text-group {
   margin-left: 2.5%;

@@ -1,3 +1,14 @@
+<!-- Module: Login.vue
+Creation Date: 30/12/2020
+Last Edit Date: 06/12/2020
+Authors: Ethan Cowey, Maria Andrzejewska, Miles Prosser
+Overview: The purpose of this component is to generate a page for logging in as an admin using the login form
+there is also links back to the user login pages
+In the <script> tags are the methods for communicating to the back-end. When you submit the login form the method
+adminPost() is invoked. It makes a post request with the inputted username and password to the back-end. It receives a
+response and if the returned document has the correct admin parameter the admin will be sent to the next page. Otherwise
+the log in failed as it was not valid or the account is not of the admin level.
+-->
 <template>
   <div id="login">
     <div class="container">
@@ -45,12 +56,12 @@ export default {
   },
   methods: {
     async adminPost () {
-      axios.post('http://localhost:3000/api/auth', {
+      axios.post('http://localhost:3000/api/auth', { // post to the backend to authenticate login form
         username: String(document.getElementById('login-username').value),
         password: String(document.getElementById('login-password').value)
       })
         .then((response) => {
-          if (response.data.admin === 'true') {
+          if (response.data.admin === 'true') { // Check the returned document is an admin
             console.log(response.data.admin)
           } else {
             alert('Incorrect admin login attempt if you are a not an admin please use login as user options')
