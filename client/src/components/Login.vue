@@ -1,3 +1,19 @@
+<!-- Module: Login.vue
+Creation Date: 13/12/2020
+Last Edit Date: 17/12/2020
+Authors: Ethan Cowey, Maria Andrzejewska, Miles Prosser
+Overview: The purpose of this component is to generate a page for logging in to the system as well as links to
+the registration page, continue as guest and an admin login.
+In the <template> tags is the html code for this page
+it has a container with the form to insert login details into as well as links to the other parts of the system
+mentioned earlier.
+In the <script> tags are the methods for communicating to the back-end. When you submit the login form the method
+loginPost() is invoked. It makes a post request with the inputted username and password to the back-end. It receives a
+response and sends this to the next method validUser() which will if the login response from the back-end is invalid
+it will send an alert to the user. Otherwise if it was a successful login it routes the user to the next page and stores
+the details needed in session storage to be used later. The response will not have the hashed password for security.
+The password is excluded from the document retrieved from the database before the response is sent back.
+-->
 <template>
   <div id="login">
     <div class="container">
@@ -8,11 +24,13 @@
               <h3 class="text-center text-dark">Login</h3>
               <div class="form-group">
                 <label class="text-dark">Username:</label><br>
-                <input required type="username" id="login-username" class="form-control">
+                <input required type="username" id="login-username" class="form-control"
+                       pattern=".{1,10}" title="Must be less than 10 characters">
               </div>
               <div class="form-group">
                 <label class="text-dark">Password:</label><br>
-                <input required type="password" v-model="password" id="login-password"  class="form-control">
+                <input required type="password" v-model="password" id="login-password"  class="form-control"
+                       pattern=".{6,12}" title="Must be 6 to 12 characters">
               </div>
               <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="loginPost()" value="submit">
@@ -25,11 +43,18 @@
         </div>
       </div>
     </div>
+    <div id="guest-link">
+      <br>
+      <a href="/streams" class="text-dark">Continue as Guest</a>
+    </div>
+    <div id="admin-link">
+      <br>
+      <a href="/admin" class="text-dark">Go to Admin Login</a>
+    </div>
   </div>
 </template>
 
 <script>
-
 import axios from 'axios'
 import router from '../router/index.js'
 
@@ -45,17 +70,19 @@ export default {
       axios.post('http://localhost:3000/api/auth', {
         username: String(document.getElementById('login-username').value),
         password: String(document.getElementById('login-password').value)
-      }).then((response) => { this.validUser(response) }).catch(function (error) {
-        console.log(error)
       })
+        .then((response) => { this.validUser(response) })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
     validUser (response) {
       console.log(response.data)
-      if (response.data.length === 1) {
-        sessionStorage.setItem('username', response.data[0].username)
-        sessionStorage.setItem('firstname', response.data[0].firstname)
-        sessionStorage.setItem('lastname', response.data[0].lastname)
-        sessionStorage.setItem('email', response.data[0].email)
+      if (response.data.username === String(document.getElementById('login-username').value)) {
+        sessionStorage.setItem('username', response.data.username)
+        sessionStorage.setItem('firstname', response.data.firstname)
+        sessionStorage.setItem('lastname', response.data.lastname)
+        sessionStorage.setItem('email', response.data.email)
         router.push('/streams')
       } else {
         console.log('Invalid')
