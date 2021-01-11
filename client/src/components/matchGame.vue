@@ -41,20 +41,24 @@
         <div class="col-5">
             <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
-              <p>Time</p>
             </div>
         </div>
 
       </div>
+      <transition name="fade">
+        <div v-if="gameFinished" class="backdrop">
+          <div class="congratulations">
+            <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
+            <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+              <h4>CONGRATULATIONS!</h4>
+              <p>You completed the game in (time here)
+              </p> <button href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</button>
+            </div>
+          </div>
+        </div>
+      </transition>
+
       <div id="game">
-<<<<<<< HEAD
-=======
-        <p>{{Math.floor(timeRemaining / 60) }} : {{timeRemaining - Math.floor(timeRemaining / 60) * 60 }}</p>
-      <div
-        v-for="test in Questions"
-        :key="test.id">
-        <p>{{test.term}} : {{test.meaning}} : {{timeRemaining}} seconds</p>
->>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
 
         <ul class="deck" id="card-deck">
           <li
@@ -68,6 +72,7 @@
         </ul>
 
       </div>
+
     </div>
 
   </div>
@@ -75,33 +80,16 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-=======
-
->>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
 import axios from 'axios'
 
 export default {
   name: 'matchGame',
   data () {
     return {
-<<<<<<< HEAD
       questions: [],
       openedCards: [],
       pairsMatched: 0,
       gameFinished: false
-=======
-      Questions: [],
-      timeRemaining: 120
-    }
-  },
-  watch: {
-    timeRemaining: {
-      handler () {
-        setTimeout(this.timeMonitor, 1000) // Every second it will run timeMonitor which will decrease time by 1
-      },
-      immediate: true
->>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
     }
   },
   mounted () {
@@ -126,11 +114,17 @@ export default {
         }
         this.openedCards = []
         this.pairsMatched += 1
+        if (this.pairsMatched === 8) {
+          this.handleWin()
+        }
       } else {
         setTimeout(() => {
           this.closeCards()
         }, 400)
       }
+    },
+    handleWin: function () {
+      this.gameFinished = true
     },
     closeCards: function () {
       for (let i = 0; i <= 1; i++) {
@@ -163,7 +157,6 @@ export default {
           // streams: this.streamType
         }
       })
-<<<<<<< HEAD
       this.questions = this.shuffle(data.map((q) => ({
         ...q,
         selected: false,
@@ -181,16 +174,6 @@ export default {
         }
       }
       this.shuffle(this.questions)
-=======
-  },
-  methods: {
-    timeMonitor () {
-      this.timeRemaining-- // Decreases the time by 1
-      console.log(this.timeRemaining)
-      if (this.timeRemaining === 0) { // If 0 no time is left so the game is over
-        alert('GAME OVER')
-      }
->>>>>>> 47884365ee57c6262e6252dd92f3a095653d73ff
     }
   }
 }
@@ -283,5 +266,83 @@ export default {
 }
 #text-group {
   margin-left: 2.5%;
+}
+
+p {
+  font-size: 14px
+}
+
+h4 {
+  margin-top: 18px
+}
+
+.congratulations {
+  left: 35%;
+  margin-top: 17%;
+  position: relative;
+  display: flex;
+  width: 450px;
+  flex-direction: column;
+  min-width: 0;
+  z-index: 999;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
+
+}
+
+.congratulations .card-body {
+  padding: 1rem 1rem
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 1.25rem
+}
+
+.cross {
+  color: #d6312d;
+  cursor: pointer;
+  margin-left: 95%;
+  margin-top: 5px;
+}
+
+.continue:focus {
+  outline: none
+}
+
+.continue {
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-size: 13px;
+  padding: 8px 19px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #D50000
+}
+
+.continue:hover {
+  background-color: #D32F2F !important
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.backdrop {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  /*display: none;*/
 }
 </style>
