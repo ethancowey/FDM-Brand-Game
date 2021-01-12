@@ -64,9 +64,9 @@ order if so the game ends.
       <div id="game">
         <div>
           <h2>What is the meaning of {{hint}}</h2>
-          <draggable v-model="questions" @start="drag=true" @end="drag=false">
-            <div v-for="(block, index) in questions" :key="block" @dragend="checker">
-              <button v-if="questions[index] === correct[index]" class="correct"><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
+          <draggable v-model="blockOrder" @start="drag=true" @end="drag=false">
+            <div v-for="(block, index) in blockOrder" :key="block" @dragend="checker">
+              <button v-if="blockOrder[index] === correct[index]" class="correct"><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
               <button v-else><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
             </div>
           </draggable>
@@ -90,7 +90,7 @@ export default {
   },
   data () {
     return {
-      questions: [],
+      blockOrder: [],
       correct: [],
       hint: [],
       dragsUsed: 0,
@@ -126,13 +126,13 @@ export default {
         const arrFour = text.split(' ').slice((num * 3), num * 4).join(' ')
         const arrFive = text.split(' ').slice((num * 4), num * 5).join(' ')
         this.correct = [arrOne, arrTwo, arrThree, arrFour, arrFive] // The correct order of textblocks
-        this.questions = [arrThree, arrFive, arrTwo, arrOne, arrFour] // The order of blocks given to the user
+        this.blockOrder = [arrThree, arrFive, arrTwo, arrOne, arrFour] // The order of blocks given to the user
       })
   },
   methods: {
     checker () { // This is called each time an object is dragged
       this.dragsUsed++ // Increase number of drags used
-      if (this.questions.toString() === this.correct.toString()) {
+      if (this.blockOrder.toString() === this.correct.toString()) {
         alert('Winner')
         const score = this.timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
         console.log(score + 'points')

@@ -10,7 +10,7 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const hash = require('../src/hash.js')
+const hash = require('../../server/src/hash.js')
 
 test('Hashing of username ethan and password pass gives correct sha256 hash once salted', () => {
   expect(hash.hashing('ethan', 'pass'))
