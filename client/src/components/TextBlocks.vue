@@ -151,6 +151,7 @@ export default {
       if (this.blockOrder.toString() === this.correct.toString()) {
         const score = this.timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
         console.log(score + 'points')
+        this.gameFinished = true
         this.$refs.timerInstance.stopTimer()
         // axios post the new score to database to update if its a new high score for the user
         axios.post('http://localhost:3000/api/scores', {
@@ -161,7 +162,6 @@ export default {
         })
           .then((response) => {
             console.log(response)
-            this.gameFinished = true
           })
       }
     },

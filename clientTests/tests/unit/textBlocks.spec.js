@@ -1,7 +1,7 @@
 /**
  * Module: textBlocks.spec.js
  * Creation Date: 12/01/2021
- * Last Edit Date: 12/01/2021
+ * Last Edit Date: 13/01/2021
  * Authors: Ethan Cowey
  * Overview: This module is used to test TextBlocks.vue in the client package in the component folder in the src folder.
  * It tests that the correct procedure is applied when the Text Blocks are in the correct order when the checker() is
@@ -20,13 +20,13 @@ describe('Text Blocks in the correct order', () => {
         return {
           hint: 'testing Question',
           blockOrder: ['1', '2', '3', '4', '5'],
-          correct: ['1', '2', '3', '4', '5']
+          correct: ['1', '2', '3', '4', '5'],
+          gameFinished: false
         }
       }
     })
-    const alertCalled = jest.spyOn(window, 'alert').mockReturnValue()
     wrapper.vm.checker()
-    expect(alertCalled).toBeCalled()
+    expect(wrapper.vm.gameFinished).toBe(true)
   })
 })
 
@@ -37,13 +37,13 @@ describe('Text Blocks in the incorrect order', () => {
         return {
           hint: 'testing Question',
           blockOrder: ['2', '1', '4', '5', '3'],
-          correct: ['1', '2', '3', '4', '5']
+          correct: ['1', '2', '3', '4', '5'],
+          gameFinished: false
         }
       }
     })
-    const alertCalled = jest.spyOn(window, 'alert').mockReturnValue()
     wrapper.vm.checker()
-    expect(alertCalled).toBeCalledTimes(0)
+    expect(wrapper.vm.gameFinished).toBe(false)
   })
 })
 
@@ -54,13 +54,13 @@ describe('Text Blocks in the partial correct order', () => {
         return {
           hint: 'testing Question some parts correct',
           blockOrder: ['1', '2', '4', '5', '3'],
-          correct: ['1', '2', '3', '4', '5']
+          correct: ['1', '2', '3', '4', '5'],
+          gameFinished: false
         }
       }
     })
-    const alertCalled = jest.spyOn(window, 'alert').mockReturnValue()
     wrapper.vm.checker()
-    expect(alertCalled).toBeCalledTimes(0)
+    expect(wrapper.vm.gameFinished).toBe(false)
   })
 })
 
@@ -71,12 +71,12 @@ describe('Test erroneous input of no text blocks(question variable)', () => {
         return {
           hint: 'testing incorrect input',
           blockOrder: [],
-          correct: ['1', '2', '3', '4', '5']
+          correct: ['1', '2', '3', '4', '5'],
+          gameFinished: false
         }
       }
     })
-    const alertCalled = jest.spyOn(window, 'alert').mockReturnValue()
     wrapper.vm.checker()
-    expect(alertCalled).toBeCalledTimes(0)
+    expect(wrapper.vm.gameFinished).toBe(false)
   })
 })
