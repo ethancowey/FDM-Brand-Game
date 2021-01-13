@@ -8,12 +8,12 @@
  */
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '../components/Login'
-import register from '../components/Register'
-import matchGame from '../components/matchGame'
-import streams from '../components/Streams'
-import textBlocks from '../components/TextBlocks'
-import adminLogin from '../components/AdminLogin'
+import Login from '../components/Login'
+import Register from '../components/Register'
+import MatchGame from '../components/matchGame'
+import Streams from '../components/Streams'
+import TextBlocks from '../components/TextBlocks'
+import AdminLogin from '../components/AdminLogin'
 
 Vue.use(Router)
 
@@ -21,10 +21,10 @@ export default new Router({
   mode: 'history',
   base: __dirname,
   routes: [
-    { path: '/', component: login },
-    { path: '/register', component: register },
-    { path: '/match', component: matchGame },
-    { path: '/blocks', component: textBlocks },
-    { path: '/streams', component: streams },
-    { path: '/admin', component: adminLogin }
+    { path: '/', component: Login },
+    { path: '/register', component: Register },
+    { path: '/match', component: MatchGame },
+    { path: '/blocks', component: TextBlocks },
+    { path: '/streams', component: Streams },
+    { path: '/admin', component: AdminLogin }
   ]})
