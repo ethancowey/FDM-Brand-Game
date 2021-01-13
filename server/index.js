@@ -62,7 +62,6 @@ app.get('/api/questions', async (req, res) => {
 })
 
 app.post('/api/scores', async (req, res) => {
-  console.log('hello' + req.body)
   const newScore = new Scores({
     username: req.body.username,
     game: req.body.game,

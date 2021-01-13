@@ -56,11 +56,33 @@ order if so the game ends.
         <div class="col-5">
           <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           <div class="timer">
-            <h2 class="timer">{{minutesRemaining}}:{{secondsRemaining}}</h2>
+            <GameTimer ref="timerInstance" @timeLeft="timerUpdate"></GameTimer>
           </div>
         </div>
-
       </div>
+      <transition name="fade">
+        <div v-if="gameOver" class="backdrop">
+          <div class="congratulations">
+            <font-awesome-icon v-on:click="gameOver=false" class="cross fa-lg" :icon="['fas', 'times']" />
+            <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+              <h4>Unlucky You ran out of Time!</h4>
+              <a href="/blocks" class="btn btn-out btn-square continue">Pay Again?</a>
+            </div>
+          </div>
+        </div>
+      </transition>
+      <transition name="fade">
+        <div v-if="gameFinished" class="backdrop">
+          <div class="congratulations">
+            <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
+            <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+              <h4>Congratulations</h4>
+              <p>You Scored {{this.timeRemaining / this.dragsUsed}}</p>
+              <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
+            </div>
+          </div>
+        </div>
+      </transition>
       <div id="game">
         <div>
           <h2>What is the meaning of {{hint}}</h2>
@@ -81,12 +103,13 @@ order if so the game ends.
 <script>
 import axios from 'axios'
 import draggable from 'vuedraggable'
-import router from '../router/index.js'
+import GameTimer from './GameTimer'
 
 export default {
   name: 'textBlocks.vue',
   components: {
-    draggable
+    draggable,
+    GameTimer
   },
   data () {
     return {
@@ -94,20 +117,13 @@ export default {
       correct: [],
       hint: [],
       dragsUsed: 0,
-      timeRemaining: 120,
-      minutesRemaining: 2,
-      secondsRemaining: 0
-    }
-  },
-  watch: {
-    timeRemaining: {
-      handler () {
-        setTimeout(this.timeMonitor, 1000) // Every second it will run timeMonitor which will decrease time by 1
-      },
-      immediate: true
+      timeRemaining: null,
+      gameOver: false,
+      gameFinished: false
     }
   },
   mounted () { // Axios get method to get questions from the database of the stream being played
+    this.$refs.timerInstance.startTimer()
     axios.get('http://localhost:3000/api/questions', {
       params: {
         streams: String('Software Testing')
@@ -133,9 +149,9 @@ export default {
     checker () { // This is called each time an object is dragged
       this.dragsUsed++ // Increase number of drags used
       if (this.blockOrder.toString() === this.correct.toString()) {
-        alert('Winner')
         const score = this.timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
         console.log(score + 'points')
+        this.$refs.timerInstance.stopTimer()
         // axios post the new score to database to update if its a new high score for the user
         axios.post('http://localhost:3000/api/scores', {
           username: sessionStorage.getItem('username'),
@@ -143,18 +159,17 @@ export default {
           stream: sessionStorage.getItem('stream'),
           score: score
         })
-          .then((response) => { console.log(response) })
-        router.push('/leaderboard')
+          .then((response) => {
+            console.log(response)
+            this.gameFinished = true
+          })
       }
     },
-    timeMonitor () {
-      this.timeRemaining-- // Decreases the time by 1
-      console.log(this.timeRemaining)
-      this.minutesRemaining = Math.floor(this.timeRemaining / 60)
-      this.secondsRemaining = this.timeRemaining - Math.floor(this.timeRemaining / 60) * 60
-      console.log(this.minutesRemaining + ' ' + this.secondsRemaining)
-      if (this.timeRemaining === 0) { // If 0 no time is left so the game is over
-        alert('GAME OVER')
+    timerUpdate (value) {
+      this.timeRemaining = value
+      if (value <= 0) {
+        this.gameOver = true
+        this.$refs.timerInstance.stopTimer()
       }
     }
   }
@@ -253,5 +268,34 @@ export default {
 }
 #text-group {
   margin-left: 2.5%;
+}
+.backdrop {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  /*display: none;*/
+}
+.congratulations {
+  left: 35%;
+  margin-top: 17%;
+  position: relative;
+  display: flex;
+  width: 450px;
+  flex-direction: column;
+  min-width: 0;
+  z-index: 999;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
+
 }
 </style>
