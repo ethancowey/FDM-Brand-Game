@@ -36,10 +36,8 @@ export default {
         this.minutesRemaining = Math.floor(this.timeRemaining / 60)
         if ((this.timeRemaining - Math.floor(this.timeRemaining / 60) * 60) < 10) {
           this.secondsRemaining = '0' + (this.timeRemaining - Math.floor(this.timeRemaining / 60) * 60).toString()
-          console.log('her')
         } else {
           this.secondsRemaining = this.timeRemaining - Math.floor(this.timeRemaining / 60) * 60
-          console.log('sss')
         }
         this.$emit('timeLeft', this.timeRemaining)
       }
