@@ -56,7 +56,7 @@ order if so the game ends.
         <div class="col-5">
           <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           <div class="timer">
-            <GameTimer ref="timerInstance" @timeLeft="timerUpdate"></GameTimer>
+            <GameTimer ref="timerInstance"></GameTimer>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@ order if so the game ends.
             <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Congratulations</h4>
-              <p>You Scored {{this.timeRemaining / this.dragsUsed}}</p>
+              <p>You Scored {{this.scoreDisplayed}}</p>
               <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
             </div>
           </div>
@@ -117,7 +117,7 @@ export default {
       correct: [],
       hint: [],
       dragsUsed: 0,
-      timeRemaining: null,
+      scoreDisplayed: null,
       gameOver: false,
       gameFinished: false
     }
@@ -149,10 +149,13 @@ export default {
     checker () { // This is called each time an object is dragged
       this.dragsUsed++ // Increase number of drags used
       if (this.blockOrder.toString() === this.correct.toString()) {
-        const score = this.timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
+        this.$refs.timerInstance.stopTimer()
+        const timeRemaining = this.$refs.timerInstance.getTime()
+        console.log(timeRemaining)
+        const score = timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
+        this.scoreDisplayed = score
         console.log(score + 'points')
         this.gameFinished = true
-        this.$refs.timerInstance.stopTimer()
         // axios post the new score to database to update if its a new high score for the user
         axios.post('http://localhost:3000/api/scores', {
           username: sessionStorage.getItem('username'),
@@ -163,13 +166,6 @@ export default {
           .then((response) => {
             console.log(response)
           })
-      }
-    },
-    timerUpdate (value) {
-      this.timeRemaining = value
-      if (value <= 0) {
-        this.gameOver = true
-        this.$refs.timerInstance.stopTimer()
       }
     }
   }

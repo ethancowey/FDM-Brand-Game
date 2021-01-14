@@ -44,6 +44,9 @@ export default {
     },
     stopTimer () {
       clearInterval(this.timer)
+    },
+    getTime () {
+      return this.timeRemaining
     }
   }
 }
