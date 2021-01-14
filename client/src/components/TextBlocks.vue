@@ -56,14 +56,14 @@ order if so the game ends.
         <div class="col-5">
           <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           <div class="timer">
-            <GameTimer ref="timerInstance"></GameTimer>
+            <GameTimer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></GameTimer>
           </div>
         </div>
       </div>
       <transition name="fade">
-        <div v-if="gameOver" class="backdrop">
+        <div v-if="gameOver === 0" class="backdrop">
           <div class="congratulations">
-            <font-awesome-icon v-on:click="gameOver=false" class="cross fa-lg" :icon="['fas', 'times']" />
+            <font-awesome-icon v-on:click="gameOver = false" class="cross fa-lg" :icon="['fas', 'times']" />
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Unlucky You ran out of Time!</h4>
               <a href="/blocks" class="btn btn-out btn-square continue">Pay Again?</a>
@@ -147,6 +147,7 @@ export default {
   },
   methods: {
     checker () { // This is called each time an object is dragged
+      console.log(this.gameOver + 'fkffk')
       this.dragsUsed++ // Increase number of drags used
       if (this.blockOrder.toString() === this.correct.toString()) {
         this.$refs.timerInstance.stopTimer()
