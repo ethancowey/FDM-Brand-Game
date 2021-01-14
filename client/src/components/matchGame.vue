@@ -41,18 +41,31 @@
         <div class="col-5">
             <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
+              <GameTimer ref="timerInstance" @timeLeft = "timeExpired = $refs.timerInstance.getTime()"></GameTimer>
             </div>
         </div>
 
       </div>
+      <transition name="fade">
+        <div v-if="timeExpired === 0" class="backdrop">
+          <div class="congratulations">
+            <font-awesome-icon v-on:click="timeExpired = null" class="cross fa-lg" :icon="['fas', 'times']" />
+            <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
+              <h4>Unlucky You ran out of Time!</h4>
+              <br>
+              <button v-on:click="resetGame" class="btn btn-out btn-square continue">Play Again?</button>
+            </div>
+          </div>
+        </div>
+      </transition>
       <transition name="fade">
         <div v-if="gameFinished" class="backdrop">
           <div class="congratulations">
             <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>CONGRATULATIONS!</h4>
-              <p>You completed the game in (time here)
-              </p> <button href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</button>
+              <p>You scored {{score}} points and completed the game in {{120 - timeRemaining}} seconds</p>
+              <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
             </div>
           </div>
         </div>
@@ -81,15 +94,23 @@
 
 <script>
 import axios from 'axios'
+import GameTimer from './GameTimer'
 
 export default {
   name: 'matchGame',
+  components: {
+    GameTimer
+  },
   data () {
     return {
       questions: [],
       openedCards: [],
       pairsMatched: 0,
-      gameFinished: false
+      gameFinished: false,
+      timeExpired: 1,
+      score: 0,
+      matchAttempts: 0,
+      timeRemaining: null
     }
   },
   mounted () {
@@ -97,6 +118,9 @@ export default {
   },
   methods: {
     cardClicked: function (question) {
+      if (this.timeExpired === null) {
+        return
+      }
       if (this.openedCards.length === 2) {
         return
       }
@@ -107,13 +131,15 @@ export default {
       }
     },
     handleMatch: function () {
+      this.matchAttempts++
+      console.log(this.matchAttempts)
       if (this.openedCards[0]._id === this.openedCards[1]._id && this.openedCards[0].showValue !== this.openedCards[1].showValue) {
         for (let i = 0; i <= 1; i++) {
           this.openedCards[i].matched = true
           this.openedCards[i].selected = false
         }
         this.openedCards = []
-        this.pairsMatched += 1
+        this.pairsMatched++
         if (this.pairsMatched === 8) {
           this.handleWin()
         }
@@ -125,6 +151,24 @@ export default {
     },
     handleWin: function () {
       this.gameFinished = true
+      this.$refs.timerInstance.stopTimer()
+      this.timeRemaining = this.$refs.timerInstance.getTime()
+      this.score = Math.floor(this.timeRemaining / this.matchAttempts)
+      console.log(this.timeRemaining)
+      console.log(this.matchAttempts)
+      // this.submitScore()
+    },
+    submitScore: function () {
+      axios.post('http://localhost:3000/api/scores', {
+        username: sessionStorage.getItem('username'),
+        game: 'match',
+        stream: 'Business Intelligence',
+        // stream: sessionStorage.getItem('stream'),
+        score: this.score
+      })
+        .then((response) => {
+          console.log(response)
+        })
     },
     closeCards: function () {
       for (let i = 0; i <= 1; i++) {
@@ -133,9 +177,12 @@ export default {
       this.openedCards = []
     },
     resetGame: function () {
+      this.$refs.timerInstance.stopTimer()
       this.generateQuestions()
       this.pairsMatched = 0
       this.openedCards = []
+      this.timeExpired = 1
+      this.matchAttempts = 0
     },
     shuffle: function (array) {
       let currentIndex = array.length
@@ -154,7 +201,7 @@ export default {
       const {data} = await axios.get('http://localhost:3000/api/questions', {
         params: {
           streams: 'Business Intelligence'
-          // streams: this.streamType
+          // streams: sessionStorage.getItem('stream')
         }
       })
       this.questions = this.shuffle(data.map((q) => ({
@@ -174,6 +221,7 @@ export default {
         }
       }
       this.shuffle(this.questions)
+      this.$refs.timerInstance.startTimer()
     }
   }
 }

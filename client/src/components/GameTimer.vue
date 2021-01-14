@@ -28,6 +28,9 @@ export default {
   },
   methods: {
     startTimer () {
+      this.timeRemaining = 120
+      this.minutesRemaining = 2
+      this.secondsRemaining = '00'
       this.timer = setInterval(this.timeMonitor, 1000)
     },
     timeMonitor () { // This will on each call decrease time by 1 if it is above 0
