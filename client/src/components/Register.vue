@@ -23,11 +23,11 @@ the next pages URL.
             <form id="registration-form" @submit.prevent="usernameUniquePost">
               <h3 class="text-center text-dark">Register</h3>
 
-              <label for="firstName" class="labels">First Name:</label><br>
-              <input type="text" id="firstName" class="form-control">
+              <label for="firstname" class="labels">First Name:</label><br>
+              <input type="text" id="firstname" class="form-control">
 
-              <label for="lastName" class="labels">Last Name:</label><br>
-              <input type="text" id="lastName" class="form-control">
+              <label for="lastname" class="labels">Last Name:</label><br>
+              <input type="text" id="lastname" class="form-control">
 
               <label for="e-mail" class="labels">E-mail address:</label><br>
               <input type="email" id="e-mail" class="form-control">
@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     usernameUniquePost () { // Post request to check that the username is unique
-      console.log(String(document.getElementById('username').value))
       axios.post('http://localhost:3000/api/exists', {
         username: String(document.getElementById('username').value)
       }).then((response) => { this.validReg(response) }) // Send response to next method to check result and register
@@ -93,12 +92,13 @@ export default {
           username: String(document.getElementById('username').value),
           password: String(document.getElementById('password').value),
           email: String(document.getElementById('e-mail').value),
-          firstname: String(document.getElementById('firstName').value),
-          lastname: String(document.getElementById('lastName').value)
+          firstname: String(document.getElementById('firstname').value),
+          lastname: String(document.getElementById('lastname').value)
         })
           .then((response) => { this.regRoute(response) }) // Send response of post to next function to route the user
       } else {
-        alert('That username exists please try another username')
+        console.log('test here')
+        window.alert('That username exists please try another username')
       }
     },
     regRoute (response) { // Adds data to session storage and routes user to the next page

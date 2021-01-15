@@ -6,8 +6,9 @@ Overview: The purpose of this component is to generate a page for logging in as 
 there is also links back to the user login pages
 In the <script> tags are the methods for communicating to the back-end. When you submit the login form the method
 adminPost() is invoked. It makes a post request with the inputted username and password to the back-end. It receives a
-response and if the returned document has the correct admin parameter the admin will be sent to the next page. Otherwise
-the log in failed as it was not valid or the account is not of the admin level.
+response and sends it to be dealt wit by validAdmin()
+If the returned response sent to validAdmin() has the correct admin parameter the admin will be sent to the next page.
+Otherwise the log in failed as it was not valid or the account is not of the admin level and an alert is shown.
 -->
 <template>
   <div id="login">
@@ -19,11 +20,11 @@ the log in failed as it was not valid or the account is not of the admin level.
               <h3 class="text-center text-dark">Admin Login</h3>
               <div class="form-group">
                 <label class="text-dark">Username:</label><br>
-                <input required type="username" id="login-username" class="form-control">
+                <input required type="username" id="username" class="form-control">
               </div>
               <div class="form-group">
                 <label class="text-dark">Password:</label><br>
-                <input required type="password" v-model="password" id="login-password"  class="form-control">
+                <input required type="password" v-model="password" id="password"  class="form-control">
               </div>
               <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="adminPost()" value="submit">
@@ -36,7 +37,7 @@ the log in failed as it was not valid or the account is not of the admin level.
         </div>
       </div>
     </div>
-    <div id="user-link">
+    <div id="userLink">
       <br>
       <a href="/" class="text-dark">Go to User Login</a>
     </div>
@@ -57,16 +58,19 @@ export default {
   methods: {
     async adminPost () {
       axios.post('http://localhost:3000/api/auth', { // post to the backend to authenticate login form
-        username: String(document.getElementById('login-username').value),
-        password: String(document.getElementById('login-password').value)
+        username: String(document.getElementById('username').value),
+        password: String(document.getElementById('password').value)
       })
         .then((response) => {
-          if (response.data.admin === 'true') { // Check the returned document is an admin
-            console.log(response.data.admin)
-          } else {
-            alert('Incorrect admin login attempt if you are a not an admin please use login as user options')
-          }
+          this.validAdmin(response)
         })
+    },
+    validAdmin (response) {
+      if (response.data.admin === 'true') { // Check the returned document is an admin
+        console.log(response.data.admin)
+      } else {
+        alert('Incorrect admin login attempt if you are a not an admin please use login as user options')
+      }
     }
   }
 }
