@@ -153,10 +153,11 @@ export default {
       this.gameFinished = true
       this.$refs.timerInstance.stopTimer()
       this.timeRemaining = this.$refs.timerInstance.getTime()
-      this.score = Math.floor(this.timeRemaining / this.matchAttempts)
+      this.score = Math.round((this.timeRemaining / this.matchAttempts) * 10)
+
       console.log(this.timeRemaining)
       console.log(this.matchAttempts)
-      // this.submitScore()
+      this.submitScore()
     },
     submitScore: function () {
       axios.post('http://localhost:3000/api/scores', {
