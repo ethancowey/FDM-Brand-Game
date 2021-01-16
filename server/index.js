@@ -20,6 +20,7 @@ const loginAuthentication = require('./src/loginAuthentication')
 const usernameExist = require('./src/usernameExist')
 const register = require('./src/register')
 const retrieveQuestions = require('./src/retrieveQuestion')
+const retrieveUsersScore = require('./src/retrieveUsersScore')
 const updateScore = require('./src/updateScore')
 const app = express()
 // const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
@@ -61,6 +62,12 @@ app.get('/api/questions', async (req, res) => {
   res.send(question)
 })
 
+app.get('/api/scores', async (req, res) => {
+  const username = req.query.username
+  const scores = await retrieveUsersScore.getScore(username, req, res)
+  res.send(scores)
+})
+
 app.post('/api/scores', async (req, res) => {
   const newScore = new Scores({
     username: req.body.username,
@@ -71,6 +78,7 @@ app.post('/api/scores', async (req, res) => {
   const addScore = updateScore.changeScore(newScore)
   res.send(addScore)
 })
+
 
 const port = process.env.PORT || 3000
 
