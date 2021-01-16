@@ -24,12 +24,12 @@ The password is excluded from the document retrieved from the database before th
               <h3 class="text-center text-dark">Login</h3>
               <div class="form-group">
                 <label class="text-dark">Username:</label><br>
-                <input required type="username" id="login-username" class="form-control"
+                <input required type="username" id="username" class="form-control"
                        pattern=".{1,10}" title="Must be less than 10 characters">
               </div>
               <div class="form-group">
                 <label class="text-dark">Password:</label><br>
-                <input required type="password" v-model="password" id="login-password"  class="form-control"
+                <input required type="password" v-model="password" id="password"  class="form-control"
                        pattern=".{6,12}" title="Must be 6 to 12 characters">
               </div>
               <div class="form-group">
@@ -68,13 +68,13 @@ export default {
   methods: {
     async loginPost () {
       axios.post('http://localhost:3000/api/auth', {
-        username: String(document.getElementById('login-username').value),
-        password: String(document.getElementById('login-password').value)
+        username: String(document.getElementById('username').value),
+        password: String(document.getElementById('password').value)
       })
         .then((response) => { this.validUser(response) })
     },
     validUser (response) {
-      if (response.data.username === String(document.getElementById('login-username').value)) {
+      if (response.data.username === String(document.getElementById('username').value)) {
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('firstname', response.data.firstname)
         sessionStorage.setItem('lastname', response.data.lastname)

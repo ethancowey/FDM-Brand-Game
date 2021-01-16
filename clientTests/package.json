@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@vue/cli-service": "^4.5.10",
+    "axios": "^0.21.1",
     "vue": "^2.6.12",
     "vue-template-compiler": "^2.6.12"
   },

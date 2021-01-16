@@ -56,7 +56,7 @@ order if so the game ends.
         <div class="col-5">
           <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           <div class="timer">
-            <GameTimer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></GameTimer>
+            <timer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></timer>
           </div>
         </div>
       </div>
@@ -103,13 +103,13 @@ order if so the game ends.
 <script>
 import axios from 'axios'
 import draggable from 'vuedraggable'
-import GameTimer from './GameTimer'
+import timer from './GameTimer'
 
 export default {
   name: 'textBlocks.vue',
   components: {
     draggable,
-    GameTimer
+    timer
   },
   data () {
     return {
