@@ -42,7 +42,7 @@
         <div class="col-6 col-lg-6 ">
           <div class="account-info">
             <h2>Account:</h2>
-            <p>Username: {{username}}</p>
+git             <p>Username: {{username}}</p>
 
           </div>
         </div>
