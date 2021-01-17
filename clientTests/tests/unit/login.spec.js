@@ -8,18 +8,13 @@
  * response that has null data for invalid logins or for valid ones it returns the JSON document of that user.
  */
 /* eslint-disable no-undef */
+import { mount } from '@vue/test-utils'
 import Login from '../../../client/src/components/Login'
 
 describe('Test axios method is called', () => {
   it('Testing axios gets the username a password to post to the back-end for checking', async () => {
-    document.body.innerHTML = `
-    <input id="username" />
-    <input id="password" />
-  `
-    const usernameInput = document.getElementById('username')
-    usernameInput.value = 'Testing' // Set the username in the login form
-    const passwordInput = document.getElementById('password')
-    passwordInput.value = 'TestPass' // Set the password in the login form
+    const wrapper = mount(Login)
+    document.body.innerHTML = wrapper.html()
     const spy = jest.spyOn(document, 'getElementById') // Axios calls this 2 times
     await Login.methods.loginPost()
     expect(spy).toBeCalledTimes(2)
@@ -28,11 +23,8 @@ describe('Test axios method is called', () => {
 
 describe('Test validUser function called after loginPost when back-end authenticates the login', () => {
   it('Testing of validUser with a valid user login response from back-end', async () => {
-    document.body.innerHTML = `
-    <input id="username" />
-  `
-    const usernameInput = document.getElementById('username')
-    usernameInput.value = 'testing'
+    const wrapper = mount(Login)
+    document.body.innerHTML = wrapper.html()
     const response = {
       data: {
         username: 'testing',
@@ -49,11 +41,8 @@ describe('Test validUser function called after loginPost when back-end authentic
 
 describe('Test validUser function called after loginPost when back-end denys the login', () => {
   it('Testing of validUser with a invalid user login', async () => {
-    document.body.innerHTML = `
-    <input id="username" />
-  `
-    const usernameInput = document.getElementById('username')
-    usernameInput.value = 'usernameNotReturned'
+    const wrapper = mount(Login)
+    document.body.innerHTML = wrapper.html()
     const response = {
       data: {
       }
