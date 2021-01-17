@@ -11,6 +11,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+
 const UserAccount = require('./src/constructors/user') // Constructor for User Account collection in the database
 const Scores = require('./src/constructors/scores')
 
@@ -19,6 +20,7 @@ const loginAuthentication = require('./src/loginAuthentication')
 const usernameExist = require('./src/usernameExist')
 const register = require('./src/register')
 const retrieveQuestions = require('./src/retrieveQuestion')
+const retrieveUsersScore = require('./src/retrieveUsersScore')
 const updateScore = require('./src/updateScore')
 const retrieveTests = require('./src/retrieveTest')
 const app = express()
@@ -28,12 +30,14 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/api/auth', async (req, res) => {
+  console.log('posted')// adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
   const userAuthorised = await loginAuthentication.validLogin(hash, req.body.username)
   res.send(userAuthorised)
 })
 
 app.post('/api/exists', async (req, res) => {
+  console.log('posted')// adds all user details so they can be compared with front end
   const exists = await usernameExist.isUsernameUnique(req.body.username, req, res)
   res.send(exists)
 })
@@ -56,6 +60,12 @@ app.get('/api/questions', async (req, res) => {
   const streams = req.query.streams
   const question = await retrieveQuestions.getQuestion(streams, req, res)
   res.send(question)
+})
+
+app.get('/api/scores', async (req, res) => {
+  const username = req.query.username
+  const scores = await retrieveUsersScore.getScore(username, req, res)
+  res.send(scores)
 })
 
 app.get('/api/affinitytests', async (req, res) => {
