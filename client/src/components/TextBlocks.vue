@@ -88,8 +88,9 @@ order if so the game ends.
           <h2>What is the meaning of {{hint}}</h2>
           <draggable v-model="blockOrder" @start="drag=true" @end="drag=false">
             <div v-for="(block, index) in blockOrder" :key="block" @dragend="checker">
-              <button v-if="blockOrder[index] === correct[index]" class="correct"><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
-              <button v-else><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
+              <button v-if="blockOrder[index] === correct[index]" class="correct">
+                <font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
+              <button v-else class="incorrect"><font-awesome-icon class="fa-2x" icon="puzzle-piece"/> {{block}}</button>
             </div>
           </draggable>
         </div>
@@ -147,7 +148,6 @@ export default {
   },
   methods: {
     checker () { // This is called each time an object is dragged
-      console.log(this.gameOver + 'fkffk')
       this.dragsUsed++ // Increase number of drags used
       if (this.blockOrder.toString() === this.correct.toString()) {
         this.$refs.timerInstance.stopTimer()
@@ -262,6 +262,16 @@ export default {
 }
 .correct{
   color: #1e7e34;
+  font-size: 1vw;
+  border-radius: 25px;
+  padding: 1%;
+  margin: 1%;
+}
+.incorrect{
+  font-size: 1vw;
+  border-radius: 25px;
+  padding: 1%;
+  margin: 1%;
 }
 #text-group {
   margin-left: 2.5%;

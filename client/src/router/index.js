@@ -14,6 +14,7 @@ import MatchGame from '../components/matchGame'
 import Streams from '../components/Streams'
 import TextBlocks from '../components/TextBlocks'
 import AdminLogin from '../components/AdminLogin'
+import AffinityTest from '../components/AffinityTest'
 
 Vue.use(Router)
 
@@ -26,5 +27,6 @@ export default new Router({
     { path: '/match', component: MatchGame },
     { path: '/blocks', component: TextBlocks },
     { path: '/streams', component: Streams },
-    { path: '/admin', component: AdminLogin }
+    { path: '/admin', component: AdminLogin },
+    {path: '/test', component: AffinityTest}
   ]})

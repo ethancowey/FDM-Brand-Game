@@ -16,7 +16,7 @@ const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.n
 
 async function validLogin (hash, username) {
   mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
+    useNewUrlParser: true, // These are used to fix depreciation conflicts with the MONGO DB node.js driver and mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false

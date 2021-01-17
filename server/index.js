@@ -10,7 +10,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const mongoose = require('mongoose')
 
 const UserAccount = require('./src/constructors/user') // Constructor for User Account collection in the database
 const Scores = require('./src/constructors/scores')
@@ -21,6 +20,7 @@ const usernameExist = require('./src/usernameExist')
 const register = require('./src/register')
 const retrieveQuestions = require('./src/retrieveQuestion')
 const updateScore = require('./src/updateScore')
+const retrieveTests = require('./src/retrieveTest')
 const app = express()
 // const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
@@ -28,23 +28,20 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/api/auth', async (req, res) => {
-  console.log('posted')// adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
   const userAuthorised = await loginAuthentication.validLogin(hash, req.body.username)
   res.send(userAuthorised)
 })
 
 app.post('/api/exists', async (req, res) => {
-  console.log('posted')// adds all user details so they can be compared with front end
   const exists = await usernameExist.isUsernameUnique(req.body.username, req, res)
   res.send(exists)
 })
 
 app.post('/api/register', async (req, res) => {
-  console.log('posted')// adds all user details so they can be compared with front end
+  console.log('posted')
   const hash = hashMethod.hashing(req.body.username, req.body.password)
   const newUser = new UserAccount({
-    _id: new mongoose.Types.ObjectId(),
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     username: req.body.username,
@@ -59,6 +56,12 @@ app.get('/api/questions', async (req, res) => {
   const streams = req.query.streams
   const question = await retrieveQuestions.getQuestion(streams, req, res)
   res.send(question)
+})
+
+app.get('/api/affinitytests', async (req, res) => {
+  const streams = req.query.streams // The stream to get the test for
+  const test = await retrieveTests.getTest(streams) // Gets the test questions for that stream
+  res.send(test) // Sends the test back to the front-end
 })
 
 app.post('/api/scores', async (req, res) => {

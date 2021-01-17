@@ -15,13 +15,13 @@ const Questions = require('./constructors/questions') // Constructor for Questio
 
 async function getQuestion (stream) {
   mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
+    useNewUrlParser: true, // These are used to fix depreciation conflicts with the MONGO DB node.js driver and mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
   })
     .then()
-  const questionRetrieved = await Questions.find({ stream: stream })
+  const questionRetrieved = await Questions.find({ stream: stream }) // Finds all documents of that stream
     .then(question => {
       return question
     })

@@ -15,7 +15,7 @@ const Scores = require('./constructors/scores')
 
 async function changeScore (latestScore) {
   mongoose.connect(uriMongo, {
-    useNewUrlParser: true,
+    useNewUrlParser: true, // These are used to fix depreciation conflicts with the MONGO DB node.js driver and mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false

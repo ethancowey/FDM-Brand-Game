@@ -97,7 +97,6 @@ export default {
         })
           .then((response) => { this.regRoute(response) }) // Send response of post to next function to route the user
       } else {
-        console.log('test here')
         window.alert('That username exists please try another username')
       }
     },
