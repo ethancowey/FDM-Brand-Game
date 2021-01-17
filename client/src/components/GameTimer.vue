@@ -6,6 +6,7 @@ Overview: This displays a timer that can be used in Games. In the template tags 
 remaining.
 The script has 3 methods the first startTimer() when called by a game page will every second call the timeMonitor()
 function. timeMonitor() when called decreases time remaining by 1 ass well as updates the minutes and seconds remaining.
+timeMonitor() also emits the time back to the parent component the game meaning the game will know when time hits 0.
 stopTimer() will stop the timer counting down when called. (usually when a game is completed)
 To call these functions you must attach it to the same reference as the instance in your html template.
 -->
@@ -23,15 +24,15 @@ export default {
       timeRemaining: 120,
       minutesRemaining: 2,
       secondsRemaining: '00',
-      timer: null
+      gameTimer: null
     }
   },
   methods: {
     startTimer () {
-      this.timeRemaining = 120
+      this.timeRemaining = 120 // Resets the timer if its being recalled to play a game again
       this.minutesRemaining = 2
       this.secondsRemaining = '00'
-      this.timer = setInterval(this.timeMonitor, 1000)
+      this.gameTimer = setInterval(this.timeMonitor, 1000) // Begins the timer
     },
     timeMonitor () { // This will on each call decrease time by 1 if it is above 0
       if (this.timeRemaining !== 0) {
@@ -42,14 +43,15 @@ export default {
         } else {
           this.secondsRemaining = this.timeRemaining - Math.floor(this.timeRemaining / 60) * 60
         }
-        this.$emit('timeLeft', this.timeRemaining)
+        this.$emit('timeLeft', this.timeRemaining) // Emits to the component using the timer that time has updated
+        // Meaning that if it emits timeRemaining = 0 the game page knows that time is up to end the game
       }
     },
     stopTimer () {
-      clearInterval(this.timer)
+      clearInterval(this.gameTimer) // Stops the interval so timeRemaining will stop decreasing
     },
     getTime () {
-      return this.timeRemaining
+      return this.timeRemaining // Returns the time remaining so that it can be called to use when calculating scores
     }
   }
 }
