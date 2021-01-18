@@ -35,15 +35,18 @@
     </div>
     <div id="options">
      <div class="topic" id="softtest">
-       <a href="/softwaretest">Software Testing</a>
+       <a href="/softwaretest" onclick="sessionStorage.setItem('stream', 'Software Testing')">
+         Software Testing</a>
      </div>
       <br><br>
      <div class="topic" id="busint">
-        <a href="/businessintelligence">Business Intelligence</a>
+        <a href="/businessintelligence" onclick="sessionStorage.setItem('stream', 'Business Intelligence')">
+          Business Intelligence</a>
      </div>
       <br><br>
      <div class="topic" id="techop">
-       <a href="/technicaloperations">Technical Operations</a>
+       <a href="/technicaloperations" onclick="sessionStorage.setItem('stream', 'Technical Operations')">
+         Technical Operations</a>
      </div>
     </div>
   </div>

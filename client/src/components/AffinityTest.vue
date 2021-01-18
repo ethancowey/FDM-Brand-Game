@@ -100,13 +100,16 @@ export default {
       }],
       currentQuestion: 0,
       affinity: 0,
-      quizComplete: false
+      quizComplete: false,
+      currentStream: null
     }
   },
   mounted () {
+    this.currentStream = sessionStorage.getItem('stream')
+    console.log(this.currentStream)
     axios.get('http://localhost:3000/api/affinitytests', {
       params: {
-        streams: String('Business Intelligence')
+        streams: String(this.currentStream)
       }
     })
       .then((response) => {
