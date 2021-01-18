@@ -124,6 +124,7 @@ export default {
     }
   },
   mounted () { // Axios get method to get questions from the database of the stream being played
+    sessionStorage.setItem('game', 'blocks')
     this.$refs.timerInstance.startTimer()
     axios.get('http://localhost:3000/api/questions', {
       params: {
