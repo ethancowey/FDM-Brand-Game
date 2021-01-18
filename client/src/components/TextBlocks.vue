@@ -127,7 +127,7 @@ export default {
     this.$refs.timerInstance.startTimer()
     axios.get('http://localhost:3000/api/questions', {
       params: {
-        streams: String('Software Testing')
+        streams: String(sessionStorage.getItem('stream'))
       }
     })
       .then((response) => {
