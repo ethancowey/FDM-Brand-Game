@@ -7,6 +7,7 @@
  * file as the constructor named UserAccount as it is exported by that constructor name which is in upper camel case as
  * is good practice for constructors. It defines 5 properties the users firstname, the users lastname, the username made
  * by the user, the users password which will be salted and hashed before adding it to the database and the users email.
+ * Ids are made automatically on insertion to mongoDB.
  */
 const mongoose = require('mongoose')
 
