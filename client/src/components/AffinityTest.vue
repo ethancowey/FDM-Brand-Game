@@ -62,7 +62,7 @@ answered the variable quizComplete is set to true so that the message for giving
         {{object.options[3]}}
       </div>
     </div>
-      <div class="quiz" v-if="quizComplete && affinity > 1">
+      <div class="quiz" v-if="quizComplete && affinity > 3">
         <div>
           <h3>You would make a good Software Tester</h3>
           <div>
@@ -73,7 +73,7 @@ answered the variable quizComplete is set to true so that the message for giving
           </div>
         </div>
       </div>
-      <div class="quiz" v-if="quizComplete && affinity <= 1">
+      <div class="quiz" v-if="quizComplete && affinity <= 3">
         <div>
           <h3>Your not quite their yet</h3>
           <div>
@@ -120,7 +120,6 @@ export default {
   methods: {
     optionSelected (option) {
       if (option.toString() === (this.questions[this.currentQuestion].correct).toString()) {
-        console.log('correct')
         this.affinity = this.affinity + 2
       }
       if (option.toString() === (this.questions[this.currentQuestion].bonus).toString()) {
@@ -129,7 +128,6 @@ export default {
       if (this.currentQuestion < this.questions.length - 1) {
         this.currentQuestion++
       } else {
-        console.log(this.affinity)
         this.quizComplete = true
       }
     }
