@@ -11,7 +11,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-
 const UserAccount = require('./src/constructors/user') // Constructor for User Account collection in the database
 const Scores = require('./src/constructors/scores')
 

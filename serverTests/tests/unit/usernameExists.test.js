@@ -9,7 +9,7 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const usernameExists = require('../../server/src/usernameExist.js')
+const usernameExists = require('../../../server/src/usernameExist.js')
 
 test('Test the return if username does exist', async () => {
   const exists = await usernameExists.isUsernameUnique('doddod')

@@ -8,7 +8,7 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const retrieveTest = require('../../server/src/retrieveTest')
+const retrieveTest = require('../../../server/src/retrieveTest')
 
 test('Retrieve test questions for Software Testing', async () => {
   const correctQuestions = await retrieveTest.getTest('Software Testing')

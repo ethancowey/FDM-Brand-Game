@@ -10,7 +10,7 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const hash = require('../../server/src/hash.js')
+const hash = require('../../../server/src/hash.js')
 
 test('Hashing of username ethan and password pass gives correct sha256 hash once salted', () => {
   expect(hash.hashing('ethan', 'pass'))
@@ -40,4 +40,12 @@ test('Hashing the largest input for username (10 chars) and smallest password (6
 test('Hashing an input with special characters and numbers', () => {
   expect(hash.hashing('Sp3cial!', 'Ch£rs99'))
     .toBe('7e58cc25020d23fb9212a7e5affa7e5d49749490b0bab053370e197bd58adafe')
+})
+test('Hashing an input with invalid lengths from form input but should work', () => {
+  expect(hash.hashing('', ''))
+    .toBe('cd372fb85148700fa88095e3492d3f9f5beb43e555e5ff26d95f5a6adc36f8e6')
+})
+test('Hashing an input with invalid lengths from form input but should work', () => {
+  expect(hash.hashing('LongUsernameLong', 'LongPasswordLong'))
+    .toBe('ecb5e7c545f697d3fb1ef1852cabe85edf9c74dfce6735308c3acca5d6238e72')
 })

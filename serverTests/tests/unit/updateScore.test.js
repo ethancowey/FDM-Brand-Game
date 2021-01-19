@@ -10,8 +10,8 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const updateScore = require('../../server/src/updateScore') // Method we are testing
-const Scores = require('../../server/src/constructors/scores') // Constructor for Scores collection in the database
+const updateScore = require('../../../server/src/updateScore') // Method we are testing
+const Scores = require('../../../server/src/constructors/scores') // Constructor for Scores collection in the database
 
 const newScore = new Scores({
   username: 'TestCase',
