@@ -212,11 +212,6 @@ export default {
   top: 60%;
   transform: translate(-50%, -50%);
 }
-
-#app {
-  height: 100vh;
-  background-color: lightgrey;
-}
 .user-circle {
   color: white;
   size: 60px;
@@ -257,10 +252,6 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-#app {
-  height: 100vh;
-  background-color: lightgrey;
-}
 .user-circle {
   color: white;
   size: 60px;

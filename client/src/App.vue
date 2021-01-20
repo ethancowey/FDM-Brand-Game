@@ -20,7 +20,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin: 0px;
-  background: lightgrey;
+  background: #fff;
   height: 100vh;
 }
 h1 {

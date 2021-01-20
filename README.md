@@ -15,7 +15,7 @@ Finally using npm run the start script
 npm run start
 ```
 You should see in the console Server Started.
-The server will run at localhost:300
+The server will run at localhost:3000
 
 Running the Front-end
 -
