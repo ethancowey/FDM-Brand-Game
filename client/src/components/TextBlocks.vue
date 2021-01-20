@@ -39,8 +39,15 @@ order if so the game ends.
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">
           <li class="nav-item avatar">
-            <a class="nav-link p-0" href="/account">
-              <font-awesome-icon class="user-circle fa-3x" :icon="['fas', 'user-circle']" />
+            <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
+              <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'sign-out-alt']" />
+            </a>
+          </li>
+          <li> </li>
+        <li class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item avatar">
+            <a href="/account">
+              <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'user-circle']" />
             </a>
           </li>
         </ul>
@@ -54,7 +61,9 @@ order if so the game ends.
           <h2>Drag the Text Blocks into order</h2>
         </div>
         <div class="col-5">
-          <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
+          <a href="/blocks">
+            <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
+          </a>
           <div class="timer">
             <timer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></timer>
           </div>
@@ -134,9 +143,8 @@ export default {
       .then((response) => {
         const length = response.data.length
         const randomNum = Math.floor(Math.random() * length) // Select a random question using a random number
-        const hint = response.data[randomNum].term
+        this.hint = response.data[randomNum].term
         const text = response.data[randomNum].meaning
-        this.hint = hint
         const num = text.split(' ').length / 5
         const arrOne = text.split(' ').slice(0, num).join(' ')
         const arrTwo = text.split(' ').slice(num, num * 2).join(' ')
@@ -144,7 +152,8 @@ export default {
         const arrFour = text.split(' ').slice((num * 3), num * 4).join(' ')
         const arrFive = text.split(' ').slice((num * 4), num * 5).join(' ')
         this.correct = [arrOne, arrTwo, arrThree, arrFour, arrFive] // The correct order of textblocks
-        this.blockOrder = [arrThree, arrFive, arrTwo, arrOne, arrFour] // The order of blocks given to the user
+        this.blockOrder = [arrThree, arrFive, arrTwo, arrOne, arrFour]// The order of blocks given to the user
+        // Blocks aren't randomized as they can give the order away as when you put them in place they go green
       })
   },
   methods: {
@@ -154,7 +163,7 @@ export default {
         this.$refs.timerInstance.stopTimer()
         const timeRemaining = this.$refs.timerInstance.getTime()
         console.log(timeRemaining)
-        const score = timeRemaining / this.dragsUsed // Score is time remaining divided by drags used
+        const score = Math.floor(timeRemaining / this.dragsUsed) // Score is time remaining divided by drags used
         this.scoreDisplayed = score
         console.log(score + 'points')
         this.gameFinished = true
@@ -192,6 +201,7 @@ export default {
 #reset {
   top: 50%;
   float: left;
+  color: #1F1F1F;
 }
 #game {
   width: 50%;
