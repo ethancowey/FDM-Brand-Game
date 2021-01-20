@@ -1,7 +1,7 @@
 <template>
   <div id="streams">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
-      <a id="icon" class="navbar-brand" href="#">
+      <a id="icon" class="navbar-brand" href="/streams">
         <img src="../assets/logo.png" alt="Logo" style="width:70px;">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
@@ -9,17 +9,17 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-        <ul id="text-group" class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
-          </li>
+<!--        <ul id="text-group" class="navbar-nav mr-auto">-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">Home</a>-->
+<!--          </li>-->
 <!--          <li class="nav-item">-->
 <!--            <a class="nav-link" href="#">Match Game</a>-->
 <!--          </li>-->
 <!--          <li class="nav-item">-->
 <!--            <a class="nav-link" href="#">Game 2</a>-->
 <!--          </li>-->
-        </ul>
+<!--        </ul>-->
         <ul class="navbar-nav ml-auto nav-flex-icons">
           <li class="nav-item avatar">
             <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
@@ -41,17 +41,17 @@
     </div>
     <div id="options">
      <div class="topic" id="softtest">
-       <a href="/softwaretest" onclick="sessionStorage.setItem('stream', 'Software Testing')">
+       <a href="/home" onclick="sessionStorage.setItem('stream', 'Software Testing')">
          Software Testing</a>
      </div>
       <br><br>
      <div class="topic" id="busint">
-        <a href="/businessintelligence" onclick="sessionStorage.setItem('stream', 'Business Intelligence')">
+        <a href="/home" onclick="sessionStorage.setItem('stream', 'Business Intelligence')">
           Business Intelligence</a>
      </div>
       <br><br>
      <div class="topic" id="techop">
-       <a href="/technicaloperations" onclick="sessionStorage.setItem('stream', 'Technical Operations')">
+       <a href="/home" onclick="sessionStorage.setItem('stream', 'Technical Operations')">
          Technical Operations</a>
      </div>
     </div>
@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  name: 'Course'
+  name: 'Streams'
 }
 </script>
 
