@@ -42,8 +42,26 @@
         <div class="col-6 col-lg-6 ">
           <div class="account-info">
             <h2>Account:</h2>
-git             <p>Username: {{username}}</p>
+            <p>Username: {{username}}</p>
 
+            <form  id="change-pass" v-on:submit.prevent="checkAuth" >
+              <h2>Change Password:</h2>
+
+              <label>Current Password</label>
+              <div class="form-group">
+                <input required id="current-password" type="password" class="form-control" placeholder="Current Password">
+              </div>
+              <label>New Password</label>
+              <div class="form-group">
+                <input required type="password" class="form-control" placeholder="New Password"
+                       pattern=".{6,12}" title="Must be 6 to 12 characters">
+              </div>
+              <label>Confirm Password</label>
+              <div class="form-group">
+                <input required id="confirmed-pass" type="password" class="form-control" placeholder="Confirm Password">
+              </div>
+              <button type="submit" name="submit" class="btn btn-dark">Change Password</button>
+            </form>
           </div>
         </div>
         <div class="col-6 col-lg-6">
@@ -89,30 +107,51 @@ export default {
         username: this.username
       }
     })
-    console.log(data)
-    console.log('testing2')
     this.Scores = data
   },
   methods: {
+    resetPassword (response) {
+      if (response.data.username === this.username) {
+        axios.post('http://localhost:3000/api/resetpass', {
+          username: this.username,
+          password: String(document.getElementById('confirmed-pass').value)
+        })
+          .then((response) => {
+            console.log(response)
+            if (response.status === 200) {
+              alert('Successfully updated password')
+              document.getElementById('change-pass').reset()
+            }
+          })
+      } else {
+        alert('Incorrect Password')
+      }
+    },
+    async checkAuth () {
+      axios.post('http://localhost:3000/api/auth', {
+        username: this.username,
+        password: String(document.getElementById('current-password').value)
+      })
+        .then((response) => { this.resetPassword(response) })
+    }
   }
 }
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  background-color: #EAEAEA !important;
 
-  }
   .account-info {
     height: 15em ;
     width: 80%;
-    border-style: solid;
-    border-width: 2px;
-    margin-top: 20%;
+    /*border-style: solid;*/
+    /*border-width: 2px;*/
+    margin-top: 10%;
     list-style-type: none;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #EAEAEA !important;
   }
 
   .scores-container {
@@ -122,6 +161,7 @@ export default {
     border-width: 2px;
     margin-top: 20%;
     list-style-type: none;
+    float: right;
   }
   .scores-container h3 {
     padding-top: 15px;
@@ -129,6 +169,9 @@ export default {
   }
   .account-info h2 {
     padding-top: 15px;
+  }
+  .account-info p {
+    text-align: left;
   }
   #user-score {
     font-weight: bold;

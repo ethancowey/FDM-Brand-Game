@@ -20,6 +20,7 @@ const loginAuthentication = require('./src/loginAuthentication')
 const usernameExist = require('./src/usernameExist')
 const register = require('./src/register')
 const retrieveQuestions = require('./src/retrieveQuestion')
+const resetPass = require('./src/resetPassword')
 const retrieveUsersScore = require('./src/retrieveUsersScore')
 const updateScore = require('./src/updateScore')
 const retrieveTests = require('./src/retrieveTest')
@@ -43,7 +44,6 @@ app.post('/api/exists', async (req, res) => {
 })
 
 app.post('/api/register', async (req, res) => {
-  console.log('posted')
   const hash = hashMethod.hashing(req.body.username, req.body.password)
   const newUser = new UserAccount({
     firstname: req.body.firstname,
@@ -55,6 +55,15 @@ app.post('/api/register', async (req, res) => {
   const addUser = await register.addUser(newUser)
   res.send(addUser)
 })
+
+app.post('/api/resetpass', async (req, res) => {
+  console.log(req.body.password)
+  const hash = hashMethod.hashing(req.body.username, req.body.password)
+  console.log(hash)
+  const updatePassword = await resetPass.updatePass(hash, req.body.username)
+  res.send(updatePassword)
+})
+
 
 app.get('/api/questions', async (req, res) => {
   const streams = req.query.streams
