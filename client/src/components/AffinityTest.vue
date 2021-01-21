@@ -34,8 +34,15 @@ answered the variable quizComplete is set to true so that the message for giving
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">
           <li class="nav-item avatar">
+            <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
+              <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'sign-out-alt']" />
+            </a>
+          </li>
+          <li> </li>
+        <li class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item avatar">
             <a class="nav-link p-0" href="/account">
-              <font-awesome-icon class="user-circle fa-3x" :icon="['fas', 'user-circle']" />
+              <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'user-circle']" />
             </a>
           </li>
         </ul>
@@ -47,7 +54,7 @@ answered the variable quizComplete is set to true so that the message for giving
     <br>
     <br>
     <div class="container">
-    <div class="quiz" v-if="quizComplete === false" v-bind="object = questions[currentQuestion]">
+    <div class="quiz" v-bind="object = questions[currentQuestion]">
       <h4>{{object.question}}</h4>
       <div class="option" @click="optionSelected(0)">
         {{object.options[0]}}
@@ -62,26 +69,54 @@ answered the variable quizComplete is set to true so that the message for giving
         {{object.options[3]}}
       </div>
     </div>
-      <div class="quiz" v-if="quizComplete && affinity > 1">
+    </div>
+      <div class="congratulations" v-if="quizComplete && affinity > 4">
         <div>
-          <h3>You would make a good Software Tester</h3>
           <div>
             <br>
-            <button v-on:click="quizComplete=false; currentQuestion= 0"> Play Again</button>
-            <h4>Learn more about the role below</h4>
-            <a href="https://www.istqb.org/downloads/category/2-foundation-level-documents.html">More materials</a>
+            <div v-if="currentStream === 'Software Testing'">
+              <h3>You would make a great Software Tester</h3>
+              <font-awesome-icon class="end-medal fa-6x" :icon="['fas', 'medal']" />
+              <h4>Learn more about the role below</h4>
+              <a href="https://www.softwaretestingnews.co.uk/">More materials</a>
+            </div>
+            <div v-if="currentStream === 'Technical Operations'">
+              <h3>You would be good in the Technical Operations field</h3>
+              <font-awesome-icon class="end-medal fa-6x" :icon="['fas', 'medal']" />
+              <h4>Learn more about the role below</h4>
+              <a href="https://www.datapine.com/blog/bi-skills-for-business-intelligence-career/">More materials</a>
+            </div>
+            <div v-if="currentStream === 'Business Intelligence'">
+              <h3>You would be good fit for Business Intelligence</h3>
+              <font-awesome-icon class="end-medal fa-6x" :icon="['fas', 'medal']" />
+              <h4>Learn more about the role below</h4>
+              <a href="https://www.spiceworks.com/it-articles/troubleshooting-steps/">More materials</a>
+            </div>
+            <a href="/test">
+            <font-awesome-icon class="end-icon fa-3x" :icon="['fas', 'redo-alt']" />
+            </a>
           </div>
         </div>
       </div>
-      <div class="quiz" v-if="quizComplete && affinity <= 1">
+      <div class="congratulations" v-if="quizComplete && affinity <= 4">
         <div>
           <h3>Your not quite their yet</h3>
+          <font-awesome-icon class="end-book fa-6x" :icon="['fas', 'book']" />
           <div>
             <br>
-            <button v-on:click="quizComplete=false; currentQuestion= 0"> Play Again</button>
-            <h4>Learn more about the role below to improve your affinity</h4>
-            <a href="https://www.istqb.org/downloads/category/2-foundation-level-documents.html">More materials</a>
-          </div>
+            <h4>Learn more about the role below</h4>
+            <div v-if="currentStream === 'Software Testing'">
+              <a href="https://www.softwaretestingnews.co.uk/">More materials</a>
+            </div>
+            <div v-if="currentStream === 'Technical Operations'">
+              <a href="https://www.datapine.com/blog/bi-skills-for-business-intelligence-career/">More materials</a>
+            </div>
+            <div v-if="currentStream === 'Business Intelligence'">
+              <a href="https://www.spiceworks.com/it-articles/troubleshooting-steps/">More materials</a>
+            </div>
+            <a href="/test">
+              <font-awesome-icon class="end-icon fa-3x" :icon="['fas', 'redo-alt']" />
+            </a>
         </div>
       </div>
     </div>
@@ -113,23 +148,21 @@ export default {
       }
     })
       .then((response) => {
-        this.questions = response.data
+        this.questions = response.data // Set the response from the back-end to be the questions to use
         console.log(this.questions)
       })
   },
   methods: {
     optionSelected (option) {
       if (option.toString() === (this.questions[this.currentQuestion].correct).toString()) {
-        console.log('correct')
-        this.affinity = this.affinity + 2
+        this.affinity = this.affinity + 2 // Correct option so raise affinity by 2
       }
       if (option.toString() === (this.questions[this.currentQuestion].bonus).toString()) {
-        this.affinity++
+        this.affinity++ // Not quite correct so earns 1 point rise in affinity
       }
       if (this.currentQuestion < this.questions.length - 1) {
         this.currentQuestion++
       } else {
-        console.log(this.affinity)
         this.quizComplete = true
       }
     }
@@ -153,5 +186,34 @@ export default {
   padding: 1%;
   margin: 1%;
   background: honeydew;
+}
+.congratulations {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  display: flex;
+  width: 450px;
+  flex-direction: column;
+  min-width: 0;
+  z-index: 999;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid #d2d2dc;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
+
+}
+.end-icon {
+  color: black;
+  size: 60px;
+}
+.end-medal {
+  color: gold;
+}
+.end-book {
+  color: blue;
 }
 </style>

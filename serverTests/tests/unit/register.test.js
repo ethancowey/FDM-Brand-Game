@@ -11,8 +11,8 @@
  */
 /* eslint-disable no-undef */
 const mongoose = require('mongoose') // required for UserAccount constructor
-const register = require('../../server/src/register.js') // Method we are testing
-const UserAccount = require('../../server/src/constructors/user') // Constructor for User Account collection in the database
+const register = require('../../../server/src/register.js') // Method we are testing
+const UserAccount = require('../../../server/src/constructors/user') // Constructor for User Account collection in the database
 
 const newUser = new UserAccount({
   _id: new mongoose.Types.ObjectId(),

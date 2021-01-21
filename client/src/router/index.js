@@ -16,6 +16,7 @@ import TextBlocks from '../components/TextBlocks'
 import AdminLogin from '../components/AdminLogin'
 import AffinityTest from '../components/AffinityTest'
 import Account from '../components/Account'
+import Homepage from '../components/Homepage'
 
 Vue.use(Router)
 
@@ -31,5 +32,6 @@ export default new Router({
     { path: '/admin', component: AdminLogin },
     { path: '/account', component: Account },
     { path: '/admin', component: AdminLogin },
-    {path: '/test', component: AffinityTest}
+    {path: '/test', component: AffinityTest},
+    { path: '/home', component: Homepage }
   ]})
