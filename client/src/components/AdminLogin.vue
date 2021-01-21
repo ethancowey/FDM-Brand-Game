@@ -86,7 +86,7 @@ body {
   margin-top: 175px;
   max-width: 600px;
   height: 320px;
-  background-color: #EAEAEA;
+  background-color: gainsboro;
   border-radius: 25px;
 
 }

@@ -53,7 +53,8 @@ the next pages URL.
     </div>
     <div id="guest-link">
       <br>
-      <a href="/streams" class="text-dark">Continue as Guest</a>
+      <a href="/streams" onclick="sessionStorage.setItem('guest', 'true'); sessionStorage.setItem('username','guest')"
+         class="text-dark">Continue as Guest</a>
     </div>
     <div id="admin-link">
       <br>
@@ -122,10 +123,10 @@ body {
   padding: 20px;
 }
 #registration .container #registration-row #registration-column #registration-box {
-  margin-top: 110px;
+  margin-top: 5vh;
   max-width: 600px;
-  height: 560px;
-  background-color: #EAEAEA;
+  height: 70%;
+  background-color: gainsboro;
   border-radius: 25px;
 
 }

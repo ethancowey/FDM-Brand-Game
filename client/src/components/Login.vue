@@ -45,7 +45,8 @@ The password is excluded from the document retrieved from the database before th
     </div>
     <div id="guest-link">
       <br>
-      <a href="/streams" class="text-dark">Continue as Guest</a>
+      <a href="/streams" onclick="sessionStorage.setItem('guest', 'true'); sessionStorage.setItem('username','guest')"
+         class="text-dark">Continue as Guest</a>
     </div>
     <div id="admin-link">
       <br>
@@ -101,7 +102,7 @@ body {
   margin-top: 175px;
   max-width: 600px;
   height: 320px;
-  background-color: #EAEAEA;
+  background-color: gainsboro;
   border-radius: 25px;
 
 }

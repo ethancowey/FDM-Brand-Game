@@ -11,14 +11,14 @@ const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.n
 const UserAccount = require('./constructors/user') // Constructor for User Account collection in the database
 
 async function updatePass (hash, username) {
-    mongoose.connect(uriMongo, {
-        useNewUrlParser: true, // These are used to fix depreciation conflicts with the MONGO DB node.js driver and mongoose
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    })
-        .then()
-    await UserAccount.updateOne({ username: username }, { password: hash });
+  mongoose.connect(uriMongo, {
+    useNewUrlParser: true, // These are used to fix depreciation conflicts with the MONGO DB node.js driver and mongoose
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  })
+    .then()
+  await UserAccount.updateOne({ username: username }, { password: hash })
 }
 
 module.exports.updatePass = updatePass

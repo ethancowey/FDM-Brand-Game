@@ -26,6 +26,12 @@
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item avatar">
+          <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
+            <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'sign-out-alt']" />
+          </a>
+        </li>
+        <li> </li>
+        <li class="nav-item avatar">
           <a class="nav-link p-0" href="/account">
             <font-awesome-icon class="user-circle fa-3x" :icon="['fas', 'user-circle']" />
           </a>
@@ -106,7 +112,7 @@ a:link, a:visited {
 
 .navig {
   float: left;
-  width: 33.33%;
+  width: 30%;
   padding: 15px;
   border:4px solid dimgray;
   max-width: 350px;
