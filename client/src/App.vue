@@ -35,8 +35,4 @@ h3 {
 h4{
   font-size: 1.5em;
 }
-.nav-icon {
-  color: white;
-  size: 60px;
-}
 </style>

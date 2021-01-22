@@ -78,7 +78,7 @@ export default {
     },
     validUser (response) {
       if (response.data.username === String(document.getElementById('username').value) &&
-        response.data.admin === null) { // Checks user is the one returned by back-end and not an admin
+        response.data.admin !== 'true') { // Checks user is the one returned by back-end and not an admin
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('firstname', response.data.firstname)
         sessionStorage.setItem('lastname', response.data.lastname)

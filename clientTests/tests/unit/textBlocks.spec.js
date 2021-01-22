@@ -11,7 +11,7 @@
  */
 /* eslint-disable no-undef */
 import { mount } from '@vue/test-utils'
-import TextBlocks from '../../../client/src/components/TextBlocks'
+import TextBlocks from '../../../client/src/components/games/TextBlocks'
 
 describe('Text Blocks in the correct order', () => {
   it('Tests the check recognises its a win so alert is shown', async () => {

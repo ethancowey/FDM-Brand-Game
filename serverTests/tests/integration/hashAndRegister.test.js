@@ -4,7 +4,7 @@
  * Last Edit Date: 19/01/2021
  * Authors: Ethan Cowey
  * Overview: This module is used to test the hashing method hash.js combined with the registration method
- * together fist the users password is salted and hashed then added to the database.
+ * together fist the users password is salted and hashed then all registration data is added to the database.
  * @jest-environment node
  */
 /* eslint-disable no-undef */

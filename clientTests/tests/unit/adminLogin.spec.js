@@ -9,7 +9,7 @@
  */
 /* eslint-disable no-undef */
 import { mount } from '@vue/test-utils'
-import AdminLogin from '../../../client/src/components/AdminLogin'
+import AdminLogin from '../../../client/src/components/admin/AdminLogin'
 
 describe('Test axios method calls form values when adminPost is made', () => {
   it('Testing axios gets the username a password to post to the back-end for checking', async () => {

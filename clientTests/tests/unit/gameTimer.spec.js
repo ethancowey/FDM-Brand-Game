@@ -7,7 +7,7 @@
  * */
 /* eslint-disable no-undef */
 import { mount } from '@vue/test-utils'
-import GameTimer from '../../../client/src/components/GameTimer'
+import GameTimer from '../../../client/src/components/games/GameTimer'
 
 describe('For a valid start time all time variables decrease correctly', () => {
   it('All variables decrease correctly', async () => {

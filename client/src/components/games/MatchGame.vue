@@ -1,35 +1,6 @@
 <template>
   <div id="app">
-    <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
-      <a id="icon" class="navbar-brand" href="#">
-        <img src="../assets/logo.png" alt="Logo" style="width:70px;">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-              aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-        <ul id="text-group" class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Home
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Match Game</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Game 2</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-          <li class="nav-item avatar">
-            <a class="nav-link p-0" href="/account">
-              <font-awesome-icon class="user-circle fa-3x" :icon="['fas', 'user-circle']" />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <navigation-bar/>
     <div class="container">
       <br>
       <br>
@@ -95,10 +66,12 @@
 <script>
 import axios from 'axios'
 import GameTimer from './GameTimer'
+import NavigationBar from '../NavigationBar'
 
 export default {
   name: 'matchGame',
   components: {
+    NavigationBar,
     GameTimer
   },
   data () {
@@ -163,8 +136,7 @@ export default {
       axios.post('http://localhost:3000/api/scores', {
         username: sessionStorage.getItem('username'),
         game: 'match',
-        stream: 'Business Intelligence',
-        // stream: sessionStorage.getItem('stream'),
+        stream: sessionStorage.getItem('stream'),
         score: this.score
       })
         .then((response) => {
@@ -201,8 +173,7 @@ export default {
     generateQuestions: async function () {
       const {data} = await axios.get('http://localhost:3000/api/questions', {
         params: {
-          streams: 'Business Intelligence'
-          // streams: sessionStorage.getItem('stream')
+          streams: sessionStorage.getItem('stream')
         }
       })
       this.questions = this.shuffle(data.map((q) => ({

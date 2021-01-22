@@ -1,44 +1,6 @@
 <template>
   <div id="homepage">
-    <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
-    <a id="icon" class="navbar-brand" href="/streams">
-      <img src="../assets/logo.png" alt="Logo" style="width:70px;">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-            aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-      <ul id="text-group" class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/match">Word Match</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Fill In The Blanks</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/blocks">Text Blocks</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-        <li class="nav-item avatar">
-          <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
-            <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'sign-out-alt']" />
-          </a>
-        </li>
-        <li> </li>
-        <li class="nav-item avatar">
-          <a class="nav-link p-0" href="/account">
-            <font-awesome-icon class="user-circle fa-3x" :icon="['fas', 'user-circle']" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <navigation-bar/>
     <div id="home">
       <div id="text">
         <br>
@@ -81,8 +43,10 @@
 </template>
 
 <script>
+import NavigationBar from './NavigationBar'
 export default {
   name: 'Homepage',
+  components: {NavigationBar},
   data () {
     return {
       stream: sessionStorage.getItem('stream')

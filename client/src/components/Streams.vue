@@ -103,6 +103,14 @@ a:link, a:visited{
 .nav-item {
   font-weight: bold;
 }
+.user-circle {
+  color: white;
+  size: 60px;
+}
+.nav-icon {
+  color: white;
+  size: 60px;
+}
 #text-group {
   margin-left: 2.5%;
 }
