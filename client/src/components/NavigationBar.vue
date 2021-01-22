@@ -1,3 +1,13 @@
+<!-- Module: NavigationBar.vue
+Creation Date: 22/01/2021
+Last Edit Date: 22/01/2021
+Authors: Ethan Cowey
+Overview:
+This defines the navigation bar used by most pages used by regular users. It defines links to all the other pages.
+This will not be used on the Streams.vue page to prevent picking a game before picking a stream.
+The navbar also has an icon to logout which will clear the users session and take them back to the login page.
+Theres also an icon link to the accounts page.
+-->
 <template>
   <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
     <a id="icon" class="navbar-brand" href="#">
