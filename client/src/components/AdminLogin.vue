@@ -29,9 +29,6 @@ Otherwise the log in failed as it was not valid or the account is not of the adm
               <div class="form-group">
                 <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="adminPost()" value="submit">
               </div>
-              <div id="register-link" class="text-right">
-                <a href="/register" class="text-dark">Register here</a>
-              </div>
             </form>
           </div>
         </div>
