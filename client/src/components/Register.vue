@@ -83,7 +83,9 @@ export default {
     usernameUniquePost () { // Post request to check that the username is unique
       axios.post('http://localhost:3000/api/exists', {
         username: String(document.getElementById('username').value)
-      }).then((response) => { this.validReg(response) }) // Send response to next method to check result and register
+      }).then((response) => {
+        this.validReg(response) // Send response to next method to check result and register
+      })
     },
     validReg (response) { // Checks the response is a unique username if so post all data to add to database
       console.log(response)

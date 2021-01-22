@@ -62,7 +62,7 @@ export default {
         password: String(document.getElementById('password').value)
       })
         .then((response) => {
-          this.validAdmin(response)
+          this.validAdmin(response) // Send back-ends response to validAdmin function
         })
     },
     validAdmin (response) {

@@ -1,18 +1,16 @@
 <!-- Module: TextBlocks.vue
 Creation Date: 18/12/2020
-Last Edit Date:09/01/2021
+Last Edit Date:22/01/2021
 Authors: Ethan Cowey
 Overview: The purpose of this component is to be a game in which users must drag blocks of text in order to match the
 correct definition. There will be a 2 minute time limit and the faster its completed the higher the score achieved.
 In the <template> There is the nav bar to navigate to other sections of the site. There is a container for the game
 itself above it will be the game title, restart button and timer.
-In the <script> There is the data function which returns all the variables needed in the html and javascript code. There
-is then the watch component which will watch the value of timeRemaining and every second call the method timeMonitor()
-to update all the time variables.
-The mounted function runs when the page loads it uses axios to retrieve a question from the backend then put it in the
+In the <script> There is the data() function which returns all the variables needed in the html and javascript code.
+The mounted() function runs when the page loads it uses axios to retrieve a question from the backend then put it in the
 format to be used in the game by splitting it up.
 In the methods there is checker() which runs each time an element is dragged it will check if all the elements are in
-order if so the game ends.
+order if so the game end)s.
 -->
 <template>
   <div id="app">
@@ -88,6 +86,9 @@ order if so the game ends.
               <h4>Congratulations</h4>
               <p>You Scored {{this.scoreDisplayed}}</p>
               <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
+              <a id="tweet" class="btn btn-out btn-square continue"
+                 :href="'https://twitter.com/intent/tweet?text=I scored ' + scoreDisplayed + ' in blocks %23FDMCareers'">
+                Tweet #FDMCareers</a>
             </div>
           </div>
         </div>
@@ -146,13 +147,13 @@ export default {
         this.hint = response.data[randomNum].term
         const text = response.data[randomNum].meaning
         const num = text.split(' ').length / 5
-        const arrOne = text.split(' ').slice(0, num).join(' ')
-        const arrTwo = text.split(' ').slice(num, num * 2).join(' ')
-        const arrThree = text.split(' ').slice((num * 2), num * 3).join(' ')
-        const arrFour = text.split(' ').slice((num * 3), num * 4).join(' ')
-        const arrFive = text.split(' ').slice((num * 4), num * 5).join(' ')
-        this.correct = [arrOne, arrTwo, arrThree, arrFour, arrFive] // The correct order of textblocks
-        this.blockOrder = [arrThree, arrFive, arrTwo, arrOne, arrFour]// The order of blocks given to the user
+        const blockOne = text.split(' ').slice(0, num).join(' ') // Split the text into 5 blocks
+        const blockTwo = text.split(' ').slice(num, num * 2).join(' ')
+        const blockThree = text.split(' ').slice((num * 2), num * 3).join(' ')
+        const blockFour = text.split(' ').slice((num * 3), num * 4).join(' ')
+        const blockFive = text.split(' ').slice((num * 4), num * 5).join(' ')
+        this.correct = [blockOne, blockTwo, blockThree, blockFour, blockFive] // The correct order of textblocks
+        this.blockOrder = [blockThree, blockFive, blockTwo, blockOne, blockFour]// The order of blocks given to the user
         // Blocks aren't randomized as they can give the order away as when you put them in place they go green
       })
   },
@@ -162,10 +163,8 @@ export default {
       if (this.blockOrder.toString() === this.correct.toString()) {
         this.$refs.timerInstance.stopTimer()
         const timeRemaining = this.$refs.timerInstance.getTime()
-        console.log(timeRemaining)
         const score = Math.floor(timeRemaining / this.dragsUsed) // Score is time remaining divided by drags used
         this.scoreDisplayed = score
-        console.log(score + 'points')
         this.gameFinished = true
         // axios post the new score to database to update if its a new high score for the user
         axios.post('http://localhost:3000/api/scores', {

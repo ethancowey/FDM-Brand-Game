@@ -69,10 +69,12 @@ export default {
   methods: {
     async loginPost () {
       axios.post('http://localhost:3000/api/auth', {
-        username: String(document.getElementById('username').value),
+        username: String(document.getElementById('username').value), // Get from form to send to back-end
         password: String(document.getElementById('password').value)
       })
-        .then((response) => { this.validUser(response) })
+        .then((response) => {
+          this.validUser(response) // Use the back-ends response in the next function to see if the user is valid
+        })
     },
     validUser (response) {
       if (response.data.username === String(document.getElementById('username').value) &&
