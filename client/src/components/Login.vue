@@ -75,15 +75,15 @@ export default {
         .then((response) => { this.validUser(response) })
     },
     validUser (response) {
-      if (response.data.username === String(document.getElementById('username').value)) {
+      if (response.data.username === String(document.getElementById('username').value) &&
+        response.data.admin === null) { // Checks user is the one returned by back-end and not an admin
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('firstname', response.data.firstname)
         sessionStorage.setItem('lastname', response.data.lastname)
         sessionStorage.setItem('email', response.data.email)
         router.push('/streams')
       } else {
-        console.log('Invalid')
-        alert('Invalid Username and Password')
+        alert('Invalid Username and Password or If you are an admin use the admin login')
       }
     }
   }
