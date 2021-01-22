@@ -56,9 +56,7 @@ app.post('/api/register', async (req, res) => {
 })
 
 app.post('/api/resetpass', async (req, res) => {
-  console.log(req.body.password)
   const hash = hashMethod.hashing(req.body.username, req.body.password)
-  console.log(hash)
   const updatePassword = await resetPass.updatePass(hash, req.body.username)
   res.send(updatePassword)
 })

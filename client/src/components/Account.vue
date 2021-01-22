@@ -123,8 +123,7 @@ export default {
           password: String(document.getElementById('confirmed-pass').value)
         })
           .then((response) => {
-            console.log(response)
-            if (response.status === 200) {
+            if (response.data.username === this.username) {
               alert('Successfully updated password')
               document.getElementById('change-pass').reset()
             }

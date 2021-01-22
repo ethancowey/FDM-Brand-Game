@@ -19,6 +19,14 @@ async function updatePass (hash, username) {
   })
     .then()
   await UserAccount.updateOne({ username: username }, { password: hash })
+  const loggedIn = await UserAccount.findOne({ username: username, password: hash })
+      .select('-password') // Excludes password from result so it is not sent to front-end
+      .then(result => {
+        console.log(result)
+        return result
+      })
+  return loggedIn
+
 }
 
 module.exports.updatePass = updatePass
