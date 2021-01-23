@@ -8,14 +8,12 @@
         <div class="col-7">
           <h2>Match the Words</h2>
         </div>
-
         <div class="col-5">
             <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
-              <GameTimer ref="timerInstance" @timeLeft = "timeExpired = $refs.timerInstance.getTime()"></GameTimer>
+              <game-timer ref="timerInstance" @timeLeft = "timeExpired = $refs.timerInstance.getTime()"></game-timer>
             </div>
         </div>
-
       </div>
       <transition name="fade">
         <div v-if="timeExpired === 0" class="backdrop">
@@ -41,9 +39,7 @@
           </div>
         </div>
       </transition>
-
       <div id="game">
-
         <ul class="deck" id="card-deck">
           <li
             v-for="question in questions"
@@ -54,13 +50,9 @@
             <h6>{{ question.showValue }}</h6>
           </li>
         </ul>
-
       </div>
-
     </div>
-
   </div>
-
 </template>
 
 <script>

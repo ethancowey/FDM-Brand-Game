@@ -27,7 +27,7 @@ order if so the game end)s.
             <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           </a>
           <div class="timer">
-            <timer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></timer>
+            <game-timer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></game-timer>
           </div>
         </div>
       </div>
@@ -70,23 +70,21 @@ order if so the game end)s.
         </div>
       </div>
     </div>
-    <input id="StreamType"  type="hidden" value="Business Intelligence">
-
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import draggable from 'vuedraggable'
-import timer from './GameTimer'
+import GameTimer from './GameTimer'
 import NavigationBar from '../NavigationBar'
 
 export default {
   name: 'textBlocks.vue',
   components: {
     NavigationBar,
-    draggable,
-    timer
+    GameTimer,
+    draggable
   },
   data () {
     return {
