@@ -1,6 +1,6 @@
 <template>
   <div id="homepage">
-    <navigation-bar/>
+    <NavigationBar/>
     <div id="home">
       <div id="text">
         <br>

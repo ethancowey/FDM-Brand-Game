@@ -11,7 +11,7 @@ answered the variable quizComplete is set to true so that the message for giving
 -->
 <template>
   <div id="app">
-  <navigation-bar/>
+  <NavigationBar/>
     <br>
     <br>
     <h2>Affinity Test</h2>
