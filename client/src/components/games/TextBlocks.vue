@@ -14,7 +14,7 @@ order if so the game end)s.
 -->
 <template>
   <div id="app">
-    <navigation-bar/>
+    <NavigationBar/>
     <div class="container">
       <br>
       <br>
@@ -27,7 +27,7 @@ order if so the game end)s.
             <font-awesome-icon id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
           </a>
           <div class="timer">
-            <game-timer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></game-timer>
+            <GameTimer ref="timerInstance" @timeLeft = "gameOver = $refs.timerInstance.getTime()"></GameTimer>
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ to retrieve all the questions. There are also methods which are called on card c
 -->
 <template>
   <div id="app">
-    <navigation-bar/>
+    <NavigationBar/>
     <div class="container">
       <br>
       <br>
@@ -24,7 +24,7 @@ to retrieve all the questions. There are also methods which are called on card c
         <div class="col-5">
             <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
-              <game-timer ref="timerInstance" @timeLeft = "timeExpired = $refs.timerInstance.getTime()"></game-timer>
+              <GameTimer ref="timerInstance" @timeLeft = "timeExpired = $refs.timerInstance.getTime()"></GameTimer>
             </div>
         </div>
       </div>

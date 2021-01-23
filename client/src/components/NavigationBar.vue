@@ -7,6 +7,7 @@ This defines the navigation bar used by most pages used by regular users. It def
 This will not be used on the Streams.vue page to prevent picking a game before picking a stream.
 The navbar also has an icon to logout which will clear the users session and take them back to the login page.
 Theres also an icon link to the accounts page.
+It can be referenced and used in html code using <NavigationBar>
 -->
 <template>
   <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">

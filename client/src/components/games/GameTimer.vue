@@ -9,6 +9,7 @@ function. timeMonitor() when called decreases time remaining by 1 ass well as up
 timeMonitor() also emits the time back to the parent component the game meaning the game will know when time hits 0.
 stopTimer() will stop the timer counting down when called. (usually when a game is completed)
 To call these functions you must attach it to the same reference as the instance in your html template.
+It can be used in html templates using <GameTimer>
 -->
 <template>
 <div>
