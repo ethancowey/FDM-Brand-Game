@@ -1,3 +1,16 @@
+<!-- Module: MatchGame.vue
+Creation Date: 18/12/2020
+Last Edit Date:24/01/2021
+Authors: Miles Prosser
+Overview:
+The purpose of this component is to be a game in which users must match key words to their associated definitions. There
+will be a 2 minute time limit and the faster and more accurate its completed the higher the score achieved.
+The game will highlight when a match is correct and reset when a match is not correct.
+There is a navbar component that is imported into the file.
+There is a data() function which returns all the variables needed in the html and javascript code.
+There are several method all for different purposes, for example generateQuestions() method will send an axios request
+to retrieve all the questions. There are also methods which are called on card click and then a method to handle matches and wins.
+-->
 <template>
   <div id="app">
     <navigation-bar/>
@@ -193,11 +206,6 @@ export default {
 </script>
 
 <style scoped>
-#placeholder {
-  margin-top: 30%;
-  text-align: center;
-
-}
 .card {
   height: 8.1rem;
   width: 8.1rem;
@@ -238,20 +246,6 @@ export default {
   align-items: center;
   margin: 0 0 3em;
 }
-.timer {
-  margin-left: 35%;
-  display: inline-block;
-  top: 40%;
-}
-.timer p {
-  margin-top: 4%;
-  width: 5%;
-}
-#reset {
-  top: 50%;
-  float: left;
-  cursor:pointer;
-}
 #game {
   width: 45%;
   height: 70%;
@@ -262,24 +256,6 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-#app {
-  height: 100vh;
-  background-color: lightgrey;
-}
-.user-circle {
-  color: white;
-  size: 60px;
-}
-#icon {
-  padding-bottom: 10px;
-}
-.nav-item {
-  font-weight: bold;
-}
-#text-group {
-  margin-left: 2.5%;
-}
-
 p {
   font-size: 14px
 }
@@ -288,73 +264,4 @@ h4 {
   margin-top: 18px
 }
 
-.congratulations {
-  left: 35%;
-  margin-top: 17%;
-  position: relative;
-  display: flex;
-  width: 450px;
-  flex-direction: column;
-  min-width: 0;
-  z-index: 999;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid #d2d2dc;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
-
-}
-
-.congratulations .card-body {
-  padding: 1rem 1rem
-}
-
-.card-body {
-  flex: 1 1 auto;
-  padding: 1.25rem
-}
-
-.cross {
-  color: #d6312d;
-  cursor: pointer;
-  margin-left: 95%;
-  margin-top: 5px;
-}
-
-.continue:focus {
-  outline: none
-}
-
-.continue {
-  border-radius: 5px;
-  text-transform: capitalize;
-  font-size: 13px;
-  padding: 8px 19px;
-  cursor: pointer;
-  color: #fff;
-  background-color: #D50000
-}
-
-.continue:hover {
-  background-color: #D32F2F !important
-}
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
-.backdrop {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 9999;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  /*display: none;*/
-}
 </style>

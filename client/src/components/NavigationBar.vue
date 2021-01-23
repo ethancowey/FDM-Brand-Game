@@ -1,7 +1,7 @@
 <!-- Module: NavigationBar.vue
 Creation Date: 22/01/2021
 Last Edit Date: 22/01/2021
-Authors: Ethan Cowey
+Authors: Miles Prosser, Ethan Cowey
 Overview:
 This defines the navigation bar used by most pages used by regular users. It defines links to all the other pages.
 This will not be used on the Streams.vue page to prevent picking a game before picking a stream.

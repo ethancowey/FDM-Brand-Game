@@ -147,47 +147,6 @@ export default {
 </script>
 
 <style scoped>
-#placeholder {
-  margin-top: 30%;
-  text-align: center;
-
-}
-.timer {
-  margin-left: 35%;
-  display: inline-block;
-  top: 40%;
-}
-.timer p {
-  margin-top: 4%;
-  width: 5%;
-}
-#reset {
-  top: 50%;
-  float: left;
-  color: #1F1F1F;
-}
-#game {
-  width: 50%;
-  height: 60%;
-  border: solid black;
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-}
-.timer {
-  margin-left: 35%;
-  display: inline-block;
-  top: 40%;
-}
-.timer p {
-  margin-top: 4%;
-  width: 5%;
-}
-#reset {
-  top: 50%;
-  float: left;
-}
 #game {
   width: 50%;
   height: 60%;
@@ -211,36 +170,5 @@ export default {
   padding: 1%;
   margin: 1%;
 }
-#text-group {
-  margin-left: 2.5%;
-}
-.backdrop {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  z-index: 9999;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  /*display: none;*/
-}
-.congratulations {
-  left: 35%;
-  margin-top: 17%;
-  position: relative;
-  display: flex;
-  width: 450px;
-  flex-direction: column;
-  min-width: 0;
-  z-index: 999;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid #d2d2dc;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-  box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
 
-}
 </style>
