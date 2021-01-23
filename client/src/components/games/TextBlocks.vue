@@ -80,7 +80,7 @@ import GameTimer from './GameTimer'
 import NavigationBar from '../NavigationBar'
 
 export default {
-  name: 'textBlocks.vue',
+  name: 'TextBlocks.vue',
   components: {
     NavigationBar,
     GameTimer,
