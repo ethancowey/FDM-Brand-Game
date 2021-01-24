@@ -101,17 +101,25 @@ body {
   height: 100vh;
 }
 #login .container #login-row #login-column #login-box {
-  margin-top: 175px;
-  max-width: 600px;
-  height: 320px;
+  margin-top: 11.5em;
+  max-width: 40em;
+  height: 22em;
   background-color: gainsboro;
-  border-radius: 25px;
-
-}
+  border-radius: 1.667em;
+  }
 #login .container #login-row #login-column #login-box #login-form {
-  padding: 20px;
+  padding: 1.334em;
 }
 #login .container #login-row #login-column #login-box #login-form #register-link {
-  margin-top: -50px;
+  margin-top: -3.33em;
+}
+.btn {
+  margin-top: 0.5em;
+  font-size: 1.25em;
+}
+.form-control{
+  padding: 0.5em;
+  height: 2.5em;
+  font-size: 1em;
 }
 </style>

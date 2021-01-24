@@ -66,6 +66,7 @@
 <script>
 import axios from 'axios'
 import NavigationBar from './NavigationBar'
+import router from '../router/index'
 export default {
   components: {NavigationBar},
   data () {
@@ -118,59 +119,66 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  .account-info {
-    height: 15em ;
-    width: 80%;
-    /*border-style: solid;*/
-    /*border-width: 2px;*/
-    margin-top: 10%;
-    list-style-type: none;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: #EAEAEA !important;
-  }
+.account-info {
+  height: 5em ;
+  width: 80%;
+  /*border-style: solid;*/
+  /*border-width: 2px;*/
+  margin-top: 1%;
+  list-style-type: none;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #EAEAEA !important;
+}
 
-  .scores-container {
-    height: 20em ;
-    width: 80%;
-    border-style: solid;
-    border-width: 2px;
-    margin-top: 20%;
-    list-style-type: none;
-    float: right;
-  }
-  .scores-container h3 {
-    padding-top: 15px;
-    font-weight: bolder;
-  }
-  .account-info h2 {
-    padding-top: 15px;
-  }
-  .account-info p {
-    text-align: left;
-  }
-  #user-score {
-    font-weight: bold;
-    font-size: 1em;
-    padding-right: 10%;
+.scores-container {
+  height: 20em;
+  width: 85%;
+  border-style: solid;
+  border-width: 0.33em;
+  margin-top: 20%;
+  list-style-type: none;
+  float: right;
+}
+.scores-container h3 {
+  padding-top: 0.5em;
+  font-weight: bolder;
+}
+.scores-container p{
+  margin: 0.1em;
+}
+.account-info h2 {
+  padding-top: 1em;
+}
+.account-info p {
+  text-align: left;
+}
+#user-score {
+  font-weight: bold;
+  font-size: 1em;
+  padding-right: 10%;
 
-  }
-  #game {
-    font-weight: bolder;
-    font-size: 1em;
-  }
+}
+#game {
+  font-weight: bolder;
+  font-size: 1em;
+}
 
-  .column {
-    float: left;
-    width: 50%;
-  }
+.column {
+  float: left;
+  width: 50%;
+}
 
-  /* Clear floats after the columns */
-  .scores-container .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+/* Clear floats after the columns */
+.scores-container .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.form-control{
+  margin: 0.1em;
+  height: 1.75em;
+}
 </style>

@@ -212,64 +212,62 @@ export default {
 }
 
 </script>
-
-<style scoped>
+<style>
 .card {
-  height: 8.1rem;
-  width: 8.1rem;
-  margin: 0.2rem 0.2rem;
-  /*background: #141214;;*/
-  font-size: 0;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+height: 8.5em;
+width: 8.5em;
+margin: 0.2em 0.2em;
+/*background: #141214;;*/
+border-radius: 0.33em;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 0.33em 0.133em 1.33em 0 rgba(46, 61, 73, 0.5);
 }
 .selected {
-  color: white;
-  background-color: #4A57BA;
+color: white;
+background-color: #4A57BA;
 }
 
 .matched {
-  color: white;
-  background-color: #00A56A;
+color: white;
+background-color: #00A56A;
 }
 .card p {
-  color: black;
+color: black;
 }
 .card h6 {
-  font-size: 13px;
+font-size: 0.867em;
 }
 .deck {
-  width: 100%;
-  background: #716F71;
-  padding: 1rem;
-  border-radius: 4px;
-  box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 0 3em;
+width: 100%;
+background: #716F71;
+padding: 1em;
+border-radius: 0.267em;
+box-shadow: 0.533em 0.62em 1.733em 0 rgba(46, 61, 73, 0.5);
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+align-items: center;
+margin: 0 0 3em;
 }
 #game {
-  width: 45%;
-  height: 70%;
-  /*border: solid black;*/
-  position: absolute;
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
+width: 45%;
+height: 70%;
+/*border: solid black;*/
+position: absolute;
+left: 50%;
+top: 60%;
+transform: translate(-50%, -50%);
 }
 
 p {
-  font-size: 14px
+font-size: 0.933em
 }
 
 h4 {
-  margin-top: 18px
+margin-top: 1.2em
 }
 
 </style>

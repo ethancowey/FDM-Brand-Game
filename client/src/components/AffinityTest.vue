@@ -154,19 +154,19 @@ export default {
   background: honeydew;
 }
 .congratulations {
-  margin-left: auto;
-  margin-right: auto;
+  left: 35%;
+  margin-top: unset;
   position: relative;
   display: flex;
-  width: 450px;
+  width: 30em;
   flex-direction: column;
   min-width: 0;
   z-index: 999;
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid #d2d2dc;
-  border-radius: 4px;
+  border: 0.067em solid #d2d2dc;
+  border-radius: 0.267em;
   -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
   -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
   box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
@@ -174,7 +174,7 @@ export default {
 }
 .end-icon {
   color: black;
-  size: 60px;
+  size: 4em;
 }
 .end-medal {
   color: gold;

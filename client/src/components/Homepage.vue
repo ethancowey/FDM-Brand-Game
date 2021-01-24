@@ -79,16 +79,16 @@ a:link, a:visited {
   float: left;
   width: 30%;
   padding: 1em;
-  border:4px solid dimgray;
+  border:0.25em solid dimgray;
   margin: 0.5em;
-  border-radius: 12px;
+  border-radius: 0.8em;
   font-size: 1.25em;
   background-color: #E0E0E0;
 }
 
 .topic{
-  border: 4px solid dimgray;
-  max-width: 350px;
+  border: 0.25em solid dimgray;
+  max-width: 23.33em;
   margin: auto;
   font-size: 25px;
   border-radius: 12px;

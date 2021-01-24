@@ -126,24 +126,30 @@ body {
 }
 #registration .container #registration-row #registration-column #registration-box {
   margin-top: 5vh;
-  max-width: 600px;
-  height: 70%;
+  max-width: 40em;
+  height: 35em;
   background-color: gainsboro;
-  border-radius: 25px;
+  border-radius: 1.667em;
 
 }
 #login .container #login-row #login-column #registration-column #login-box #registration-form {
-  padding: 20px;
+  padding: 1em;
+}
+.form-control{
+  padding: 0.5em;
+  height: 2.5em;
+  font-size: 1em;
 }
 
 #submit-button {
-  margin-top: 30px;
+  margin-top: 0.5em;
+  font-size: 1em;
 }
 .labels{
-  margin-top:10px;
+  margin-top:0.667em;
 }
 #login-link{
-  margin-top: -10px;
+  margin-top: -0.667em;
 }
 
 </style>

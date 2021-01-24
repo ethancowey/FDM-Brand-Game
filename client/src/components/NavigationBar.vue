@@ -67,21 +67,21 @@ export default {
 <style scoped>
 .user-circle {
   color: white;
-  size: 60px;
+  size: 4em;
 }
 #icon {
-  padding-bottom: 10px;
+  padding-bottom: 0.677em;
 }
 .nav-item {
   font-weight: bold;
 }
 .user-circle {
   color: white;
-  size: 60px;
+  size: 4em;
 }
 .nav-icon {
   color: white;
-  size: 60px;
+  size: 4em;
 }
 #text-group {
   margin-left: 2.5%;

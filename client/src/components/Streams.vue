@@ -67,12 +67,13 @@ export default {
 
 <style scoped>
 .topic{
-  padding: 25px;
-  border: 4px solid dimgray;
-  max-width: 350px;
+  padding: 1.667em;
+  border: 0.25em solid dimgray;
+  max-width: 15em;
+  max-height: 5em;
   margin: auto;
-  font-size: 25px;
-  border-radius: 12px;
+  font-size: 1.667em;
+  border-radius: 0.8em;
   display: block;
   background-color: #F5F5F5;
   color: black;
@@ -86,7 +87,7 @@ a:link, a:visited{
 .topic:hover, .topic:active, a:hover, a:active{
   background-color: #999999;
   color: #EAEAEA;
-  border: 4px solid #999999;
+  border: 0.25em solid #999999;
 }
 
 #text{
