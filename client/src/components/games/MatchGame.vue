@@ -97,15 +97,9 @@ export default {
     }
   },
   mounted () {
-    this.checkUser()
     this.generateQuestions()
   },
   methods: {
-    checkUser: function () {
-      if (sessionStorage.getItem('username') === null) {
-        router.push('/')
-      }
-    },
     cardClicked: function (question) {
       if (this.timeExpired === null) {
         return
