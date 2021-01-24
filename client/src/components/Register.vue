@@ -53,7 +53,8 @@ the next pages URL.
     </div>
     <div id="guest-link">
       <br>
-      <a href="/streams" onclick="sessionStorage.setItem('guest', 'true'); sessionStorage.setItem('username','guest')"
+      <a href="/streams" onclick="sessionStorage.setItem('guest', 'true')
+      sessionStorage.setItem('username','guest' + Math.floor(Math.random() * 999))"
          class="text-dark">Continue as Guest</a>
     </div>
     <div id="admin-link">
