@@ -57,10 +57,6 @@ the next pages URL.
       sessionStorage.setItem('username','guest' + Math.floor(Math.random() * 999))"
          class="text-dark">Continue as Guest</a>
     </div>
-    <div id="admin-link">
-      <br>
-      <a href="/admin" class="text-dark">Go to Admin Login</a>
-    </div>
   </div>
 </template>
 
