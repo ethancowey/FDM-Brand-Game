@@ -75,6 +75,7 @@ export default {
     }
   },
   async mounted () {
+    this.checkUser()
     const {data} = await axios.get('http://localhost:3000/api/scores', {
       params: {
         username: this.username
@@ -83,6 +84,11 @@ export default {
     this.Scores = data
   },
   methods: {
+    checkUser: function () {
+      if (sessionStorage.getItem('username') === null) {
+        router.push('/')
+      }
+    },
     resetPassword (response) {
       if (response.data.username === this.username) {
         axios.post('http://localhost:3000/api/resetpass', {
