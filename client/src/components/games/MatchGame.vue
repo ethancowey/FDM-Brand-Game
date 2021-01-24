@@ -76,7 +76,6 @@ There are also methods which are called on card click and then a method to handl
 import axios from 'axios'
 import GameTimer from './GameTimer'
 import NavigationBar from '../NavigationBar'
-import router from '../../router/index.js'
 
 export default {
   name: 'MatchGame',
