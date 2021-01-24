@@ -25,7 +25,7 @@ I have also created a method to get all user scores, this is then looped through
             <h2>Account:</h2>
             <p>Username: {{username}}</p>
 
-            <form  id="change-pass" v-on:submit.prevent="checkAuth" >
+            <form id="change-pass" v-on:submit.prevent="checkAuth" >
               <h2>Change Password:</h2>
 
               <label>Current Password</label>
@@ -34,13 +34,14 @@ I have also created a method to get all user scores, this is then looped through
               </div>
               <label>New Password</label>
               <div class="form-group">
-                <input required type="password" class="form-control" placeholder="New Password"
+                <input required id="password" type="password" class="form-control" placeholder="New Password"
                        pattern=".{6,12}" title="Must be 6 to 12 characters">
               </div>
               <label>Confirm Password</label>
               <div class="form-group">
                 <input required id="confirmed-pass" type="password" class="form-control" placeholder="Confirm Password">
               </div>
+              <span id='message'></span><br>
               <button type="submit" name="submit" class="btn btn-dark">Change Password</button>
             </form>
           </div>
@@ -76,7 +77,6 @@ I have also created a method to get all user scores, this is then looped through
 <script>
 import axios from 'axios'
 import NavigationBar from './NavigationBar'
-import router from '../router/index'
 export default {
   components: {NavigationBar},
   data () {
@@ -96,8 +96,11 @@ export default {
   },
   methods: {
     checkUser: function () {
-      if (sessionStorage.getItem('username') === null) {
-        router.push('/')
+      if (sessionStorage.getItem('username').toLowerCase().includes('guest')) {
+        var fields = document.getElementById('change-pass').getElementsByTagName('*')
+        for (var i = 0; i < fields.length; i++) {
+          fields[i].disabled = true
+        }
       }
     },
     resetPassword (response) {
@@ -117,6 +120,11 @@ export default {
       }
     },
     async checkAuth () {
+      if (document.getElementById('password').value !== document.getElementById('confirmed-pass').value) {
+        document.getElementById('message').style.color = 'red'
+        document.getElementById('message').innerHTML = 'Passwords are not matching'
+        return
+      }
       axios.post('http://localhost:3000/api/auth', {
         username: this.username,
         password: String(document.getElementById('current-password').value)
