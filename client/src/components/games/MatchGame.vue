@@ -9,7 +9,8 @@ The game will highlight when a match is correct and reset when a match is not co
 There is a navbar component that is imported into the file.
 There is a data() function which returns all the variables needed in the html and javascript code.
 There are several method all for different purposes, for example generateQuestions() method will send an axios request
-to retrieve all the questions. There are also methods which are called on card click and then a method to handle matches and wins.
+to retrieve all the questions.
+There are also methods which are called on card click and then a method to handle matches and wins.
 -->
 <template>
   <div id="app">
@@ -75,7 +76,7 @@ import NavigationBar from '../NavigationBar'
 import router from '../../router/index.js'
 
 export default {
-  name: 'matchGame',
+  name: 'MatchGame',
   components: {
     NavigationBar,
     GameTimer

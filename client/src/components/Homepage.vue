@@ -59,8 +59,8 @@ export default {
 .game {
   float: left;
   width: 33.33%;
-  padding: 15px;
-  font-size: 22px;
+  padding: 0.1em;
+  font-size: 1.5em;
   font-weight: bold;
 }
 
@@ -69,20 +69,20 @@ a:link, a:visited {
 }
 
 .links {
+  vertical-align: middle;
   margin: auto;
   width: 75%;
-  padding: 10px;
+  padding: 10em;
 }
 
 .navig {
   float: left;
   width: 30%;
-  padding: 15px;
+  padding: 1em;
   border:4px solid dimgray;
-  max-width: 350px;
-  margin: 10px;
+  margin: 0.5em;
   border-radius: 12px;
-  font-size: 22px;
+  font-size: 1.25em;
   background-color: #E0E0E0;
 }
 
