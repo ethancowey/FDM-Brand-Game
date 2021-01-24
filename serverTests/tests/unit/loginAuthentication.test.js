@@ -59,3 +59,9 @@ test('Testing an valid username and hash with username of the longest length', a
     'invalid4780f861f2fab317d6d1ee1ff1fd150e91740681027fc2b4334c605e2f', '10CharExis')
   expect(longUsername).toBe(null)
 })
+
+test('Testing a valid Admin login', async () => {
+  const adminAccount = await loginAuthentication.validLogin(
+    '7922ab17a5af1d3fc5ce75bb45882e64b396759722c820004acb2fe7ab52c0b6', 'Admin')
+  expect(adminAccount.toObject().admin).toBe('true')
+})

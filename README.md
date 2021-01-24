@@ -37,7 +37,7 @@ You should see in the console it is running at localhost:8080
 Admin Account
 -
 Below are some admin login credentials that can be used to access the admin page using the regular login page
-at the base route localhost8080:/ which is the first page you see when you open the application
+at the base route of localhost8080 which is the first page you see when you open the application
 
 Username: Admin
 
