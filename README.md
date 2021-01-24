@@ -1,5 +1,10 @@
 FDM Brand Game
 =
+In this document
+* Running the Back-end
+* Running the Front-end
+* Admin Login Details
+
 Running the Back-end
 -
 To begin running the server for the back-end open a terminal and cd into the server file
@@ -15,7 +20,8 @@ Finally using npm run the start script
 npm run start
 ```
 You should see in the console Server Started.
-The server will run at localhost:3000
+The server will run at localhost:3000 it connects to our external Mongodb Atlas database using this connection uri:
+mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority
 
 Running the Front-end
 -
@@ -32,7 +38,8 @@ Finally, using npm run the start script
 ```
 npm run start
 ```
-You should see in the console it is running at localhost:8080
+You should see in the console it is running at localhost:8080 go to this url to use the application. Once
+you also have the Back-end running.
 
 Admin Account
 -
