@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
-const Users = require('./user') // Constructor for useraccounts collection in the database
-const Scores = require('./scores') // Constructor for scores collection in the databse
+const Users = require('./getUsers')
+const Scores = require('./getTopUser')
 
 async function getUserInformation () {
   mongoose.connect(uriMongo, {
@@ -11,23 +11,11 @@ async function getUserInformation () {
     useFindAndModify: false
   })
     .then()
-  const topScores = await Scores.aggregate(
-    [
-      {
-        $group:
-              {
-                _id: '$username',
-                total: { $sum: '$score' }
-              }
-      },
-      { $sort: { total: -1 } }
-
-    ]
-  )
+  const topScores = await Scores.getTopUser()
     .then(doc => {
       return doc
     })
-  const usersRetrieved = await Users.find()
+  const usersRetrieved = await Users.getUsers()
     .then(doc => {
       return doc
     })

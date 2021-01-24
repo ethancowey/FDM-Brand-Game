@@ -16,10 +16,10 @@ async function getTopUser () {
         $group:
               {
                 _id: '$username',
-                total: { $sum: '$score' }
+                score: { $sum: '$score' }
               }
       },
-      { $sort: { total: -1 } }
+      { $sort: { score: -1 } }
 
     ]
   )

@@ -1,5 +1,11 @@
 <template>
   <div id = "UserInformation">
+    <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
+      <a id="icon" class="navbar-brand" href="#">
+        <img src="../assets/logo.png" alt="Logo" style="width:70px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle ="collapse" ></button>
+    </nav>
     <div class="container">
       <h3 class="p-3 text-center">User Information</h3>
       <table class="table">
@@ -53,28 +59,9 @@ export default {
       .then((response) => {
         this.Information = response.data
       })
-  },
-  methods: {
-    merge: function (x, y, z) {
-      for (const i in x) {
-        for (const j in y) {
-          if (i.username === j._id) {
-            z.push({ total: j._id, ...i })
-          } else {
-            z.push({total: 0, ...i})
-          }
-        }
-      } return z
-    }
   }
 }
 </script>
 <style scoped>
-#Leaderboard .container{
-  max-width: 600px;
-  height: 560px;
-  border-radius: 25px;
-  background: #F5F5F5;
-  border: 4px solid dimgray;
-}
+
 </style>
