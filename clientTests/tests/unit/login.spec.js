@@ -52,3 +52,15 @@ describe('Test validUser function called after loginPost when back-end denys the
     expect(spy).toBeCalledTimes(1) // invalid login so it is called
   })
 })
+
+describe('Test valid admin login after loginPost', () => {
+  it('Testing of validUser with a valid admin login response from back-end', async () => {
+    const adminResponse = { // set the response to have the variable admin to be true
+      data: {
+        admin: 'true'
+      }
+    }
+    await Login.methods.validUser(adminResponse)
+    expect(sessionStorage.getItem('admin')).toBe('true')
+  })
+})

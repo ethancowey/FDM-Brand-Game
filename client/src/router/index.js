@@ -13,7 +13,6 @@ import Register from '../components/Register'
 import MatchGame from '../components/games/MatchGame'
 import Streams from '../components/Streams'
 import TextBlocks from '../components/games/TextBlocks'
-import AdminLogin from '../components/admin/AdminLogin'
 import AffinityTest from '../components/AffinityTest'
 import Account from '../components/Account'
 import Homepage from '../components/Homepage'
@@ -29,9 +28,7 @@ export default new Router({
     { path: '/match', component: MatchGame },
     { path: '/blocks', component: TextBlocks },
     { path: '/streams', component: Streams },
-    { path: '/admin', component: AdminLogin },
     { path: '/account', component: Account },
-    { path: '/admin', component: AdminLogin },
     {path: '/test', component: AffinityTest},
     { path: '/home', component: Homepage }
   ]})

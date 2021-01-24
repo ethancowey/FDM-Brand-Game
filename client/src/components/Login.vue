@@ -13,6 +13,8 @@ response and sends this to the next method validUser() which will if the login r
 it will send an alert to the user. Otherwise if it was a successful login it routes the user to the next page and stores
 the details needed in session storage to be used later. The response will not have the hashed password for security.
 The password is excluded from the document retrieved from the database before the response is sent back.
+It was later added to stop code duplication to also check for admin users and if they were an admin the destination
+would be different to that of a user.
 -->
 <template>
   <div id="login">
@@ -21,7 +23,7 @@ The password is excluded from the document retrieved from the database before th
         <div id="login-column" class="col-md-6">
           <div id="login-box" class="col-md-12">
             <form id="login-form" class="login" @submit.prevent="loginPost">
-              <h3 class="text-center text-dark">Login</h3>
+              <h3 class="text-center text-dark">User and Admin Login</h3>
               <div class="form-group">
                 <label class="text-dark">Username:</label><br>
                 <input required type="username" id="username" class="form-control"
@@ -49,10 +51,6 @@ The password is excluded from the document retrieved from the database before th
       sessionStorage.setItem('username','guest' + Math.floor(Math.random() * 999))"
          class="text-dark">Continue as Guest</a>
     </div>
-    <div id="admin-link">
-      <br>
-      <a href="/admin" class="text-dark">Go to Admin Login</a>
-    </div>
   </div>
 </template>
 
@@ -78,7 +76,11 @@ export default {
         })
     },
     validUser (response) {
-      if (response.data.username === String(document.getElementById('username').value) &&
+      if (response.data.admin === 'true') { // Check the returned document is an admin
+        sessionStorage.setItem('username', response.data.username)
+        sessionStorage.setItem('admin', 'true')
+        router.push('/adminpage')
+      } else if (response.data.username === String(document.getElementById('username').value) &&
         response.data.admin !== 'true') { // Checks user is the one returned by back-end and not an admin
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('firstname', response.data.firstname)
@@ -86,7 +88,7 @@ export default {
         sessionStorage.setItem('email', response.data.email)
         router.push('/streams')
       } else {
-        alert('Invalid Username and Password or If you are an admin use the admin login')
+        alert('Invalid Username and Password')
       }
     }
   }
