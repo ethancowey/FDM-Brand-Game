@@ -1,3 +1,10 @@
+<!-- Module: App.vue
+Creation Date: 08/12/2020
+Last Edit Date: 24/12/2021
+Authors: Ethan Cowey, Miles Prosser
+Overview: The purpose of this component is the template for our whole system. The component that the route corresponds
+to will appear where the <router-view/> tag is. This also sets in the style tags the global styles for all the pages.
+-->
 <template>
   <div id="app">
 <!--    <img src="./assets/logo.png">-->
