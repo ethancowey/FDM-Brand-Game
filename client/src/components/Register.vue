@@ -122,7 +122,7 @@ body {
   height: 100vh;
 }
 #registration .container #registration-row #registration-column #registration-box #registration-form {
-  padding: 20px;
+  padding: 0.5em;
 }
 #registration .container #registration-row #registration-column #registration-box {
   margin-top: 5vh;
