@@ -1,3 +1,13 @@
+<!-- Module: Account.vue
+Creation Date: 15/12/2020
+Last Edit Date:24/01/2021
+Authors: Miles Prosser
+Overview:
+The purpose of this component is for users to be able to view their account details and scores, additionally there is also
+a feature where users can change their password, this method will check the current password is correct first before allowing
+user to change password.
+I have also created a method to get all user scores, this is then looped through and displayed to the user.
+-->
 <template>
   <div id="app">
     <NavigationBar/>
