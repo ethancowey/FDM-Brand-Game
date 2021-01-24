@@ -72,6 +72,7 @@ to retrieve all the questions. There are also methods which are called on card c
 import axios from 'axios'
 import GameTimer from './GameTimer'
 import NavigationBar from '../NavigationBar'
+import router from '../../router/index.js'
 
 export default {
   name: 'matchGame',
@@ -92,9 +93,15 @@ export default {
     }
   },
   mounted () {
+    this.checkUser()
     this.generateQuestions()
   },
   methods: {
+    checkUser: function () {
+      if (sessionStorage.getItem('username') === null) {
+        router.push('/')
+      }
+    },
     cardClicked: function (question) {
       if (this.timeExpired === null) {
         return

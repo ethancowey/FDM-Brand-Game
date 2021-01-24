@@ -170,5 +170,8 @@ export default {
   padding: 1%;
   margin: 1%;
 }
+a {
+  color: #2c3e50;
 
+}
 </style>
