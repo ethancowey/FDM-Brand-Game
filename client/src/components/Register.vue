@@ -3,7 +3,7 @@ Creation Date: 13/12/2020
 Last Edit Date: 17/12/2020
 Authors: Ethan Cowey, Maria Andrzejewska, Miles Prosser
 Overview: The purpose of this component is to generate a page for registering a new user into the system using a form
-as well as links to the login page, to play as guest and the admin login.
+as well as links to the login page and to play as guest.
 In the <template> tags is the html code for this page it has the container for the registration form as well as the
 links to the other pages mentioned earlier.
 In the <script> tags are the methods invoked when the form is submitted. The first of which is usernameUniquePost().

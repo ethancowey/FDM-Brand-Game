@@ -1,20 +1,25 @@
 <!-- Module: Login.vue
 Creation Date: 13/12/2020
-Last Edit Date: 17/12/2020
+Last Edit Date: 24/01/2021
 Authors: Ethan Cowey, Maria Andrzejewska, Miles Prosser
-Overview: The purpose of this component is to generate a page for logging in to the system as well as links to
-the registration page, continue as guest and an admin login.
+Overview: The purpose of this component is to generate a page for logging in to the system as an admin or a user
+as well as links to the registration page and continue as guest
 In the <template> tags is the html code for this page
 it has a container with the form to insert login details into as well as links to the other parts of the system
 mentioned earlier.
 In the <script> tags are the methods for communicating to the back-end. When you submit the login form the method
 loginPost() is invoked. It makes a post request with the inputted username and password to the back-end. It receives a
 response and sends this to the next method validUser() which will if the login response from the back-end is invalid
-it will send an alert to the user. Otherwise if it was a successful login it routes the user to the next page and stores
+it will send an alert to the user. Otherwise if it was a successful user or admin login it routes the user to the next
+page depending on what access level they are (admin or user) and stores
 the details needed in session storage to be used later. The response will not have the hashed password for security.
 The password is excluded from the document retrieved from the database before the response is sent back.
 It was later added to stop code duplication to also check for admin users and if they were an admin the destination
 would be different to that of a user.
+Admin Login credentials are added to the database manually so regular users can't make admin accounts.
+Details of an admin account to use:
+Username: Admin
+Password: Admin1
 -->
 <template>
   <div id="login">

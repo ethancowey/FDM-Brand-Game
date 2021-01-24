@@ -1,7 +1,7 @@
 /**
  * Module: loginAuthentication.test.js
  * Creation Date: 02/01/2021
- * Last Edit Date: 02/01/2021
+ * Last Edit Date: 24/01/2021
  * Authors: Ethan Cowey
  * Overview: This module is used to test loginAuthetication.js which exports the method valiLogin() It takes the
  * parameters of the hashed password and username. It checks for a document that matches these credetials and returns it
