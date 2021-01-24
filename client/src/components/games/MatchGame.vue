@@ -49,6 +49,9 @@ There are also methods which are called on card click and then a method to handl
               <h4>CONGRATULATIONS!</h4>
               <p>You scored {{score}} points and completed the game in {{120 - timeRemaining}} seconds</p>
               <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
+              <a id="tweet" class="btn btn-out btn-square continue"
+                 :href="'https://twitter.com/intent/tweet?text=I scored ' + score + ' in the Match game %23FDMCareers'">
+                Tweet #FDMCareers</a>
             </div>
           </div>
         </div>
