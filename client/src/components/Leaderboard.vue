@@ -49,16 +49,12 @@ export default {
       Admin: false,
       games: [ {id: 'Match', name: 'Match Game'}, {id: 'blocks', name: 'Blocks Game'} ],
       streams: [{id: 'Software Testing', name: 'Software Testing'}, {id: 'Business Intelligence', name: 'Business Intelligence'}, {id: 'Technical Operations', name: 'Technical operations'}],
-      // locateUser: sessionStorage.getItem('username'),
-      locateUser: 'EthanTest1',
+      locateUser: sessionStorage.getItem('username'),
       leaderBoardType: 'Global',
       Global: true
     }
   },
   mounted () {
-    sessionStorage.setItem('admin', 'yes')
-    sessionStorage.setItem('game', 'Match')
-    sessionStorage.setItem('stream', 'Software Testing')
     const game = sessionStorage.getItem('game')
     const admin = sessionStorage.getItem('admin')
     const stream = sessionStorage.getItem('stream')
@@ -105,16 +101,13 @@ export default {
   border-radius: 25px;
   background: #F5F5F5;
   border: 3px solid dimgray;
+  padding:10px;
 }
 .table{
   padding-bottom: 20px;
 }
 .title{
   font-size: 25px;
-}
-.dropdown{
-  padding-top: 5px;
-  padding-bottom: 4px;
 }
 .dropdown #dropdownButton{
   color: dimgray;

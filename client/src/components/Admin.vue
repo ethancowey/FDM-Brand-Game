@@ -56,6 +56,7 @@ export default {
     }
   },
   mounted () {
+    sessionStorage.setItem('admin', 'yes')
     axios.get('http://localhost:3000/api/getUsers')
       .then((response) => {
         this.Users = response.data
@@ -75,7 +76,7 @@ export default {
 .container{
   margin-left: auto;
 }
-.streamsContainer:hover{
+.streamsContainer :hover{
   background-color: #999999;
   color: #EAEAEA;
   border: 4px solid #999999;
@@ -120,9 +121,6 @@ export default {
   padding: 30px;
   width: 350px;
 
-}
-.container:hover{
-  color: darkcyan;
 }
 #icon {
   padding-bottom: 10px;
