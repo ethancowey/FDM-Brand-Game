@@ -127,7 +127,7 @@ export default {
       if (this.blockOrder.toString() === this.correct.toString()) {
         this.$refs.timerInstance.stopTimer()
         const timeRemaining = this.$refs.timerInstance.getTime()
-        const score = Math.floor(timeRemaining / this.dragsUsed) // Score is time remaining divided by drags used
+        const score = Math.floor((timeRemaining / this.dragsUsed) * 10) // Score is time remaining divided by drags used
         this.scoreDisplayed = score
         this.gameFinished = true
         // axios post the new score to database to update if its a new high score for the user
