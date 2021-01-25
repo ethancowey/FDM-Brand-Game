@@ -14,22 +14,25 @@
         <div class="container">
           <Leaderboard></leaderboard>
         </div>
-        <div class = "chartContainer">
-        <Chart></Chart>
+        <div id = wrapper2>
+          <div class = "chartContainer">
+            <Chart></Chart>
+            <div id = "information">
+              <div class="streamsContainer" id="streams">
+                <a class = "button" href="/streams" >Browse Streams</a>
+              </div>
+              <div class="userInformation">
+                <a class = "button" href = "/userinformation"> User Information
+                  <font-awesome-icon class="fa-users" :icon="['fas', 'users']" /></a><br>
+                <p class = "informationBody"> Registered users: {{Users.length}} </p>
+                <p class = "informationBody"> Best user: {{TopUser[0]._id}} </p>
+                <p class = "informationBody"> Total points: {{TopUser[0].score}} </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div id = "information">
-        <div class="streamsContainer" id="streams">
-          <a href="/streams" >Browse Streams</a>
-        </div>
-        <div class="userInformation">
-          <h4> User Information <font-awesome-icon class="fa-users" :icon="['fas', 'users']" /></h4><br>
-          <h4> Registered users: {{Users.length}} </h4>
-          <h4> Best user: {{TopUser[0]._id}} </h4>
-          <h4> Total points: {{TopUser[0].score}} </h4>
-        </div>
     </div>
-      </div>
 </template>
 <script>
 import Leaderboard from './Leaderboard'
@@ -66,8 +69,8 @@ export default {
 </script>
 <style>
 .chartContainer{
-  width: 1000px;
-  margin-right: 100px;
+  margin-right: 40px;
+  width: 600px;
 }
 .container{
   margin-left: auto;
@@ -80,34 +83,43 @@ export default {
 #wrapper {
   float: inside;
   margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-#information{
-  margin-top:20px;
-  float: right;
-  margin-right: 100px;
   display: inline-flex;
+  justify-content: space-evenly;
+}
+#information {
+  flex-direction: row;
+  margin-right: auto;
+  margin-top: 30px;
+  float: right;
+  display: inline-flex;
+  justify-content: space-evenly;
   align-items: flex-start;
 }
 .streamsContainer{
   background-color: #F5F5F5;
-  margin-right: 100px;
+  margin-right: 30px;
   justify-content: center;
   border: 3px solid dimgray;
   border-radius: 12px;
   color:black;
-  padding: 43px;
-  width: 400px;
-  font-size: 30px;
+  padding: 30px;
+}
+.button{
+  font-size: 22px;
+  color: #2c3e50;
+}
+.informationBody{
+  color:dimgray;
+  font-size: 20px;
 }
 .userInformation{
   background-color: #F5F5F5;
   border: 3px solid dimgray;
   border-radius: 12px;
   color:black;
-  padding: 40px;
-  width: 500px;
+  padding: 30px;
+  width: 350px;
+
 }
 .container:hover{
   color: darkcyan;

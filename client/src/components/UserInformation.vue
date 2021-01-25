@@ -7,7 +7,7 @@
       <button class="navbar-toggler" type="button" data-toggle ="collapse" ></button>
     </nav>
     <div class="container">
-      <h3 class="p-3 text-center">User Information</h3>
+      <h3 class="p-3 text-center">Registered User Information</h3>
       <table class="table">
         <thead>
         <tr>
@@ -41,20 +41,10 @@ export default {
   name: 'UserInformation',
   data () {
     return {
-      UserTotalScores: [],
-      Users: [],
       Information: []
     }
   },
   mounted () {
-    axios.get('http://localhost:3000/api/getTopUser'
-    ).then((response) => {
-      this.UserTotalScores = response.data
-    })
-    axios.get('http://localhost:3000/api/getUsers')
-      .then((response) => {
-        this.Users = response.data
-      })
     axios.get('http://localhost:3000/api/getUserInformation')
       .then((response) => {
         this.Information = response.data
