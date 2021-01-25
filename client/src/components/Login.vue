@@ -45,6 +45,9 @@ Password: Admin1
               <div id="register-link" class="text-right">
                 <a href="/register" class="text-dark">Register here</a>
               </div>
+              <div class="text-right" onclick="alert('To login as an admin use the credentials in the README.md' +
+               '\nTo Login as a user register a new account first or continue as guest.')"> Help?
+              </div>
             </form>
           </div>
         </div>
