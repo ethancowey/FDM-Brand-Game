@@ -36,7 +36,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/api/auth', async (req, res) => {
-  console.log('posted')// adds all user details so they can be compared with front end
+  // adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
   const userAuthorised = await loginAuthentication.validLogin(hash, req.body.username)
   res.send(userAuthorised)
@@ -62,19 +62,25 @@ app.post('/api/register', async (req, res) => {
 })
 
 app.post('/api/resetpass', async (req, res) => {
+  // Hashes password
   const hash = hashMethod.hashing(req.body.username, req.body.password)
+  // Called updatePass method
   const updatePassword = await resetPass.updatePass(hash, req.body.username)
   res.send(updatePassword)
 })
 
 app.get('/api/questions', async (req, res) => {
+  // get streams
   const streams = req.query.streams
+  // call method to retrieve query database
   const question = await retrieveQuestions.getQuestion(streams, req, res)
   res.send(question)
 })
 
 app.get('/api/scores', async (req, res) => {
+  // get username from request
   const username = req.query.username
+  // calls method to getScore
   const scores = await retrieveUsersScore.getScore(username, req, res)
   res.send(scores)
 })

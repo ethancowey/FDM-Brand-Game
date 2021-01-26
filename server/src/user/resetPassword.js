@@ -18,6 +18,7 @@ async function updatePass (hash, username) {
     useFindAndModify: false
   })
     .then()
+  // Updates password of specified username with given hash value
   await UserAccount.updateOne({ username: username }, { password: hash })
   const loggedIn = await UserAccount.findOne({ username: username, password: hash })
     .select('-password') // Excludes password from result so it is not sent to front-end
