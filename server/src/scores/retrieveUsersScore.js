@@ -3,7 +3,8 @@
  * Creation Date: 15/1/2021
  * Last Edit Date: 15/01/2021
  * Authors: Miles Prosser
- * Retrieves Specific user scores
+ * Description: Method for obtaining all scores for a specific User. Using the database uri it connects
+ * to the database, queries it and returns all user data. It then returns this information to the front end
  */
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
@@ -17,7 +18,7 @@ async function getScore (username) {
     useFindAndModify: false
   })
     .then()
-  const scoreReceived = await Scores.find({ username: username })
+  const scoreReceived = await Scores.find({ username: username }) // gets all scores for username queried
     .then(score => {
       return score
     })
