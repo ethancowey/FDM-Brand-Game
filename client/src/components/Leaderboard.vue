@@ -60,8 +60,10 @@ export default {
     return {
       Data: [],
       Admin: false,
-      games: [ {id: 'Match', name: 'Match Game'}, {id: 'blocks', name: 'Blocks Game'} ],
-      streams: [{id: 'Software Testing', name: 'Software Testing'}, {id: 'Business Intelligence', name: 'Business Intelligence'}, {id: 'Technical Operations', name: 'Technical operations'}],
+      games: [ {id: 'Match', name: 'Match Game'}, {id: 'blocks', name: 'Blocks Game'},
+        {id: 'blanks', name: 'Fill The Blanks Game'} ],
+      streams: [{id: 'Software Testing', name: 'Software Testing'}, {id: 'Business Intelligence',
+        name: 'Business Intelligence'}, {id: 'Technical Operations', name: 'Technical operations'}],
       locateUser: sessionStorage.getItem('username'),
       leaderBoardType: 'Global',
       Global: true
@@ -92,7 +94,7 @@ export default {
       }).then((response) => {
         this.Data = response.data
       })
-      this.changeLeaderboardType(stream + ' ' + name)
+      this.changeLeaderboardType(stream + ' - ' + name)
       this.Global = false
     },
     changeToGlobal: function () {
@@ -151,7 +153,7 @@ export default {
   -webkit-border-radius: 0 0.4em 0.4em 0.4em;
   -moz-border-radius: 0 0.4em 6px;
   border-radius: 0 0.4em 0.4em 0.4em;
-  font-size:1.66em;
+  font-size:1.33em;
 }
 .dropdown-submenu:hover>.dropdown-menu {
   display: block;
