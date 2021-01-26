@@ -5,7 +5,7 @@ Authors: Maria Andrzejewska
 Overview:
 The purpose of this component is for admins to be able to view any leaderboards, as well as graphs depicting stream
 performance and the ratio of registered users to guests using the web app. In addition, there is also a button that
-redirects the admin to the streams page, so that they can browse their content. There methods are used to display
+redirects the admin to the streams page, so that they can browse their content. The methods are used to display
 information on the amount of registered users, the top scoring player and their score.
 -->
 <template>
@@ -67,17 +67,11 @@ export default {
     Chart,
     Leaderboard
   },
-  methods: {
-    redirect: function (string) {
-      this.$router.push(string)
-    }
-  },
   mounted () {
-    sessionStorage.setItem('admin', 'yes')
+    // these methods get the data needed fr the user information section
     axios.get('http://localhost:3000/api/getUsers')
       .then((response) => {
         this.Users = response.data
-        console.log(this.Users)
       })
     axios.get('http://localhost:3000/api/getTopUser')
       .then((response) => {

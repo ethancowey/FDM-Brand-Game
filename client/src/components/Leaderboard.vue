@@ -74,12 +74,13 @@ export default {
     this.displayData(admin, game, stream)
   },
   methods: {
+    // checks if the person accessing the leaderboard is an admin or public user, then displays the correct leaderboard
     displayData: function (admin, game, stream) {
       if (admin != null) {
         this.Admin = true
-        this.changeToGlobal()
+        this.changeToGlobal() // if the user is an admin, a global leaderboard will be displayed by default
       } else {
-        this.changeData(stream, game)
+        this.changeData(stream, game) // if it's a public user, a stream and game-specific leaderboard will be displayed
       }
     },
     changeData: function (stream, game, name) {

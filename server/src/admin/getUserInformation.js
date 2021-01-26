@@ -37,7 +37,7 @@ async function getUserInformation () {
     for (const score of topScores) {
       if (user.username === score._id) {
         found = true
-        total = score.total
+        total = score.score // the total score associated with this user is assigned
         break
       } else {
         found = false
@@ -53,7 +53,7 @@ async function getUserInformation () {
       })
     } else {
       Information.push({
-        total: 0,
+        total: 0, // no score found for this user, their total is now 0
         username: user.username,
         firstname: user.firstname,
         lastname: user.lastname,

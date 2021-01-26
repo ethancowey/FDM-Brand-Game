@@ -33,23 +33,26 @@ async function getUsersGraph () {
   const usersData = []
   const registered = []
   const guests = []
-  for (const user of usersRetrieved) {
+  for (const user of usersRetrieved) { // adding all registered users to the registered array
     registered.push({ username: user.username, role: 'registered' })
   }
+  // pushing information on registered users into a general array
   usersData[0] = { role: 'registered', amount: registered.length }
   for (const score of topScores) {
     let guest = false
+    // checking if any user who has generated a score is registered
     for (const user of usersRetrieved) {
       if (score._id === user.username) {
-        guest = false
+        guest = false // if they are found in the user accounts collection, they are registered
         break
       } else {
-        guest = true
+        guest = true // if the username is not found, they are a guest
       }
     }
-    if (guest) {
+    if (guest) { // adding all guest users to an array
       guests.push({ username: score._id, role: 'guest' })
     }
+    // adding the information on guest users to the general array
     usersData[1] = { role: 'guest', amount: guests.length }
   } return usersData
 }

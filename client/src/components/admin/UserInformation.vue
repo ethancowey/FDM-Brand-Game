@@ -4,8 +4,8 @@ Last Edit Date:26/01/2021
 Authors: Maria Andrzejewska
 Overview:
 The purpose of this component is to display all available information on the registered users in a table format. It
-uses a method that returns information stored in the useraccounts collection and the total points scored by those users,
-obtained from the scores collection.
+uses a method that returns information stored in the User Accounts collection and the total points scored by the users
+obtained from the scores collection. If the user has not scored any points, his total score will be "0".
 -->
 <template>
   <div id = "UserInformation">
@@ -27,7 +27,6 @@ obtained from the scores collection.
       <table class="table">
         <thead>
         <tr>
-          <th>Rank</th>
           <th>Username</th>
           <th>First Name</th>
           <th>Last Name</th>
@@ -36,8 +35,7 @@ obtained from the scores collection.
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(user, index) in Information" :key="user.username" >
-          <td>{{index+1}}</td>
+        <tr v-for="(user) in Information" :key="user.username" >
           <td>{{user.username}}</td>
           <td>{{user.firstname}}</td>
           <td>{{user.lastname}}</td>
