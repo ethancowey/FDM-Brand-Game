@@ -16,6 +16,9 @@ import TextBlocks from '../components/games/TextBlocks'
 import AffinityTest from '../components/AffinityTest'
 import Account from '../components/Account'
 import Homepage from '../components/Homepage'
+import Admin from '../components/Admin'
+import Leaderboard from '../components/Leaderboard'
+import UserInformation from '../components/UserInformation'
 
 Vue.use(Router)
 
@@ -30,5 +33,8 @@ export default new Router({
     { path: '/streams', component: Streams },
     { path: '/account', component: Account },
     {path: '/test', component: AffinityTest},
-    { path: '/home', component: Homepage }
+    { path: '/home', component: Homepage },
+    {path: '/leaderboard', component: Leaderboard},
+    {path: '/admin', component: Admin},
+    {path: '/userInformation', component: UserInformation}
   ]})

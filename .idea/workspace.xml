@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5fe3d497-e79a-47e5-9c61-2022ea64ca22" name="Default Changelist" comment="Added scrollbar to leaderboard component and other final touches">
+      <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/helper-validator-identifier/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/helper-validator-identifier/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/helper-validator-identifier/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/helper-validator-identifier/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/astral-regex/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/astral-regex/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/astral-regex/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/astral-regex/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/astral-regex/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/astral-regex/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/no-constant-condition.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/no-constant-condition.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/no-extra-parens.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/no-extra-parens.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/prefer-exponentiation-operator.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/prefer-exponentiation-operator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/require-atomic-updates.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/lib/rules/require-atomic-updates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/eslint/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/eslint/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/import-fresh/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/import-fresh/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/import-fresh/license" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/import-fresh/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/import-fresh/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/import-fresh/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/import-fresh/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/import-fresh/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/slice-ansi/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/license" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/slice-ansi/license" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/ansi-styles/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/ansi-styles/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/ansi-styles/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/ansi-styles/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/conversions.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-convert/route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/node_modules/color-name/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/slice-ansi/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/slice-ansi/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/slice-ansi/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/alignString.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/alignString.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/alignString.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/alignString.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/alignString.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/alignString.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/alignTableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/alignTableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/alignTableData.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/alignTableData.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/alignTableData.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/alignTableData.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateCellHeight.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateCellHeight.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateCellWidthIndex.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateCellWidthIndex.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateCellWidthIndex.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateCellWidthIndex.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateMaximumColumnWidthIndex.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateMaximumColumnWidthIndex.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateRowHeightIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateRowHeightIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateRowHeightIndex.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateRowHeightIndex.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/calculateRowHeightIndex.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/calculateRowHeightIndex.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/createStream.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/createStream.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/createStream.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/createStream.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/createStream.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/createStream.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawBorder.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawBorder.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawBorder.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawBorder.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawRow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawRow.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawRow.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawRow.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawRow.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawTable.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawTable.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/drawTable.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/drawTable.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/getBorderCharacters.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/getBorderCharacters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/getBorderCharacters.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/getBorderCharacters.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/getBorderCharacters.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/getBorderCharacters.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/index.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/index.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/index.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/makeConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/makeConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/makeConfig.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/makeConfig.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/makeConfig.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/makeConfig.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/makeStreamConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/makeStreamConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/makeStreamConfig.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/makeStreamConfig.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/makeStreamConfig.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/makeStreamConfig.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/mapDataUsingRowHeightIndex.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/mapDataUsingRowHeightIndex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/mapDataUsingRowHeightIndex.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/mapDataUsingRowHeightIndex.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/mapDataUsingRowHeightIndex.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/mapDataUsingRowHeightIndex.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/padTableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/padTableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/padTableData.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/padTableData.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/padTableData.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/padTableData.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/stringifyTableData.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/stringifyTableData.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/table.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/table.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/table.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/table.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/truncateTableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/truncateTableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/truncateTableData.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/truncateTableData.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/truncateTableData.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/truncateTableData.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateConfig.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateConfig.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateConfig.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateConfig.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateStreamConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateStreamConfig.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateTableData.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateTableData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateTableData.js.flow" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateTableData.js.flow" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/validateTableData.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/validateTableData.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/wrapCell.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/wrapCell.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/wrapString.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/wrapString.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/dist/wrapWord.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/dist/wrapWord.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/node_modules/string-width/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/node_modules/string-width/license" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/node_modules/string-width/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/node_modules/string-width/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/table/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/package.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="leaderboard-admin" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1mYYAKQMzkQ8oT1JQ9dxTHrddqX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="getUserInformation.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/server/src/getUserInformation.js" working-dir="$PROJECT_DIR$/server/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.getUserInformation.js" />
+        <item itemvalue="Node.js.getUserInformation.js" />
+        <item itemvalue="Node.js.getUserInformation.js" />
+        <item itemvalue="Node.js.getUserInformation.js" />
+        <item itemvalue="Node.js.getUserInformation.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5fe3d497-e79a-47e5-9c61-2022ea64ca22" name="Default Changelist" comment="" />
+      <created>1609671849256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1609671849256</updated>
+      <workItem from="1609671851634" duration="182959000" />
+    </task>
+    <task id="LOCAL-00001" summary="Created the Leaderboard component, the Admin page and their serverside functionality">
+      <created>1610828105554</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1610828105554</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created the chart component, added it's serverside functionality and modified the admin page">
+      <created>1611512801539</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611512801540</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Created the chart component, added it's serverside functionality and modified the admin page">
+      <created>1611512900990</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611512900990</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Connected admin page to User Information page, modified the layout of the admin page">
+      <created>1611572389392</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611572389395</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Made changes to the style in Admin and Leaderboard components">
+      <created>1611573705249</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611573705251</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added descriptions to serverside methods">
+      <created>1611598949481</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1611598949482</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added descriptions to vue components">
+      <created>1611656339961</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1611656339961</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added scrollbar to leaderboard component and other final touches">
+      <created>1611668473360</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1611668473362</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created the Leaderboard component, the Admin page and their serverside functionality" />
+    <MESSAGE value="Created the chart component, added it's serverside functionality and modified the admin page" />
+    <MESSAGE value="Connected admin page to User Information page, modified the layout of the admin page" />
+    <MESSAGE value="Made changes to the style in Admin and Leaderboard components" />
+    <MESSAGE value="Added descriptions to serverside methods" />
+    <MESSAGE value="Added descriptions to vue components" />
+    <MESSAGE value="Added scrollbar to leaderboard component and other final touches" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added scrollbar to leaderboard component and other final touches" />
+  </component>
+</project>
