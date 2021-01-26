@@ -1,3 +1,10 @@
+<!-- Module: Streams.vue
+Creation Date: 13/12/2020
+Last Edit Date:
+Authors: Magda Piesak
+Overview:
+The purpose of this component is for users to chose one of the available streams to study, play games and track their progress.
+-->
 <template>
   <div id="streams">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">

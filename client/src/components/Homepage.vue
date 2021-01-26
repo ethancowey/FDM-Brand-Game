@@ -1,3 +1,13 @@
+<!-- Module: Homepage.vue
+Creation Date: 15/12/2020
+Last Edit Date: 20/01/2020
+Authors: Magda Piesak
+Overview:
+The purpose of this component is for users to chose one of the available games to play and practice in the previously chosen
+stream. There are also links below the games which redirect the user to other components: Affinity Test, Achievements and
+Leaderboard.
+-->
+
 <template>
   <div id="homepage">
     <NavigationBar/>
