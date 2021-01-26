@@ -30,7 +30,8 @@ I have also created a method to get all user scores, this is then looped through
 
               <label>Current Password</label>
               <div class="form-group">
-                <input required id="current-password" type="password" class="form-control" placeholder="Current Password">
+                <input required id="current-password" type="password" class="form-control"
+                       placeholder="Current Password">
               </div>
               <label>New Password</label>
               <div class="form-group">

@@ -19,11 +19,11 @@ library.add(fas)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
-// Navigaiton Guard for the router
+// Navigation Guard for the router
 router.beforeEach((to, from, next) => {
   if (to.path === '/' || to.path === '/register') {
     next(true) // If user is going to one of these pages allow with no validation
-  } else if (to.path === '/adminpage' && sessionStorage.getItem('admin') === null) {
+  } else if (to.path === '/admin' && sessionStorage.getItem('admin') === null) {
     next('/') // If user tries to go to admin page and is not an admin page send them to the login page
   } else if (sessionStorage.getItem('username') !== null) {
     next(true) // If user has a username they are valid to go to these pages unless they matched the other ifs

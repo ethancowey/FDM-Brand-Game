@@ -87,7 +87,7 @@ export default {
       if (response.data.admin === 'true') { // Check the returned document is an admin
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('admin', 'true')
-        router.push('/adminpage')
+        router.push('/admin')
       } else if (response.data.username === String(document.getElementById('username').value) &&
         response.data.admin !== 'true') { // Checks user is the one returned by back-end and not an admin
         sessionStorage.setItem('username', response.data.username)
