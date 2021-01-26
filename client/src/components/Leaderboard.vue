@@ -1,3 +1,16 @@
+<!-- Module: Admin.vue
+Creation Date: 16/12/2020
+Last Edit Date:26/01/2021
+Authors: Maria Andrzejewska
+Overview:
+The purpose of this component is to provide a leaderboard to be displayed after a game is played, and in the admin page.
+This component checks if the user viewing the leaderboard is an admin and if they are, global leaderboard is shown by
+default. It's possible for an admin to change between leaderboard types using a dropdown menu. If the leaderboard is
+viewed by a public user, the dropdown is disabled and they are only shown the leaderboard for the game that was just
+played by them. Additionally, their username is highlighted to allow for easier identification of their own position
+on the leaderboard. The methods used in this component serve to display specific leaderboard data, and in the admin
+case, change the data being displayed.
+-->
 <template>
   <div id = "Leaderboard">
     <div class="container">
