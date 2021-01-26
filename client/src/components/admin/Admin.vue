@@ -15,6 +15,13 @@ information on the amount of registered users, the top scoring player and their 
           <img src="../../assets/logo.png" alt="Logo" style="width:70px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle ="collapse" ></button>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+          <li class="nav-item avatar">
+            <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
+              <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'sign-out-alt']" />
+            </a>
+          </li>
+        </ul>
       </nav>
       <div class = "header">
         <br>
@@ -81,8 +88,9 @@ export default {
 </script>
 <style>
 .chartContainer{
-  margin-right: 40px;
-  width: 600px;
+  margin-right: 2.6667em;
+  width: 40em;
+  height: 10em;
 }
 .container{
   margin-left: auto;
@@ -92,18 +100,18 @@ export default {
 .streamsContainer :hover{
   background-color: #999999;
   color: #EAEAEA;
-  border: 4px solid #999999;
+  border: 0.2666em solid #999999;
 }
 #wrapper {
   float: inside;
-  margin-top: 30px;
+  margin-top: 2em;
   display: inline-flex;
   justify-content: space-evenly;
 }
 #information {
   flex-direction: row;
   margin-right: auto;
-  margin-top: 30px;
+  margin-top: 2em;
   float: right;
   display: inline-flex;
   justify-content: space-evenly;
@@ -111,36 +119,37 @@ export default {
 }
 .streamsContainer{
   background-color: #F5F5F5;
-  margin-right: 30px;
+  margin-right: 2em;
   justify-content: center;
-  border: 3px solid dimgray;
-  border-radius: 12px;
+  border: 0.2em solid dimgray;
+  border-radius: 0.8em;
   color:black;
-  padding: 30px;
+  padding: 2em;
 }
 .button{
-  font-size: 22px;
+  font-size: 1.466em;
   color: #2c3e50;
 }
 .informationBody{
   color:dimgray;
-  font-size: 20px;
+  font-size: 1.333em;
 }
 .userInformation{
   background-color: #F5F5F5;
-  border: 3px solid dimgray;
-  border-radius: 12px;
+  border: 0.2em solid dimgray;
+  border-radius: 0.8em;
   color:black;
-  padding: 30px;
-  width: 350px;
+  padding: 0.1em;
+  width: 23.33em;
+  height: 12em;
 
 }
 #icon {
-  padding-bottom: 10px;
+  padding-bottom: 0.666em;
 }
 a:hover, a:active{
   background-color: #999999;
   color: #EAEAEA;
-  border: 4px solid #999999;
+  border: 0.266em solid #999999;
 }
 </style>
