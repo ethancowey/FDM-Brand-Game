@@ -42,7 +42,7 @@ Leaderboard.
           <a href="/test">Affinity Test</a>
         </div>
         <div class="navig" id="achvm">
-          <a href="/achievements">Achievements</a>
+          <a href="/account">Account</a>
         </div>
         <div class="navig" id="leader">
           <a href="/leaderboard">Leaderboard</a>

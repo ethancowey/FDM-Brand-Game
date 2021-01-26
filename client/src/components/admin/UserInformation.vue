@@ -11,7 +11,7 @@ obtained from the scores collection.
   <div id = "UserInformation">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
       <a id="icon" class="navbar-brand" href="#">
-        <img src="../assets/logo.png" alt="Logo" style="width:70px;">
+        <img src="../../assets/logo.png" alt="Logo" style="width:70px;">
       </a>
       <button class="navbar-toggler" type="button" data-toggle ="collapse" ></button>
     </nav>

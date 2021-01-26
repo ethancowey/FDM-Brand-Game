@@ -8,7 +8,7 @@
  */
 /* eslint-disable no-undef */
 import { mount } from '@vue/test-utils'
-import AffinityTest from '../../../client/src/components/AffinityTest'
+import AffinityTest from '../../../client/src/components/games/AffinityTest'
 
 describe('First question get correct answer then the bonus for a total of 3 points', () => {
   it('Tests the correct score additions and game ends after last question', async () => {

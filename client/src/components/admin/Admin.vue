@@ -12,7 +12,7 @@ information on the amount of registered users, the top scoring player and their 
     <div class = "admin">
       <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
         <a id="icon" class="navbar-brand" href="#">
-          <img src="../assets/logo.png" alt="Logo" style="width:70px;">
+          <img src="../../assets/logo.png" alt="Logo" style="width:70px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle ="collapse" ></button>
       </nav>
@@ -45,7 +45,7 @@ information on the amount of registered users, the top scoring player and their 
     </div>
 </template>
 <script>
-import Leaderboard from './Leaderboard'
+import Leaderboard from '../Leaderboard'
 import Chart from './Chart'
 import axios from 'axios'
 export default {

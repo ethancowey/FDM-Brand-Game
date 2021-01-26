@@ -13,12 +13,12 @@ import Register from '../components/Register'
 import MatchGame from '../components/games/MatchGame'
 import Streams from '../components/Streams'
 import TextBlocks from '../components/games/TextBlocks'
-import AffinityTest from '../components/AffinityTest'
+import AffinityTest from '../components/games/AffinityTest'
 import Account from '../components/Account'
 import Homepage from '../components/Homepage'
-import Admin from '../components/Admin'
+import Admin from '../components/admin/Admin'
 import Leaderboard from '../components/Leaderboard'
-import UserInformation from '../components/UserInformation'
+import UserInformation from '../components/admin/UserInformation'
 
 Vue.use(Router)
 

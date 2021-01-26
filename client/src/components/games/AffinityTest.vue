@@ -89,7 +89,7 @@ answered the variable quizComplete is set to true so that the message for giving
 
 <script>
 import axios from 'axios'
-import NavigationBar from './NavigationBar'
+import NavigationBar from '../NavigationBar'
 export default {
   name: 'AffinityTest',
   components: {NavigationBar},
