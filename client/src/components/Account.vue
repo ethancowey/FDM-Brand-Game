@@ -51,6 +51,7 @@ I have also created a method to get all user scores, this is then looped through
             <ul class="scores-container">
               <h3>Your High Scores:</h3>
               <br>
+<!--              loop through Scores array-->
               <li
                 v-for="score in Scores"
                 :key="score.id"
@@ -88,6 +89,7 @@ export default {
   },
   async mounted () {
     this.checkUser()
+    // axios request to get user scores from database using /api/scores
     const {data} = await axios.get('http://localhost:3000/api/scores', {
       params: {
         username: this.username
@@ -96,16 +98,21 @@ export default {
     this.Scores = data
   },
   methods: {
+    // method to check if user is a guest or not and disable change password form if so
     checkUser: function () {
+      // check if guest is set to true
       if (sessionStorage.getItem('guest') === 'true') {
+        // loops through form fields and disables
         const fields = document.getElementById('change-pass').getElementsByTagName('*')
         for (let i = 0; i < fields.length; i++) {
           fields[i].disabled = true
         }
       }
     },
+    // Resets user password
     resetPassword (response) {
       if (response.data.username === this.username) {
+        // axios request to /api/resetpass with username and confirmed password
         axios.post('http://localhost:3000/api/resetpass', {
           username: this.username,
           password: String(document.getElementById('confirmed-pass').value)
@@ -113,6 +120,7 @@ export default {
           .then((response) => {
             if (response.data.username === this.username) {
               alert('Successfully updated password')
+              // reset form
               document.getElementById('change-pass').reset()
             }
           })
@@ -120,12 +128,15 @@ export default {
         alert('Incorrect Password')
       }
     },
+    // Checks that current password entered is correct
     async checkAuth () {
+      // checks both passwords matches
       if (document.getElementById('password').value !== document.getElementById('confirmed-pass').value) {
         document.getElementById('message').style.color = 'red'
         document.getElementById('message').innerHTML = 'Passwords are not matching'
         return
       }
+      // axios login request
       axios.post('http://localhost:3000/api/auth', {
         username: this.username,
         password: String(document.getElementById('current-password').value)
