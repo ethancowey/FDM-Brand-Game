@@ -21,7 +21,7 @@ dropdown menu, a method is called to change the data being displayed, correspond
       </ul>
     </div>
     <p class="title">{{this.graphTitle}}</p>
-  <div id="chartContainer">
+  <div id="chartContainer" class="chartContainer">
     <canvas id="chart"></canvas>
   </div>
     </div>
@@ -128,6 +128,7 @@ export default {
   padding: 0.666em;
   background-color: #F5F5F5;
   height: 20em;
+  position: center;
 }
 #dropdownButton{
   font-size: 1.33em;
@@ -136,5 +137,11 @@ export default {
   background-color: transparent;
   border-color: transparent;
   color: dimgray;
+}
+.chartContainer{
+  width: 28em;
+  height: 5em;
+  right: 20em;
+  padding-left: 8em;
 }
 </style>
