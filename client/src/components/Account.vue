@@ -97,9 +97,9 @@ export default {
   },
   methods: {
     checkUser: function () {
-      if (sessionStorage.getItem('username').toLowerCase().includes('guest')) {
-        var fields = document.getElementById('change-pass').getElementsByTagName('*')
-        for (var i = 0; i < fields.length; i++) {
+      if (sessionStorage.getItem('guest') === 'true') {
+        const fields = document.getElementById('change-pass').getElementsByTagName('*')
+        for (let i = 0; i < fields.length; i++) {
           fields[i].disabled = true
         }
       }
