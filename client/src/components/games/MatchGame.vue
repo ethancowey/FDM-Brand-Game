@@ -14,6 +14,7 @@ There are also methods which are called on card click and then a method to handl
 -->
 <template>
   <div id="app">
+<!--    Import NavigationBar component-->
     <NavigationBar/>
     <div class="container">
       <br>
@@ -25,6 +26,7 @@ There are also methods which are called on card click and then a method to handl
         <div class="col-5">
             <font-awesome-icon v-on:click="resetGame" id="reset" class="fa-2x" :icon="['fas', 'redo-alt']" />
             <div class="timer">
+<!--              Import GameTimer component -->
               <GameTimer ref="timerInstance" @timeLeft = "timeExpired = $refs.timerInstance.getTime()"></GameTimer>
             </div>
         </div>
@@ -42,13 +44,16 @@ There are also methods which are called on card click and then a method to handl
         </div>
       </transition>
       <transition name="fade">
+<!--        Shows if gameFinished boolean is true-->
         <div v-if="gameFinished" class="backdrop">
           <div class="congratulations">
+<!--          Closes popup-->
             <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>CONGRATULATIONS!</h4>
               <p>You scored {{score}} points and completed the game in {{120 - timeRemaining}} seconds</p>
               <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
+<!--              Allows user to tweet score-->
               <a id="tweet" class="btn btn-out btn-square continue"
                  :href="'https://twitter.com/intent/tweet?text=I scored ' + score + ' in the Match game %23FDMCareers'">
                 Tweet #FDMCareers</a>
@@ -58,6 +63,9 @@ There are also methods which are called on card click and then a method to handl
       </transition>
       <div id="game">
         <ul class="deck" id="card-deck">
+<!-- Uses Vue to loop through questions array and adds option to change the class depending on
+          selected and matched boolean's are true
+          Onclick calls cardClicked method-->
           <li
             v-for="question in questions"
             :key="question.id"
@@ -99,48 +107,62 @@ export default {
     this.generateQuestions()
   },
   methods: {
+    // Method Called once a card is clicked
     cardClicked: function (question) {
+      // Checks the timer has started before clicking cards
       if (this.timeExpired === null) {
         return
       }
+      // stops users opening more than 2 cards
       if (this.openedCards.length === 2) {
         return
       }
+      // edits question.selected to true which sets css to the active card colour
       question.selected = true
       this.openedCards.push(question)
       if (this.openedCards.length === 2) {
+        // once second card is opened handle the match
         this.handleMatch()
       }
     },
+    // Once 2 cards are open checks if the cards match
     handleMatch: function () {
+      // increment match attempts for  score
       this.matchAttempts++
-      console.log(this.matchAttempts)
+      // if statement checks the cards have matching id's which means the card matches
+      // second part of the if statement ensures that the same card can't be matched to itself
       if (this.openedCards[0]._id === this.openedCards[1]._id && this.openedCards[0].showValue !== this.openedCards[1].showValue) {
         for (let i = 0; i <= 1; i++) {
+          // sets cards to matched and removes selected attribute
           this.openedCards[i].matched = true
           this.openedCards[i].selected = false
         }
+        // resets opened cards and increment pairsMatched
         this.openedCards = []
         this.pairsMatched++
+        // checks if all cards have been matched and calls handleWin if so
         if (this.pairsMatched === 8) {
           this.handleWin()
         }
       } else {
+        // if cards do not match calls closeCards with a delay of 400ms
         setTimeout(() => {
           this.closeCards()
         }, 400)
       }
     },
+    // method to handle win, this function will stop timer and calculate and and call submit score method
     handleWin: function () {
+      // allows game finished popup to show
       this.gameFinished = true
+      // stops timer
       this.$refs.timerInstance.stopTimer()
       this.timeRemaining = this.$refs.timerInstance.getTime()
+      // calculates score using time remaining and match attempts
       this.score = Math.round((this.timeRemaining / this.matchAttempts) * 10)
-
-      console.log(this.timeRemaining)
-      console.log(this.matchAttempts)
       this.submitScore()
     },
+    // uses axios request to post score to /api/scores to add to database
     submitScore: function () {
       axios.post('http://localhost:3000/api/scores', {
         username: sessionStorage.getItem('username'),
@@ -149,59 +171,80 @@ export default {
         score: this.score
       })
         .then((response) => {
-          console.log(response)
+          // console.log(response)
         })
     },
+    // method to close cards , removes selected attribute and resets openedCards array
     closeCards: function () {
       for (let i = 0; i <= 1; i++) {
         this.openedCards[i].selected = false
       }
       this.openedCards = []
     },
+    // method to reset the game
     resetGame: function () {
+      // stops timer
       this.$refs.timerInstance.stopTimer()
+      // generates new question set
       this.generateQuestions()
+      // resets all global variables
       this.pairsMatched = 0
       this.openedCards = []
       this.timeExpired = 1
       this.matchAttempts = 0
     },
+    // shuffles array
     shuffle: function (array) {
       let currentIndex = array.length
       let tempVal
       let randomIndex
+      // randomly shuffles until  currentIndex is the first index
       while (currentIndex !== 0) {
+        // creates random index with Math.random
         randomIndex = Math.floor(Math.random() * currentIndex)
         currentIndex -= 1
+        // makes 3 way swap
         tempVal = array[currentIndex]
         array[currentIndex] = array[randomIndex]
         array[randomIndex] = tempVal
       }
       return array
     },
+    // This method generates the questions and sets up object array for questions
     generateQuestions: async function () {
+      // axios request to api/questions with parameter stream to get objects
       const {data} = await axios.get('http://localhost:3000/api/questions', {
         params: {
           streams: sessionStorage.getItem('stream')
         }
       })
+      // assigns object array to this.questions
+      // Shuffles full object list to ensure all questions from the database get utilised
+      // adds attributes selected and matched set to false
+      // then gets the first 8 objects from this array
       this.questions = this.shuffle(data.map((q) => ({
         ...q,
         selected: false,
         matched: false
       }))).slice(0, 8)
 
+      // Duplicates this.Questions, making sure it is cloned byRef not byVal
       for (let i = 0; i < 8; i++) {
         this.questions.push(Object.assign({}, this.questions[i]))
       }
+      // adds showValue attribute to each object in this.questions array
       for (let i = 0; i < 16; i++) {
+        // First 8 will have terms assigned to showValue
         if (i < 8) {
           this.questions[i].showValue = this.questions[i].term
         } else {
+          // second 8 (the cloned objects) assigned meanings to showValue
           this.questions[i].showValue = this.questions[i].meaning
         }
       }
+      // shuffles the 16 objects so that terms and meanings and mixed up
       this.shuffle(this.questions)
+      // starts timer
       this.$refs.timerInstance.startTimer()
     }
   }
