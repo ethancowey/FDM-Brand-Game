@@ -7,7 +7,7 @@ In this document
 * Admin Login Details
 * Technologies Used
 
-Running the Back-
+Running the Back-end
 -
 You will need node.js installed to use npm to run the application.
 
