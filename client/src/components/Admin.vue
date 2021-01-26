@@ -32,11 +32,11 @@ information on the amount of registered users, the top scoring player and their 
                 <a class = "button" href="/streams" >Browse Streams</a>
               </div>
               <div class="userInformation">
-                <a class = "button" href = "/userinformation"> User Information
+                <a class = "button" href = "/userInformation"> User Information
                   <font-awesome-icon class="fa-users" :icon="['fas', 'users']" /></a><br>
                 <p class = "informationBody"> Registered users: {{Users.length}} </p>
-                <p class = "informationBody"> Best user: {{TopUser[0]._id}} </p>
-                <p class = "informationBody"> Total points: {{TopUser[0].score}} </p>
+                <p class = "informationBody"> Top user: {{TopUser[0]._id}} </p>
+                <p class = "informationBody"> Top user total: {{TopUser[0].score}} </p>
               </div>
             </div>
           </div>
@@ -70,6 +70,7 @@ export default {
     axios.get('http://localhost:3000/api/getUsers')
       .then((response) => {
         this.Users = response.data
+        console.log(this.Users)
       })
     axios.get('http://localhost:3000/api/getTopUser')
       .then((response) => {
@@ -85,6 +86,8 @@ export default {
 }
 .container{
   margin-left: auto;
+  height:auto;
+  overflow-y: scroll;
 }
 .streamsContainer :hover{
   background-color: #999999;
@@ -140,5 +143,4 @@ a:hover, a:active{
   color: #EAEAEA;
   border: 4px solid #999999;
 }
-
 </style>

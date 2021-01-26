@@ -62,5 +62,10 @@ export default {
 }
 </script>
 <style scoped>
-
+.container{
+  max-width:100%;
+  max-height:100%;
+  overflow: auto;
+  position: fixed;
+}
 </style>

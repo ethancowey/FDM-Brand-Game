@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fe3d497-e79a-47e5-9c61-2022ea64ca22" name="Default Changelist" comment="Added descriptions to vue components">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Admin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Admin.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Leaderboard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Leaderboard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserInformation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserInformation.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/code-frame/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/@babel/helper-validator-identifier/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/@babel/helper-validator-identifier/README.md" afterDir="false" />
@@ -110,6 +116,10 @@
       <change beforePath="$PROJECT_DIR$/server/node_modules/table/node_modules/string-width/package.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/table/node_modules/string-width/readme.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/server/node_modules/table/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/table/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/getLeaderboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/getLeaderboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/getStreamsGraph.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/getStreamsGraph.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/getTopUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/getTopUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/getUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/getUsers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

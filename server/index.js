@@ -23,6 +23,12 @@ const resetPass = require('./src/resetPassword')
 const retrieveUsersScore = require('./src/retrieveUsersScore')
 const updateScore = require('./src/updateScore')
 const retrieveTests = require('./src/retrieveTest')
+const getUserInformation = require('./src/getUserInformation')
+const getUsersGraph = require('./src/getUsersGraph')
+const getStreamsGraph = require('./src/getStreamsGraph')
+const getScores = require('./src/getLeaderboard')
+const getTopUser = require('./src/getTopUser')
+const getUsers = require('./src/getUsers')
 const app = express()
 // const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
@@ -61,7 +67,6 @@ app.post('/api/resetpass', async (req, res) => {
   res.send(updatePassword)
 })
 
-
 app.get('/api/questions', async (req, res) => {
   const streams = req.query.streams
   const question = await retrieveQuestions.getQuestion(streams, req, res)
@@ -89,6 +94,32 @@ app.post('/api/scores', async (req, res) => {
   })
   const addScore = updateScore.changeScore(newScore)
   res.send(addScore)
+})
+app.get('/api/getLeaderboard', async (req, res) => {
+  const stream = req.query.stream
+  const game = req.query.game
+  const leaderboard = await getScores.getScores(game, stream, req, res)
+  res.send(leaderboard)
+})
+app.get('/api/getStreamsGraph', async (req, res) => {
+  const streamsGraph = await getStreamsGraph.getStreamsGraph(req, res)
+  res.send(streamsGraph)
+})
+app.get('/api/getUsersGraph', async (req, res) => {
+  const usersGraph = await getUsersGraph.getUsersGraph(req, res)
+  res.send(usersGraph)
+})
+app.get('/api/getUserInformation', async (req, res) => {
+  const userInformation = await getUserInformation.getUserInformation(req, res)
+  res.send(userInformation)
+})
+app.get('/api/getTopUser', async (req, res) => {
+  const topUser = await getTopUser.getTopUser(req, res)
+  res.send(topUser)
+})
+app.get('/api/getUsers', async (req, res) => {
+  const users = await getUsers.getUsers(req, res)
+  res.send(users)
 })
 
 const port = process.env.PORT || 3000

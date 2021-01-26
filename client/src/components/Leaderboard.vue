@@ -83,7 +83,7 @@ export default {
       }
     },
     changeData: function (stream, game, name) {
-      axios.get('http://localhost:3000/api/scores', {
+      axios.get('http://localhost:3000/api/getLeaderboard', {
         params: {
           game,
           stream
@@ -110,6 +110,8 @@ export default {
 </script>
 <style scoped>
 #Leaderboard .container{
+  max-height: 800px;
+  overflow-y: scroll;
   width: 700px;
   border-radius: 25px;
   background: #F5F5F5;

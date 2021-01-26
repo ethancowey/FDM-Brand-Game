@@ -36,5 +36,5 @@ export default new Router({
     { path: '/home', component: Homepage },
     {path: '/leaderboard', component: Leaderboard},
     {path: '/admin', component: Admin},
-    {path: 'userInformation', component: UserInformation}
+    {path: '/userInformation', component: UserInformation}
   ]})
