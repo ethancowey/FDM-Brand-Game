@@ -14,6 +14,13 @@ obtained from the scores collection.
         <img src="../../assets/logo.png" alt="Logo" style="width:70px;">
       </a>
       <button class="navbar-toggler" type="button" data-toggle ="collapse" ></button>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item avatar">
+          <a class="nav-link p-0" href="/" onclick="sessionStorage.clear()">
+            <font-awesome-icon class="nav-icon fa-3x" :icon="['fas', 'sign-out-alt']" />
+          </a>
+        </li>
+      </ul>>
     </nav>
     <div class="container">
       <h3 class="p-3 text-center">Registered User Information</h3>

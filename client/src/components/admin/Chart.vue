@@ -116,22 +116,23 @@ export default {
 </script>
 <style scoped>
 .title{
-  font-size:25px;
+  font-size:1.66em;
 }
 .dropdown-menu{
-  font-size: 20px;
+  font-size: 1.33em;
   background-color: #F5F5F5;
 }
 .container{
-  border: 3px solid dimgray;
-  border-radius: 12px;
-  padding: 10px;
+  border: 0.2em solid dimgray;
+  border-radius: 0.8em;
+  padding: 0.666em;
   background-color: #F5F5F5;
+  height: 20em;
 }
 #dropdownButton{
-  font-size: 20px;
-  padding-top: 5px;
-  padding-bottom: 4px;
+  font-size: 1.33em;
+  padding-top: 0.33em;
+  padding-bottom: 0.266em;
   background-color: transparent;
   border-color: transparent;
   color: dimgray;

@@ -110,31 +110,31 @@ export default {
 </script>
 <style scoped>
 #Leaderboard .container{
-  max-height: 800px;
+  max-height: 35em;
   overflow-y: scroll;
-  width: 700px;
-  border-radius: 25px;
+  width: 46em;
+  border-radius: 1.66em;
   background: #F5F5F5;
-  border: 3px solid dimgray;
-  padding:10px;
+  border: 0.2em solid dimgray;
+  padding:0.66em;
 }
 .table{
-  padding-bottom: 20px;
+  padding-bottom: 1.66em;
 }
 .title{
-  font-size: 25px;
+  font-size: 1.66em;
 }
 .dropdown #dropdownButton{
   color: dimgray;
   background-color: transparent;
   border-color: transparent;
-  font-size: 20px;
+  font-size: 1.33em;
 }
 .dropdown-menu {
   background-color: #F5F5F5;
 }
 .dropdown-item{
-  font-size: 20px;
+  font-size: 1.33em;
 }
 .dropdown-submenu {
   position: relative;
@@ -145,12 +145,12 @@ export default {
   background-color: #F5F5F5;
   top: 0;
   left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  -webkit-border-radius: 0 6px 6px 6px;
-  -moz-border-radius: 0 6px 6px;
-  border-radius: 0 6px 6px 6px;
-  font-size:20px;
+  margin-top: -0.4em;
+  margin-left: -0.066em;
+  -webkit-border-radius: 0 0.4em 0.4em 0.4em;
+  -moz-border-radius: 0 0.4em 6px;
+  border-radius: 0 0.4em 0.4em 0.4em;
+  font-size:1.66em;
 }
 .dropdown-submenu:hover>.dropdown-menu {
   display: block;
@@ -164,10 +164,10 @@ export default {
   height: 0;
   border-color: transparent;
   border-style: solid;
-  border-width: 5px 0 5px 5px;
+  border-width: 0.33em 0 0.33em 0.33em;
   border-left-color: #ccc;
-  margin-top: 5px;
-  margin-right: -10px;
+  margin-top: 0.33em;
+  margin-right: -0.66em;
 }
 
 .dropdown-submenu:hover>a:after {
@@ -179,10 +179,10 @@ export default {
 
 .dropdown-submenu.pull-left>.dropdown-menu {
   left: -100%;
-  margin-left: 10px;
-  -webkit-border-radius: 6px 0 6px 6px;
-  -moz-border-radius: 6px 0 6px 6px;
-  border-radius: 6px 0 6px 6px;
+  margin-left: 0.66em;
+  -webkit-border-radius: 0.4em 0 0.4em 0.4em;
+  -moz-border-radius: 0.4em 0 0.4em 0.4em;
+  border-radius: 0.4em 0 0.4em 0.4em;
 }
 
 </style>

@@ -21,7 +21,7 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 1vmax;
+  font-size: 2vmin;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -124,5 +124,16 @@ h4{
   top: 50%;
   float: left;
   cursor:pointer;
+}
+.nav-item {
+  font-weight: bold;
+}
+.user-circle {
+  color: white;
+  size: 4em;
+}
+.nav-icon {
+  color: white;
+  size: 4em;
 }
 </style>
