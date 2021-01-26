@@ -11,7 +11,7 @@
  * if that username exists using res.send(doc) based on the result of this method.
  */
 const mongoose = require('mongoose')
-const UserAccount = require('./constructors/user') // Constructor for User Account collection in the database
+const UserAccount = require('../constructors/user') // Constructor for User Account collection in the database
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
 async function isUsernameUnique (username) {

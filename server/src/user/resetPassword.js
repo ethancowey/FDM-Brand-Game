@@ -8,7 +8,7 @@
  */
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
-const UserAccount = require('./constructors/user') // Constructor for User Account collection in the database
+const UserAccount = require('../constructors/user') // Constructor for User Account collection in the database
 
 async function updatePass (hash, username) {
   mongoose.connect(uriMongo, {
@@ -20,13 +20,12 @@ async function updatePass (hash, username) {
     .then()
   await UserAccount.updateOne({ username: username }, { password: hash })
   const loggedIn = await UserAccount.findOne({ username: username, password: hash })
-      .select('-password') // Excludes password from result so it is not sent to front-end
-      .then(result => {
-        console.log(result)
-        return result
-      })
+    .select('-password') // Excludes password from result so it is not sent to front-end
+    .then(result => {
+      console.log(result)
+      return result
+    })
   return loggedIn
-
 }
 
 module.exports.updatePass = updatePass

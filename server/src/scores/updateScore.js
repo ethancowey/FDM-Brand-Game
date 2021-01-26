@@ -11,7 +11,7 @@
  */
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
-const Scores = require('./constructors/scores')
+const Scores = require('../constructors/scores')
 
 async function changeScore (latestScore) {
   mongoose.connect(uriMongo, {

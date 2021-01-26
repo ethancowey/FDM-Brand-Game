@@ -12,8 +12,8 @@
  */
 const mongoose = require('mongoose')
 const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
-const Users = require('./getUsers')
-const Scores = require('./getTopUser')
+const Users = require('../scores/getUsers')
+const Scores = require('../scores/getTopUser')
 async function getUsersGraph () {
   mongoose.connect(uriMongo, {
     useNewUrlParser: true,

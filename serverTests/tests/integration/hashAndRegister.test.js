@@ -9,8 +9,8 @@
  */
 /* eslint-disable no-undef */
 const mongoose = require('mongoose')
-const hash = require('../../../server/src/hash.js')
-const register = require('../../../server/src/register')
+const hash = require('../../../server/src/user/hash.js')
+const register = require('../../../server/src/user/register')
 const UserAccount = require('../../../server/src/constructors/user')
 
 test('Testing hashing and inserting an account', async () => {

@@ -8,8 +8,8 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const hash = require('../../../server/src/hash.js')
-const loginAuthentication = require('../../../server/src/loginAuthentication')
+const hash = require('../../../server/src/user/hash.js')
+const loginAuthentication = require('../../../server/src/user/loginAuthentication')
 
 test('Testing hashing and login to a valid account', async () => {
   const usersHash = hash.hashing('IntName', 'IntTest')

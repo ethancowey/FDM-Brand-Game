@@ -5,7 +5,7 @@
  * Authors: Miles Prosser
  */
 /* eslint-disable no-undef */
-const resetPassword = require('../../../server/src/resetPassword.js')
+const resetPassword = require('../../../server/src/user/resetPassword.js')
 
 test('Testing a valid username and hash', async () => {
     const updatePasswordSuccess = await resetPassword.updatePass(

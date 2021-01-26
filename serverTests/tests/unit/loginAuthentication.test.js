@@ -10,7 +10,7 @@
  * @jest-environment node
  */
 /* eslint-disable no-undef */
-const loginAuthentication = require('../../../server/src/loginAuthentication.js')
+const loginAuthentication = require('../../../server/src/user/loginAuthentication.js')
 
 test('Testing a valid username and hash', async () => {
   const correctLogin = await loginAuthentication.validLogin(
