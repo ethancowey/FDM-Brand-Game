@@ -1,3 +1,13 @@
+<!-- Module: Admin.vue
+Creation Date: 17/12/2020
+Last Edit Date:26/01/2021
+Authors: Maria Andrzejewska
+Overview:
+The purpose of this component is for admins to be able to view any leaderboards, as well as graphs depicting stream
+performance and the ratio of registered users to guests using the web app. In addition, there is also a button that
+redirects the admin to the streams page, so that they can browse their content. There methods are used to display
+information on the amount of registered users, the top scoring player and their score.
+-->
 <template>
     <div class = "admin">
       <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">

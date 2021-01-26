@@ -1,3 +1,13 @@
+<!-- Module: Admin.vue
+Creation Date: 18/01/2020
+Last Edit Date:26/01/2021
+Authors: Maria Andrzejewska
+Overview:
+The purpose of this component is to generate graphs displaying information on the user types and stream performance.
+A dropdown menu is implemented in this component, to allow for intuitive changing between the two available graphs. By
+default, the graph displaying the ratio of registered users to guest users will be shown. By clicking any option on the
+dropdown menu, a method is called to change the data being displayed, correspondingly to the chosen option.
+-->
 <template>
   <div class="container">
     <div class="dropdown">

@@ -1,3 +1,12 @@
+<!-- Module: Admin.vue
+Creation Date: 27/12/2020
+Last Edit Date:26/01/2021
+Authors: Maria Andrzejewska
+Overview:
+The purpose of this component is to display all available information on the registered users in a table format. It
+uses a method that returns information stored in the useraccounts collection and the total points scored by those users,
+obtained from the scores collection.
+-->
 <template>
   <div id = "UserInformation">
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark bg-dark lighten-1 sticky-top">
