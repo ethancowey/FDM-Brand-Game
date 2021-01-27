@@ -132,7 +132,8 @@ export default {
       this.matchAttempts++
       // if statement checks the cards have matching id's which means the card matches
       // second part of the if statement ensures that the same card can't be matched to itself
-      if (this.openedCards[0]._id === this.openedCards[1]._id && this.openedCards[0].showValue !== this.openedCards[1].showValue) {
+      if (this.openedCards[0]._id === this.openedCards[1]._id &&
+        this.openedCards[0].showValue !== this.openedCards[1].showValue) {
         for (let i = 0; i <= 1; i++) {
           // sets cards to matched and removes selected attribute
           this.openedCards[i].matched = true
