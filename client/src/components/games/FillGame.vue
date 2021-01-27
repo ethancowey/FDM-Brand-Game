@@ -66,11 +66,11 @@ mounted() function which is getting data from database. Also there is a che
           <p>{{questTerm6}}: {{questBlank6}}<br></p>
           <p>{{questTerm7}}: {{questBlank7}}<br></p>
           <p>{{questTerm8}}: {{questBlank8}}<br></p>
-          <p class="text-center text-dark"><b>WORDS TO USE:</b></p>
-          <h3 class="text-center text-dark">{{shuffledArray[0]}}, {{shuffledArray[1]}}, {{shuffledArray[2]}},
+          <p class="text-center"><b>WORDS TO USE:</b></p>
+          <h4 class="text-center">{{shuffledArray[0]}}, {{shuffledArray[1]}}, {{shuffledArray[2]}},
             {{shuffledArray[3]}}, {{shuffledArray[4]}}, {{shuffledArray[5]}}, {{shuffledArray[6]}},
             {{shuffledArray[7]}}, {{shuffledArray[8]}}, {{shuffledArray[9]}}, {{shuffledArray[10]}},
-            {{shuffledArray[11]}}</h3><br>
+            {{shuffledArray[11]}}</h4><br>
           <form id="blankInput" class="blank">
             <div class="form-group" v-on:submit.prevent="checkblank">
               <label class="text-dark">1: <input id="blank1"></label><br>
@@ -80,9 +80,8 @@ mounted() function which is getting data from database. Also there is a che
               <label class="text-dark">5: <input id="blank5"></label><br>
               <label class="text-dark">6: <input id="blank6"></label><br>
               <label class="text-dark">7: <input id="blank7"></label><br>
-              <label class="text-dark">8: <input id="blank8"></label><br><br>
+              <label class="text-dark">8: <input id="blank8"></label><br>
               <label class="text-dark">There are more words than needed. You don't have to use all of them.</label><br>
-              <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit" onclick="checkblank()">
             </div>
           </form>
         </div>
@@ -273,7 +272,7 @@ export default {
           })
         // If there is a mistake, gameover
       } if (this.mistakeX === true) {
-        this.gameOver = true
+        console.log(this.gameOver)
       }
     }
   }
@@ -286,19 +285,32 @@ export default {
   width: 70%;
   height: 70%;
   border: solid darkblue;
-  border-radius: 10px;
+  border-radius: 0.66em;
   position: absolute;
   left: 50%;
   top: 55%;
   transform: translate(-50%, -50%);
-  font-size: 15pt;
 }
 a {
   color: #2c3e50;
 }
 p {
   line-height: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 0.1em;
 }
-
+.form-control{
+  padding: 0.5em;
+  height: 2.5em;
+  font-size: 1em;
+}
+.form-group{
+  padding: 0.5em;
+  height: 1em;
+  font-size: 1em;
+}
+.text-dark{
+  padding: 0.1em;
+  height: 1em;
+  font-size: 1em;
+}
 </style>

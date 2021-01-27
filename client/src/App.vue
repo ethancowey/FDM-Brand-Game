@@ -19,9 +19,18 @@ export default {
 </script>
 
 <style>
+@media screen and (min-width: 2000px){
+  html{
+    font-size: 4vmin;
+  }
+}
+@media screen and (max-width: 2000px){
+  html{
+    font-size: 2vmin;
+  }
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  font-size: 1vmax;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
