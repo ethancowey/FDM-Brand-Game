@@ -172,8 +172,7 @@ export default {
         stream: sessionStorage.getItem('stream'),
         score: this.score
       })
-        .then((response) => {
-          // console.log(response)
+        .then(() => {
         })
     },
     // method to close cards , removes selected attribute and resets openedCards array

@@ -137,8 +137,7 @@ export default {
           stream: sessionStorage.getItem('stream'),
           score: score
         })
-          .then((response) => {
-            console.log(response)
+          .then(() => {
           })
       }
     }
