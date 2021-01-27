@@ -104,6 +104,7 @@ export default {
     }
   },
   mounted () {
+    sessionStorage.setItem('game', 'match')
     this.generateQuestions()
   },
   methods: {

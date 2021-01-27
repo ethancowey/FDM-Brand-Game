@@ -16,7 +16,8 @@ case, change the data being displayed.
     <NavigationBar v-if="Admin === false"></NavigationBar>
     <div class="container">
           <div class="dropdown" v-if="Admin">
-              <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ this.leaderBoardType }}
+              <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                {{ this.leaderBoardType }}
                 <span class="caret"></span></button>
               <ul class="dropdown-menu multi-level">
                 <li>
@@ -40,7 +41,8 @@ case, change the data being displayed.
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(score, index) in Data" :key="score.username" :style="{background: score.username === locateUser? '#add8e6' : ''}">
+        <tr v-for="(score, index) in Data"
+            :key="score.username" :style="{background: score.username === locateUser? '#add8e6' : ''}">
           <td v-if="index === 0"> <font-awesome-icon class="fa-trophy" :icon="['fas', 'trophy']"/> {{index+1}}</td>
           <td v-else>{{index+1}}</td>
           <td v-if="Admin && Global">{{score._id}}</td>
