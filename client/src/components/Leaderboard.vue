@@ -42,7 +42,7 @@ case, change the data being displayed.
         </thead>
         <tbody>
         <tr v-for="(score, index) in Data"
-            :key="score.username" :style="{background: score.username === locateUser? '#add8e6' : ''}">
+            :key="score.username" :style="{background: score.username === locateUser? '#89C2D9' : ''}">
           <td v-if="index === 0"> <font-awesome-icon class="fa-trophy" :icon="['fas', 'trophy']"/> {{index+1}}</td>
           <td v-else>{{index+1}}</td>
           <td v-if="Admin && Global">{{score._id}}</td>
