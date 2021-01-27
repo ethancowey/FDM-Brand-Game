@@ -35,7 +35,7 @@ It can be referenced and used in html code using <NavigationBar>
           <a class="nav-link" href="/blocks">Text Block</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Fill the Blanks</a>
+          <a class="nav-link" href="/fill">Fill the Blanks</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/test">Affinity Test</a>

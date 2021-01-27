@@ -14,6 +14,7 @@ import MatchGame from '../components/games/MatchGame'
 import Streams from '../components/Streams'
 import TextBlocks from '../components/games/TextBlocks'
 import AffinityTest from '../components/games/AffinityTest'
+import FillGame from '../components/games/FillGame'
 import Account from '../components/Account'
 import Homepage from '../components/Homepage'
 import Admin from '../components/admin/Admin'
@@ -37,4 +38,5 @@ export default new Router({
     {path: '/leaderboard', component: Leaderboard},
     {path: '/admin', component: Admin},
     {path: '/userInformation', component: UserInformation}
+    {path: '/fill', component: FillGame}
   ]})
