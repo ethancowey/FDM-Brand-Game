@@ -43,7 +43,6 @@ app.post('/api/auth', async (req, res) => {
 })
 
 app.post('/api/exists', async (req, res) => {
-  console.log('posted')// adds all user details so they can be compared with front end
   const exists = await usernameExist.isUsernameUnique(req.body.username, req, res)
   res.send(exists)
 })
@@ -55,7 +54,8 @@ app.post('/api/register', async (req, res) => {
     lastname: req.body.lastname,
     username: req.body.username,
     password: hash,
-    email: req.body.email
+    email: req.body.email,
+    admin: 'false'
   })
   const addUser = await register.addUser(newUser)
   res.send(addUser)
