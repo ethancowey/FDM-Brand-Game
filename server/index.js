@@ -30,20 +30,18 @@ const getScores = require('./src/scores/getLeaderboard')
 const getTopUser = require('./src/scores/getTopUser')
 const getUsers = require('./src/scores/getUsers')
 const app = express()
-// const uriMongo = 'mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority'
 
 app.use(bodyParser.json())
 app.use(cors())
 
 app.post('/api/auth', async (req, res) => {
-  // adds all user details so they can be compared with front end
   const hash = hashMethod.hashing(req.body.username, req.body.password)
-  const userAuthorised = await loginAuthentication.validLogin(hash, req.body.username)
+  const userAuthorised = await loginAuthentication.validLogin(hash, req.body.username) // checks if user login is valid
   res.send(userAuthorised)
 })
 
 app.post('/api/exists', async (req, res) => {
-  const exists = await usernameExist.isUsernameUnique(req.body.username, req, res)
+  const exists = await usernameExist.isUsernameUnique(req.body.username, req, res) // checks username is unique
   res.send(exists)
 })
 
@@ -57,7 +55,7 @@ app.post('/api/register', async (req, res) => {
     email: req.body.email,
     admin: 'false'
   })
-  const addUser = await register.addUser(newUser)
+  const addUser = await register.addUser(newUser) // Registers a new user
   res.send(addUser)
 })
 
@@ -98,29 +96,29 @@ app.post('/api/scores', async (req, res) => {
     stream: req.body.stream,
     score: req.body.score
   })
-  const addScore = updateScore.changeScore(newScore)
+  const addScore = updateScore.changeScore(newScore) // updates a user score
   res.send(addScore)
 })
 app.get('/api/getLeaderboard', async (req, res) => {
   const stream = req.query.stream
   const game = req.query.game
-  const leaderboard = await getScores.getScores(game, stream, req, res)
+  const leaderboard = await getScores.getScores(game, stream, req, res) // gets all user scores
   res.send(leaderboard)
 })
 app.get('/api/getStreamsGraph', async (req, res) => {
-  const streamsGraph = await getStreamsGraph.getStreamsGraph(req, res)
+  const streamsGraph = await getStreamsGraph.getStreamsGraph(req, res) // gets graph information
   res.send(streamsGraph)
 })
 app.get('/api/getUsersGraph', async (req, res) => {
-  const usersGraph = await getUsersGraph.getUsersGraph(req, res)
+  const usersGraph = await getUsersGraph.getUsersGraph(req, res) // gets graph information
   res.send(usersGraph)
 })
 app.get('/api/getUserInformation', async (req, res) => {
-  const userInformation = await getUserInformation.getUserInformation(req, res)
+  const userInformation = await getUserInformation.getUserInformation(req, res) // gets user information
   res.send(userInformation)
 })
 app.get('/api/getTopUser', async (req, res) => {
-  const topUser = await getTopUser.getTopUser(req, res)
+  const topUser = await getTopUser.getTopUser(req, res) // gets top user information
   res.send(topUser)
 })
 app.get('/api/getUsers', async (req, res) => {

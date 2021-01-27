@@ -105,8 +105,8 @@ export default {
       })
     },
     clearCanvas: function () {
-      document.getElementById('chartContainer').innerHTML = ''
-      document.getElementById('chartContainer').innerHTML = '<canvas id="chart"></canvas>'
+      document.getElementById('chart-container').innerHTML = ''
+      document.getElementById('chart-container').innerHTML = '<canvas id="chart"></canvas>'
     }
   },
   mounted () {
