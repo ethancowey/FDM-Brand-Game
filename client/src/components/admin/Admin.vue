@@ -81,6 +81,9 @@ export default {
 }
 </script>
 <style>
+.admin{
+  font-size: 0.9vmax;
+}
 .chart-container{
   margin-right: 2.6667em;
   width: 40em;
