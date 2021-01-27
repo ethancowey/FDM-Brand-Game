@@ -11,7 +11,8 @@ dropdown menu, a method is called to change the data being displayed, correspond
 <template>
   <div class="container">
     <div class="dropdown">
-      <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ this.graphType }}
+      <button id="dropdown-button" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+        {{ this.graphType }}
         <span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li>
@@ -21,7 +22,7 @@ dropdown menu, a method is called to change the data being displayed, correspond
       </ul>
     </div>
     <p class="title">{{this.graphTitle}}</p>
-  <div id="chartContainer" class="chartContainer">
+  <div id="chart-container" class="chart-container">
     <canvas id="chart"></canvas>
   </div>
     </div>
@@ -130,7 +131,7 @@ export default {
   height: 20em;
   position: center;
 }
-#dropdownButton{
+#dropdown-button{
   font-size: 1.33em;
   padding-top: 0.33em;
   padding-bottom: 0.266em;
@@ -138,7 +139,7 @@ export default {
   border-color: transparent;
   color: dimgray;
 }
-.chartContainer{
+.chart-container{
   width: 28em;
   height: 5em;
   right: 20em;
