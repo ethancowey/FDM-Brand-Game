@@ -45,7 +45,7 @@ case, change the data being displayed.
             :key="score.username" :style="{background: score.username === locateUser? '#89C2D9' : ''}">
           <td v-if="index === 0"> <font-awesome-icon class="fa-trophy" :icon="['fas', 'trophy']"/> {{index+1}}</td>
           <td v-else>{{index+1}}</td>
-          <td v-if="Admin && Global">{{score._id}}</td>
+          <td v-if="Global">{{score._id}}</td>
           <td v-else>{{score.username}}</td>
           <td>{{score.score}}</td>
         </tr>
