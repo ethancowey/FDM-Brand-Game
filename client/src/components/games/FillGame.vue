@@ -72,7 +72,7 @@ mounted() function which is getting data from database. Also there is a che
             {{shuffledArray[7]}}, {{shuffledArray[8]}}, {{shuffledArray[9]}}, {{shuffledArray[10]}},
             {{shuffledArray[11]}}</h3><br>
           <form id="blankInput" class="blank">
-            <div class="form-group">
+            <div class="form-group" v-on:submit.prevent="checkblank">
               <label class="text-dark">1: <input id="blank1"></label><br>
               <label class="text-dark">2: <input id="blank2"></label><br>
               <label class="text-dark">3: <input id="blank3"></label><br>
@@ -82,7 +82,7 @@ mounted() function which is getting data from database. Also there is a che
               <label class="text-dark">7: <input id="blank7"></label><br>
               <label class="text-dark">8: <input id="blank8"></label><br><br>
               <label class="text-dark">There are more words than needed. You don't have to use all of them.</label><br>
-              <input type="submit" name="Check" class="btn btn-dark btn-md" value="Check" onsubmit="checkblank()">
+              <input type="submit" name="submit" class="btn btn-dark btn-md" value="submit" onclick="checkblank()">
             </div>
           </form>
         </div>
@@ -152,8 +152,6 @@ export default {
           this.questCorrect6 = response.data[6].correct
           this.questCorrect7 = response.data[7].correct
           this.questCorrect8 = response.data[8].correct
-
-
           this.correctArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
             this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8]
           this.shuffledArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
@@ -237,6 +235,7 @@ export default {
           this.shuffledArray[randomIndex] = temp
         }
       })
+    setInterval(this.checkblank, 1000)
   },
   methods: {
     // A method for checking the input fields
@@ -251,6 +250,7 @@ export default {
         document.getElementById('blank6').value === this.questCorrect6 &&
         document.getElementById('blank7').value === this.questCorrect7 &&
         document.getElementById('blank8').value === this.questCorrect8) {
+        clearInterval(this.checkblank)
         // If all match, there is no mistake
         this.mistakeX = false
       }

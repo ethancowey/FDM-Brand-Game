@@ -33,10 +33,10 @@ export default new Router({
     { path: '/blocks', component: TextBlocks },
     { path: '/streams', component: Streams },
     { path: '/account', component: Account },
-    { path: '/test', component: AffinityTest},
+    {path: '/test', component: AffinityTest},
     { path: '/home', component: Homepage },
-    { path: '/leaderboard', component: Leaderboard},
-    { path: '/admin', component: Admin},
-    { path: '/userInformation', component: UserInformation},
-    { path: '/fill', component: FillGame}
+    {path: '/leaderboard', component: Leaderboard},
+    {path: '/admin', component: Admin},
+    {path: '/userInformation', component: UserInformation},
+    {path: '/fill', component: FillGame}
   ]})
