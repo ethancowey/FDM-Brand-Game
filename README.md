@@ -57,6 +57,12 @@ Username: Admin
 
 Password: Admin1
 
+Second set of credentials below
+
+Username: admin2
+
+Password: admin2
+
 User Account
 -
 You can create your own user account on the registration page to use to login. 

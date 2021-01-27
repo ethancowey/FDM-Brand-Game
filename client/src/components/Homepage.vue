@@ -24,7 +24,7 @@ Leaderboard.
           </a>
         </div>
         <div class="game" id="game2">
-          <a href="/game2">
+          <a href="/fill">
             <img src="../assets/blanks.png" alt="Icon" style="width: 225px">
             <p>Fill In The Blanks Game</p>
           </a>
