@@ -91,7 +91,7 @@ export default {
         this.changeData(stream, game) // if it's a public user, a stream and game-specific leaderboard will be displayed
       }
     },
-    changeData: function (stream, game, name) {
+    changeData: function (stream, game) {
       axios.get('http://localhost:3000/api/getLeaderboard', {
         params: {
           game,
@@ -100,7 +100,12 @@ export default {
       }).then((response) => {
         this.Data = response.data
       })
-      this.changeLeaderboardType(stream + ' - ' + name)
+      for (let play of this.games) {
+        if (game === play.id) {
+          const name = play.name
+          this.changeLeaderboardType(stream + ' - ' + name)
+        }
+      }
       this.Global = false
     },
     changeToGlobal: function () {
