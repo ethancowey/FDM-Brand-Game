@@ -13,6 +13,7 @@ case, change the data being displayed.
 -->
 <template>
   <div id = "Leaderboard">
+    <NavigationBar v-if="Admin === false"></NavigationBar>
     <div class="container">
           <div class="dropdown" v-if="Admin">
               <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ this.leaderBoardType }}
@@ -53,9 +54,11 @@ case, change the data being displayed.
 </template>
 <script>
 import axios from 'axios'
+import NavigationBar from './NavigationBar'
 
 export default {
   name: 'Leaderboard',
+  components: {NavigationBar},
   data () {
     return {
       Data: [],

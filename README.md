@@ -5,6 +5,7 @@ In this document
 * Running the Back-end
 * Running the Front-end
 * Admin Login Details
+* User Accounts
 * Technologies Used
 
 Running the Back-end
