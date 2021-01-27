@@ -45,7 +45,7 @@ Leaderboard.
           <a href="/account">Account</a>
         </div>
         <div class="navig" id="leader">
-          <a href="/leaderboard">Leaderboard</a>
+          <a href="/leaderboard" onclick="sessionStorage.setItem('game','blocks')">Leaderboard</a>
         </div>
       </div>
     </div>

@@ -32,18 +32,18 @@ information on the amount of registered users, the top scoring player and their 
           <Leaderboard></leaderboard>
         </div>
         <div id = wrapper2>
-          <div class = "chartContainer">
+          <div class = "chart-container">
             <Chart></Chart>
             <div id = "information">
-              <div class="streamsContainer" id="streams">
+              <div class="streams-container" id="streams">
                 <a class = "button" href="/streams" >Browse Streams</a>
               </div>
-              <div class="userInformation">
+              <div class="user-information">
                 <a class = "button" href = "/userInformation"> User Information
                   <font-awesome-icon class="fa-users" :icon="['fas', 'users']" /></a><br>
-                <p class = "informationBody"> Registered users: {{Users.length}} </p>
-                <p class = "informationBody"> Top user: {{TopUser[0]._id}} </p>
-                <p class = "informationBody"> Top user total: {{TopUser[0].score}} </p>
+                <p class = "information-body"> Registered users: {{Users.length}} </p>
+                <p class = "information-body"> Top user: {{TopUser[0]._id}} </p>
+                <p class = "information-body"> Top user total: {{TopUser[0].score}} </p>
               </div>
             </div>
           </div>
@@ -81,7 +81,7 @@ export default {
 }
 </script>
 <style>
-.chartContainer{
+.chart-container{
   margin-right: 2.6667em;
   width: 40em;
   height: 10em;
@@ -91,7 +91,7 @@ export default {
   height:auto;
   overflow-y: scroll;
 }
-.streamsContainer :hover{
+.streams-container :hover{
   background-color: #999999;
   color: #EAEAEA;
   border: 0.2666em solid #999999;
@@ -111,7 +111,7 @@ export default {
   justify-content: space-evenly;
   align-items: flex-start;
 }
-.streamsContainer{
+.streams-container{
   background-color: #F5F5F5;
   margin-right: 2em;
   justify-content: center;
@@ -124,11 +124,11 @@ export default {
   font-size: 1.466em;
   color: #2c3e50;
 }
-.informationBody{
+.information-body{
   color:dimgray;
   font-size: 1.333em;
 }
-.userInformation{
+.user-information{
   background-color: #F5F5F5;
   border: 0.2em solid dimgray;
   border-radius: 0.8em;

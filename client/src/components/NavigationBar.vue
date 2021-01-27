@@ -40,6 +40,9 @@ It can be referenced and used in html code using <NavigationBar>
         <li class="nav-item">
           <a class="nav-link" href="/test">Affinity Test</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/leaderboard" onclick="sessionStorage.setItem('game','blocks')">Leader board</a>
+        </li>
       </ul>
       <ul class="navbar-nav ml-auto nav-flex-icons">
         <li class="nav-item avatar">
