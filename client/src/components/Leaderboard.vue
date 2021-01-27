@@ -15,7 +15,7 @@ case, change the data being displayed.
   <div id = "Leaderboard">
     <NavigationBar v-if="Admin === false"></NavigationBar>
     <div class="container">
-          <div class="dropdown" v-if="Admin">
+          <div class="dropdown">
               <button id="dropdownButton" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
                 {{ this.leaderBoardType }}
                 <span class="caret"></span></button>
@@ -78,6 +78,7 @@ export default {
     const game = sessionStorage.getItem('game')
     const admin = sessionStorage.getItem('admin')
     const stream = sessionStorage.getItem('stream')
+    console.log(game)
     this.displayData(admin, game, stream)
   },
   methods: {
