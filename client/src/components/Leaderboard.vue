@@ -142,7 +142,7 @@ export default {
   background-color: #F5F5F5;
 }
 .dropdown-item{
-  font-size: 1.33em;
+  font-size: 0.75em;
 }
 .dropdown-submenu {
   position: relative;
@@ -158,7 +158,7 @@ export default {
   -webkit-border-radius: 0 0.4em 0.4em 0.4em;
   -moz-border-radius: 0 0.4em 6px;
   border-radius: 0 0.4em 0.4em 0.4em;
-  font-size:1.33em;
+  font-size:0.75em;
 }
 .dropdown-submenu:hover>.dropdown-menu {
   display: block;
@@ -183,6 +183,7 @@ export default {
 }
 .dropdown-submenu.pull-left {
   float: none;
+  font-size: 0.75em;
 }
 
 .dropdown-submenu.pull-left>.dropdown-menu {
@@ -191,6 +192,7 @@ export default {
   -webkit-border-radius: 0.4em 0 0.4em 0.4em;
   -moz-border-radius: 0.4em 0 0.4em 0.4em;
   border-radius: 0.4em 0 0.4em 0.4em;
+  font-size: 0.75em;
 }
 
 </style>
