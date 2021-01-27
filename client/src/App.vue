@@ -21,7 +21,7 @@ export default {
 <style>
 @media screen and (min-width: 2000px){
   html{
-    font-size: 4vmin;
+    font-size:125%;
   }
 }
 @media screen and (max-width: 2000px){
