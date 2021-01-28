@@ -30,17 +30,17 @@ I have also created a method to get all user scores, this is then looped through
 
               <label>Current Password</label>
               <div class="form-group">
-                <input required id="current-password" type="password" class="form-control"
+                <input v-model="currentPassword" required id="current-password" type="password" class="form-control"
                        placeholder="Current Password">
               </div>
               <label>New Password</label>
               <div class="form-group">
-                <input required id="password" type="password" class="form-control" placeholder="New Password"
+                <input v-model="password" required id="password" type="password" class="form-control" placeholder="New Password"
                        pattern=".{6,12}" title="Must be 6 to 12 characters">
               </div>
               <label>Confirm Password</label>
               <div class="form-group">
-                <input required id="confirmed-pass" type="password" class="form-control" placeholder="Confirm Password">
+                <input  v-model="confirmedPassword" required id="confirmed-pass" type="password" class="form-control" placeholder="Confirm Password">
               </div>
               <span id='message'></span><br>
               <button type="submit" name="submit" class="btn btn-dark">Change Password</button>
@@ -84,7 +84,10 @@ export default {
   data () {
     return {
       Scores: [],
-      username: sessionStorage.getItem('username')
+      username: sessionStorage.getItem('username'),
+      currentPassword: '',
+      password: '',
+      confirmedPassword: ''
     }
   },
   async mounted () {
@@ -115,7 +118,7 @@ export default {
         // axios request to /api/resetpass with username and confirmed password
         axios.post('http://localhost:3000/api/resetpass', {
           username: this.username,
-          password: String(document.getElementById('confirmed-pass').value)
+          password: this.confirmedPassword
         })
           .then((response) => {
             if (response.data.username === this.username) {
@@ -131,8 +134,7 @@ export default {
     // Checks that current password entered is correct
     async checkAuth () {
       // checks both passwords matches
-      if (document.getElementById('password').value !==
-        document.getElementById('confirmed-pass').value) {
+      if (this.password !== this.confirmedPassword) {
         document.getElementById('message').style.color = 'red'
         document.getElementById('message').innerHTML = 'Passwords are not matching'
         return
@@ -140,7 +142,7 @@ export default {
       // axios login request
       axios.post('http://localhost:3000/api/auth', {
         username: this.username,
-        password: String(document.getElementById('current-password').value)
+        password: this.currentPassword
       })
         .then((response) => { this.resetPassword(response) })
     }
