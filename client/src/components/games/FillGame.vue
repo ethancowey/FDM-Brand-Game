@@ -81,9 +81,8 @@ function which runs automatically (interval). The game is won if all fields are 
               <label class="text-dark">3: <input id="blank3"></label>
               <label class="text-dark">7: <input id="blank7"></label><br>
               <label class="text-dark">4: <input id="blank4"></label>
-              <label class="text-dark">8: <input id="blank8"></label><br><br>
-              <label class="text-dark">There are more words than needed. You don't have to use all of them.<br>
-              Fields are checked automatically. The game is won if all are correct.</label>
+              <label class="text-dark">8: <input id="blank8"></label><br>
+              <label class="text-dark">There are more words than needed. Fields are checked automatically.</label>
             </div>
           </form>
         </div>
@@ -282,7 +281,7 @@ export default {
   border-radius: 0.66em;
   position: absolute;
   left: 50%;
-  top: 55%;
+  top: 60%;
   transform: translate(-50%, -50%);
 }
 a {
@@ -308,6 +307,6 @@ p {
   font-size: 1em;
 }
 .text-words {
-  margin-top: 0.7em;
+  margin-top: 0.5em;
 }
 </style>
