@@ -1,12 +1,13 @@
 <!-- Module: FillGame.vue
 Creation Date: 26/12/2020
-Last Edit Date: 27/01/2021
+Last Edit Date: 28/01/2021
 Authors: Tom Sevcov
-Overview: The game is about filling in the blanks in a chunk of text with the words given to the user. The time taken
-is recorded to calculate a score. In the <template> There is the nav bar to navigate to other sections of the site.
-There is a container for the game itself above it will be the game title, restart button and timer. In the <script>
-There is the data() function which returns all the variables needed in the html and javascript code. Than there is a
-mounted() function which is getting data from database. Also there is a che
+Overview: The game is about filling the blanks in a chunk of text with the words given to the user. The time taken
+is recorded to calculate a score. The more time is left - the higher is the socre. In the <template> There is the nav
+bar to navigate to other sections of the site. There is a container for the game itself above it will be the game title,
+restart button and timer. In the <script> There is the data() function which returns all the variables needed in the
+html and javascript code. Than there is a mounted() function which is getting data from database. Also there is a check
+function which runs automatically (interval). The game is won if all fields are correct.
 
 -->
 
@@ -66,22 +67,23 @@ mounted() function which is getting data from database. Also there is a che
           <p>{{questTerm6}}: {{questBlank6}}<br></p>
           <p>{{questTerm7}}: {{questBlank7}}<br></p>
           <p>{{questTerm8}}: {{questBlank8}}<br></p>
-          <p class="text-center"><b>WORDS TO USE:</b></p>
+          <p class="text-words"><b>WORDS TO USE:</b></p>
           <h4 class="text-center">{{shuffledArray[0]}}, {{shuffledArray[1]}}, {{shuffledArray[2]}},
             {{shuffledArray[3]}}, {{shuffledArray[4]}}, {{shuffledArray[5]}}, {{shuffledArray[6]}},
             {{shuffledArray[7]}}, {{shuffledArray[8]}}, {{shuffledArray[9]}}, {{shuffledArray[10]}},
             {{shuffledArray[11]}}</h4>
           <form id="blankInput" class="blank">
             <div class="form-group" v-on:submit.prevent="checkBlank">
-              <label class="text-dark">1: <input id="blank1"></label><br>
-              <label class="text-dark">2: <input id="blank2"></label><br>
-              <label class="text-dark">3: <input id="blank3"></label><br>
-              <label class="text-dark">4: <input id="blank4"></label><br>
+              <label class="text-dark">1: <input id="blank1"></label>
               <label class="text-dark">5: <input id="blank5"></label><br>
+              <label class="text-dark">2: <input id="blank2"></label>
               <label class="text-dark">6: <input id="blank6"></label><br>
+              <label class="text-dark">3: <input id="blank3"></label>
               <label class="text-dark">7: <input id="blank7"></label><br>
-              <label class="text-dark">8: <input id="blank8"></label><br>
-              <label class="text-dark">There are more words than needed. You don't have to use all of them.</label><br>
+              <label class="text-dark">4: <input id="blank4"></label>
+              <label class="text-dark">8: <input id="blank8"></label><br><br>
+              <label class="text-dark">There are more words than needed. You don't have to use all of them.<br>
+              Fields are checked automatically. The game is won if all are correct.</label>
             </div>
           </form>
         </div>
@@ -92,7 +94,6 @@ mounted() function which is getting data from database. Also there is a che
 
 <script>
 import axios from 'axios'
-import draggable from 'vuedraggable'
 import GameTimer from './GameTimer'
 import NavigationBar from '../NavigationBar'
 
@@ -100,14 +101,12 @@ export default {
   name: 'FillGame.vue',
   components: {
     NavigationBar,
-    GameTimer,
-    draggable
+    GameTimer
   },
   // Function which returns all the variables needed in the html and javascript code.
   data () {
     return {
       inputAr: [],
-      correctArray: [],
       shuffledArray: [],
       scoreDisplayed: null,
       gameOver: false,
@@ -125,7 +124,7 @@ export default {
       }
     })
       .then((response) => {
-        // If the stream is Software Testing the game takes term, text with a blank and correct word for this stream
+        // If the stream is Software Testing the game takes term, text with a blank and correct word for it
         if (sessionStorage.getItem('stream') === 'Software Testing') {
           this.questTerm1 = response.data[0].term
           this.questTerm2 = response.data[1].term
@@ -151,12 +150,12 @@ export default {
           this.questCorrect6 = response.data[6].correct
           this.questCorrect7 = response.data[7].correct
           this.questCorrect8 = response.data[8].correct
-          this.correctArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
-            this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8]
+
+          // Creating an array with correct words in order + 4 additional words
           this.shuffledArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
             this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8, 'activity', 'expected',
             'build', 'connected']
-          // If the stream is Technical Operations the game takes term, text with a blank and correct word for this stream
+          // If the stream is Technical Operations the game takes term, text with a blank and correct word for it
         } else if (sessionStorage.getItem('stream') === 'Technical Operations') {
           this.questTerm1 = response.data[0].term
           this.questTerm2 = response.data[1].term
@@ -183,13 +182,11 @@ export default {
           this.questCorrect7 = response.data[6].correct
           this.questCorrect8 = response.data[7].correct
 
-          // Creating an array with correct words in order
-          this.correctArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
-            this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8]
+          // Creating an array with correct words in order + 4 additional words
           this.shuffledArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
             this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8, 'verifying', 'input',
             'measuring', 'critical']
-          // If the stream is Business Intelligence the game takes term, text with a blank and correct word for this stream
+          // If the stream is Business Intelligence the game takes term, text with a blank and correct word for it
         } else if (sessionStorage.getItem('stream') === 'Business Intelligence') {
           this.questTerm1 = response.data[1].term
           this.questTerm2 = response.data[2].term
@@ -216,14 +213,12 @@ export default {
           this.questCorrect7 = response.data[8].correct
           this.questCorrect8 = response.data[9].correct
 
-          // Creating an array with correct words in order
-          this.correctArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
-            this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8]
+          // Creating an array with correct words in order + 4 additional words
           this.shuffledArray = [this.questCorrect1, this.questCorrect2, this.questCorrect3, this.questCorrect4,
             this.questCorrect5, this.questCorrect6, this.questCorrect7, this.questCorrect8, 'graph', 'templates',
             'methods', 'way']
         }
-        // A function for shuffling an array
+        // Array with correct words and 4 additional words is shuffled before showing to the user
         // eslint-disable-next-line one-var
         var currentIndex = this.shuffledArray.length, temp, randomIndex
         while (currentIndex !== 0) {
@@ -234,6 +229,7 @@ export default {
           this.shuffledArray[randomIndex] = temp
         }
       })
+    // Setting an interval for automatic checking
     setInterval(this.checkBlank, 1000)
   },
   methods: {
@@ -249,6 +245,7 @@ export default {
         document.getElementById('blank6').value === this.questCorrect6 &&
         document.getElementById('blank7').value === this.questCorrect7 &&
         document.getElementById('blank8').value === this.questCorrect8) {
+        // Stopping interval for automatic checking
         clearInterval(this.checkBlank)
         // If all match, there is no mistake
         this.mistakeX = false
@@ -257,7 +254,7 @@ export default {
         // If there is no mistake, timer stops and score is calculated
         this.$refs.timerInstance.stopTimer()
         const timeRemaining = this.$refs.timerInstance.getTime()
-        const score = Math.floor(timeRemaining / 8) // Score is time remaining divided by drags used
+        const score = Math.floor(timeRemaining) // Score is time remaining divided by drags used
         this.scoreDisplayed = score
         this.gameFinished = true
         // Posting score to the database
@@ -270,7 +267,6 @@ export default {
           .then((response) => {
             console.log(response)
           })
-        // If there is a mistake, gameover
       }
     }
   }
@@ -281,7 +277,7 @@ export default {
 <style scoped>
 #game {
   width: 70%;
-  height: 65%;
+  height: 70%;
   border: solid darkblue;
   border-radius: 0.66em;
   position: absolute;
@@ -310,5 +306,8 @@ p {
   padding: 0.1em;
   height: 1em;
   font-size: 1em;
+}
+.text-words {
+  margin-top: 0.7em;
 }
 </style>
