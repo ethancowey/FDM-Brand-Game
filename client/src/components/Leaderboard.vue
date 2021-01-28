@@ -65,7 +65,7 @@ export default {
     return {
       Data: [],
       Admin: false,
-      games: [ {id: 'Match', name: 'Match Game'}, {id: 'blocks', name: 'Blocks Game'},
+      games: [ {id: 'match', name: 'Match Game'}, {id: 'blocks', name: 'Blocks Game'},
         {id: 'fill', name: 'Fill The Blanks Game'} ],
       streams: [{id: 'Software Testing', name: 'Software Testing'}, {id: 'Business Intelligence',
         name: 'Business Intelligence'}, {id: 'Technical Operations', name: 'Technical operations'}],
