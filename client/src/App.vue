@@ -31,7 +31,7 @@ export default {
 }
 @media screen and (max-width: 900px){
   html{
-    font-size: 1.25vmin;
+    font-size: 1.5vmin;
   }
 }
 #app {

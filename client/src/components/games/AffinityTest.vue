@@ -115,7 +115,6 @@ export default {
     })
       .then((response) => {
         this.questions = response.data // Set the response from the back-end to be the questions to use
-        console.log(this.questions)
       })
   },
   methods: {

@@ -16,7 +16,7 @@ To begin running the server for the back-end open a terminal and cd into the ser
 ```
 cd server
 ```
-Next make sure the node modules package is up to date by running npm install
+Next install the node modules dependencies using running npm install
 ```
 npm install
 ```
@@ -36,7 +36,7 @@ cd into the client folder
 ```
 cd client
 ```
-Next make sure the node modules package is up to date by running npm install
+Next install the node modules dependencies by running npm install
 ```
 npm install
 ```
@@ -77,3 +77,31 @@ The Back-end was written using node.js (server folder)
 
 The external database is a mongoDB Atlas which is currently version 4.2 but is due to upgrade to 4.4
 automatically we have made sure that our mongo drivers are up to date to account for this.
+
+Running the tests
+-
+
+To begin running the serverTests for the back-end open a terminal and cd into the server file
+```
+cd serverTests
+```
+Next install the node modules dependencies using running npm install
+```
+npm install
+```
+Finally using npm run the start script
+```
+npm run test
+```
+To begin running the clientTests for the back-end open a terminal and cd into the server file
+```
+cd clientTests
+```
+Next install the node modules dependencies using running npm install
+```
+npm install
+```
+Finally using npm run the start script
+```
+npm run test:unit
+```

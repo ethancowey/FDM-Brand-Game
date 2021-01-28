@@ -69,7 +69,7 @@ export default {
 <style scoped>
 .container{
   max-width:100%;
-  max-height:100%;
+  max-height: 90%;
   overflow: auto;
   position: fixed;
 }

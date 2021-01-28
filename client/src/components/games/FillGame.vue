@@ -107,7 +107,6 @@ export default {
   // Function which returns all the variables needed in the html and javascript code.
   data () {
     return {
-      inputAr: [],
       shuffledArray: [],
       scoreDisplayed: null,
       gameOver: false,
@@ -265,8 +264,7 @@ export default {
           stream: sessionStorage.getItem('stream'),
           score: score
         })
-          .then((response) => {
-            console.log(response)
+          .then(() => {
           })
       }
     }
