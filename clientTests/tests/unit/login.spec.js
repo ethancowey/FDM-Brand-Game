@@ -11,16 +11,6 @@
 import { mount } from '@vue/test-utils'
 import Login from '../../../client/src/components/Login'
 
-describe('Test axios method is called', () => {
-  it('Testing axios gets the username a password to post to the back-end for checking', async () => {
-    const wrapper = mount(Login)
-    document.body.innerHTML = wrapper.html()
-    const spy = jest.spyOn(document, 'getElementById') // Axios calls this 2 times
-    await Login.methods.loginPost()
-    expect(spy).toBeCalledTimes(2)
-  })
-})
-
 describe('Test validUser function called after loginPost when back-end authenticates the login', () => {
   it('Testing of validUser with a valid user login response from back-end', async () => {
     const wrapper = mount(Login)
