@@ -35,7 +35,7 @@ mounted() function which is getting data from database. Also there is a che
             <font-awesome-icon v-on:click="gameOver = false" class="cross fa-lg" :icon="['fas', 'times']" />
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>You ran out of Time!</h4>
-              <a href="/fill" class="btn btn-out btn-square continue">Play Again?</a>
+              <a href="/fill" class="btn btn-out btn-square continue text-white">Play Again?</a>
             </div>
           </div>
         </div>
@@ -47,8 +47,8 @@ mounted() function which is getting data from database. Also there is a che
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Congratulations</h4>
               <p>You Scored {{this.scoreDisplayed}}</p>
-              <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
-              <a id="tweet" class="btn btn-out btn-square continue"
+              <a href="/leaderboard" class="btn btn-out btn-square continue text-white">Leaderboard</a>
+              <a id="tweet" class="btn btn-out btn-square continue text-white"
                  :href="'https://twitter.com/intent/tweet?text=I scored ' + scoreDisplayed + ' in Fill in the blanks ' +
                   '%23FDMCareers'">
                 Tweet #FDMCareers</a>
@@ -70,9 +70,9 @@ mounted() function which is getting data from database. Also there is a che
           <h4 class="text-center">{{shuffledArray[0]}}, {{shuffledArray[1]}}, {{shuffledArray[2]}},
             {{shuffledArray[3]}}, {{shuffledArray[4]}}, {{shuffledArray[5]}}, {{shuffledArray[6]}},
             {{shuffledArray[7]}}, {{shuffledArray[8]}}, {{shuffledArray[9]}}, {{shuffledArray[10]}},
-            {{shuffledArray[11]}}</h4><br>
+            {{shuffledArray[11]}}</h4>
           <form id="blankInput" class="blank">
-            <div class="form-group" v-on:submit.prevent="checkblank">
+            <div class="form-group" v-on:submit.prevent="checkBlank">
               <label class="text-dark">1: <input id="blank1"></label><br>
               <label class="text-dark">2: <input id="blank2"></label><br>
               <label class="text-dark">3: <input id="blank3"></label><br>
@@ -234,11 +234,11 @@ export default {
           this.shuffledArray[randomIndex] = temp
         }
       })
-    setInterval(this.checkblank, 1000)
+    setInterval(this.checkBlank, 1000)
   },
   methods: {
     // A method for checking the input fields
-    checkblank () {
+    checkBlank () {
       this.mistakeX = true
       // Comparing the input value with correct value
       if (document.getElementById('blank1').value === this.questCorrect1 &&
@@ -249,7 +249,7 @@ export default {
         document.getElementById('blank6').value === this.questCorrect6 &&
         document.getElementById('blank7').value === this.questCorrect7 &&
         document.getElementById('blank8').value === this.questCorrect8) {
-        clearInterval(this.checkblank)
+        clearInterval(this.checkBlank)
         // If all match, there is no mistake
         this.mistakeX = false
       }
@@ -271,8 +271,6 @@ export default {
             console.log(response)
           })
         // If there is a mistake, gameover
-      } if (this.mistakeX === true) {
-        console.log(this.gameOver)
       }
     }
   }
@@ -283,7 +281,7 @@ export default {
 <style scoped>
 #game {
   width: 70%;
-  height: 70%;
+  height: 65%;
   border: solid darkblue;
   border-radius: 0.66em;
   position: absolute;

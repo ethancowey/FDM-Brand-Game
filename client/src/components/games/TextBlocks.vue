@@ -37,7 +37,7 @@ order if so the game end)s.
             <font-awesome-icon v-on:click="gameOver = false" class="cross fa-lg" :icon="['fas', 'times']" />
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Unlucky You ran out of Time!</h4>
-              <a href="/blocks" class="btn btn-out btn-square continue">Pay Again?</a>
+              <a href="/blocks" class="btn btn-out btn-square continue text-white">Pay Again?</a>
             </div>
           </div>
         </div>
@@ -49,9 +49,9 @@ order if so the game end)s.
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Congratulations</h4>
               <p>You Scored {{this.scoreDisplayed}}</p>
-              <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
-              <a id="tweet" class="btn btn-out btn-square continue"
-                 :href="'https://twitter.com/intent/tweet?text=I scored ' + scoreDisplayed + ' in blocks %23FDMCareers'">
+              <a href="/leaderboard" class="btn btn-out btn-square continue text-white">Leaderboard</a>
+              <a id="tweet" class="btn btn-out btn-square continue text-white"
+                :href="'https://twitter.com/intent/tweet?text=I scored ' + scoreDisplayed + ' in blocks %23FDMCareers'">
                 Tweet #FDMCareers</a>
             </div>
           </div>

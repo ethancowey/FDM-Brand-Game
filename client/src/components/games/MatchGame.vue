@@ -38,7 +38,7 @@ There are also methods which are called on card click and then a method to handl
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Unlucky You ran out of Time!</h4>
               <br>
-              <button v-on:click="resetGame" class="btn btn-out btn-square continue">Play Again?</button>
+              <button v-on:click="resetGame" class="btn btn-out btn-square continue text-white">Play Again?</button>
             </div>
           </div>
         </div>
@@ -52,9 +52,9 @@ There are also methods which are called on card click and then a method to handl
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>CONGRATULATIONS!</h4>
               <p>You scored {{score}} points and completed the game in {{120 - timeRemaining}} seconds</p>
-              <a href="/leaderboard" class="btn btn-out btn-square continue">Leaderboard</a>
+              <a href="/leaderboard" class="btn btn-out btn-square continue text-white">Leaderboard</a>
 <!--              Allows user to tweet score-->
-              <a id="tweet" class="btn btn-out btn-square continue"
+              <a id="tweet" class="btn btn-out btn-square continue text-white"
                  :href="'https://twitter.com/intent/tweet?text=I scored ' + score + ' in the Match game %23FDMCareers'">
                 Tweet #FDMCareers</a>
             </div>
