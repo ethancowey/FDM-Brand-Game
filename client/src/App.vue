@@ -29,6 +29,11 @@ export default {
     font-size: 2vmin;
   }
 }
+@media screen and (max-width: 900px){
+  html{
+    font-size: 1.25vmin;
+  }
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
