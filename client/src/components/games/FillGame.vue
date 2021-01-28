@@ -3,7 +3,7 @@ Creation Date: 26/12/2020
 Last Edit Date: 28/01/2021
 Authors: Tom Sevcov
 Overview: The game is about filling the blanks in a chunk of text with the words given to the user. The time taken
-is recorded to calculate a score. The more time is left - the higher is the socre. In the <template> There is the nav
+is recorded to calculate a score. The more time is left - the higher is the score. In the <template> There is the nav
 bar to navigate to other sections of the site. There is a container for the game itself above it will be the game title,
 restart button and timer. In the <script> There is the data() function which returns all the variables needed in the
 html and javascript code. Than there is a mounted() function which is getting data from database. Also there is a check
@@ -44,7 +44,9 @@ function which runs automatically (interval). The game is won if all fields are 
       <transition name="fade">
         <div v-if="gameFinished" class="backdrop">
           <div class="congratulations">
-            <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
+            <a href="/fill">
+              <font-awesome-icon v-on:click="gameFinished=false" class="cross fa-lg" :icon="['fas', 'times']" />
+            </a>
             <div class="card-body"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
               <h4>Congratulations</h4>
               <p>You Scored {{this.scoreDisplayed}}</p>
