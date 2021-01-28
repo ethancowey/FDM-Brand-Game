@@ -31,7 +31,7 @@ Password: Admin1
               <h3 class="text-center text-dark">User and Admin Login</h3>
               <div class="form-group">
                 <label class="text-dark">Username:</label><br>
-                <input required type="username" id="username" class="form-control"
+                <input required type="username" v-model="username" id="username" class="form-control"
                        pattern=".{1,10}" title="Must be less than 10 characters">
               </div>
               <div class="form-group">
@@ -76,8 +76,8 @@ export default {
   methods: {
     async loginPost () {
       axios.post('http://localhost:3000/api/auth', {
-        username: String(document.getElementById('username').value), // Get from form to send to back-end
-        password: String(document.getElementById('password').value)
+        username: this.username, // Get from form to send to back-end
+        password: this.password
       })
         .then((response) => {
           this.validUser(response) // Use the back-ends response in the next function to see if the user is valid
@@ -88,7 +88,7 @@ export default {
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('admin', 'true')
         router.push('/admin')
-      } else if (response.data.username === String(document.getElementById('username').value) &&
+      } else if (response.data.username === this.username &&
         response.data.admin !== 'true') { // Checks user is the one returned by back-end and not an admin
         sessionStorage.setItem('username', response.data.username)
         sessionStorage.setItem('firstname', response.data.firstname)

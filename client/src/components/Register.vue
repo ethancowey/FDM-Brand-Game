@@ -24,20 +24,20 @@ the next pages URL.
               <h3 class="text-center text-dark">Register</h3>
 
               <label for="firstname" class="labels">First Name:</label><br>
-              <input type="text" id="firstname" class="form-control">
+              <input v-model="firstName" type="text" id="firstname" class="form-control">
 
               <label for="lastname" class="labels">Last Name:</label><br>
-              <input type="text" id="lastname" class="form-control">
+              <input v-model="lastName" type="text" id="lastname" class="form-control">
 
               <label for="e-mail" class="labels">E-mail address:</label><br>
-              <input type="email" id="e-mail" class="form-control">
+              <input v-model="email" type="email" id="e-mail" class="form-control">
 
               <label for="username" class="labels">Username:</label><br>
               <input type="text" id="username" class="form-control" required
-                     pattern=".{1,10}" title="Must be less than 10 characters">
+                     v-model="username" pattern=".{1,10}" title="Must be less than 10 characters">
 
               <label for="password" class="labels">Password:</label><br>
-              <input type="text" id="password" class="form-control" required
+              <input v-model="password" type="text" id="password" class="form-control" required
                      pattern=".{6,12}" title="Must be 6 to 12 characters">
               <div>
                 <input type="submit" name="submit" class="btn btn-dark btn-md" onsubmit="usernameUniquePost()"
@@ -72,14 +72,15 @@ export default {
       firstName: '',
       lastName: '',
       email: '',
-      password: ''
+      password: '',
+      username: ''
 
     }
   },
   methods: {
     usernameUniquePost () { // Post request to check that the username is unique
       axios.post('http://localhost:3000/api/exists', {
-        username: String(document.getElementById('username').value)
+        username: this.username
       }).then((response) => {
         this.validReg(response) // Send response to next method to check result and register
       })
@@ -89,11 +90,11 @@ export default {
       if (response.data.length === 0) {
         console.log('new user')
         axios.post('http://localhost:3000/api/register', {
-          username: String(document.getElementById('username').value),
-          password: String(document.getElementById('password').value),
-          email: String(document.getElementById('e-mail').value),
-          firstname: String(document.getElementById('firstname').value),
-          lastname: String(document.getElementById('lastname').value)
+          username: this.username,
+          password: this.password,
+          email: this.email,
+          firstname: this.firstName,
+          lastname: this.lastName
         })
           .then((response) => { this.regRoute(response) }) // Send response of post to next function to route the user
       } else {
