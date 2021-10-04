@@ -25,8 +25,8 @@ Finally using npm run the start script
 npm run start
 ```
 You should see in the console Server Started.
-The server will run at localhost:3000 it connects to our external Mongodb Atlas database using this connection uri:
-mongodb+srv://Team25:1vnSXJdmhQQDs5nb@cluster0.clvze.mongodb.net/Team25?retryWrites=true&w=majority
+The server will run at localhost:3000 it connects to our external Mongodb Atlas database using this connection uri.
+The project can be calibrated to run on Heroku instead of localhost ready for deployment.
 
 Running the Front-end
 -
